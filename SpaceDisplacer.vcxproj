@@ -123,7 +123,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="F:\BoulderDash\Framework\Animation.cpp" />
+    <ClCompile Include="F:\BoulderDash\Framework\AnimationSystem.cpp" />
+    <ClCompile Include="F:\BoulderDash\Framework\AssetManager.cpp" />
+    <ClCompile Include="F:\BoulderDash\Framework\GameObject.cpp" />
+    <ClCompile Include="F:\BoulderDash\Framework\SpriteObject.cpp" />
+    <ClCompile Include="F:\BoulderDash\Framework\TextObject.cpp" />
     <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="F:\BoulderDash\Framework\Animation.h" />
+    <ClInclude Include="F:\BoulderDash\Framework\AnimationSystem.h" />
+    <ClInclude Include="F:\BoulderDash\Framework\AssetManager.h" />
+    <ClInclude Include="F:\BoulderDash\Framework\GameObject.h" />
+    <ClInclude Include="F:\BoulderDash\Framework\SpriteObject.h" />
+    <ClInclude Include="F:\BoulderDash\Framework\TextObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
