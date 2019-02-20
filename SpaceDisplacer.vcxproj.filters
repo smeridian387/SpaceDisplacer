@@ -39,9 +39,6 @@
     <ClInclude Include="Player.h">
       <Filter>Gamecode</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Gamecode</Filter>
-    </ClInclude>
     <ClInclude Include="Level.h">
       <Filter>Gamecode</Filter>
     </ClInclude>
@@ -62,6 +59,9 @@
     </ClInclude>
     <ClInclude Include="Framework\TextObject.h">
       <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingObject.h">
+      <Filter>Gamecode</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
