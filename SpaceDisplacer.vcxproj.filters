@@ -1,59 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Framework">
-      <UniqueIdentifier>{14bf28b6-01a2-48e2-a1a3-d9cfcbab2446}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Gamecode">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{4846de2c-171c-494d-84e0-a0f4b4ca698a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Gamecode</Filter>
     </ClCompile>
-    <ClCompile Include="F:\BoulderDash\Framework\Animation.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="F:\BoulderDash\Framework\AnimationSystem.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="F:\BoulderDash\Framework\AssetManager.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="F:\BoulderDash\Framework\GameObject.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="F:\BoulderDash\Framework\SpriteObject.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="F:\BoulderDash\Framework\TextObject.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Gamecode</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Animation.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\AnimationSystem.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\AssetManager.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameObject.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\SpriteObject.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\TextObject.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="F:\BoulderDash\Framework\Animation.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\BoulderDash\Framework\AnimationSystem.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\BoulderDash\Framework\AssetManager.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\BoulderDash\Framework\GameObject.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\BoulderDash\Framework\SpriteObject.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\BoulderDash\Framework\TextObject.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Gamecode</Filter>
     </ClInclude>
@@ -62,6 +44,24 @@
     </ClInclude>
     <ClInclude Include="Level.h">
       <Filter>Gamecode</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Animation.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\AnimationSystem.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\AssetManager.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameObject.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\SpriteObject.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\TextObject.h">
+      <Filter>Framework</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

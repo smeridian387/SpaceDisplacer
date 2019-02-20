@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{8beaeb30-0cab-474a-8125-a27ffcbf2046}</ProjectGuid>
     <RootNamespace>SpaceDisplacer</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -123,22 +123,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="F:\BoulderDash\Framework\Animation.cpp" />
-    <ClCompile Include="F:\BoulderDash\Framework\AnimationSystem.cpp" />
-    <ClCompile Include="F:\BoulderDash\Framework\AssetManager.cpp" />
-    <ClCompile Include="F:\BoulderDash\Framework\GameObject.cpp" />
-    <ClCompile Include="F:\BoulderDash\Framework\SpriteObject.cpp" />
-    <ClCompile Include="F:\BoulderDash\Framework\TextObject.cpp" />
+    <ClCompile Include="Framework\Animation.cpp" />
+    <ClCompile Include="Framework\AnimationSystem.cpp" />
+    <ClCompile Include="Framework\AssetManager.cpp" />
+    <ClCompile Include="Framework\GameObject.cpp" />
+    <ClCompile Include="Framework\SpriteObject.cpp" />
+    <ClCompile Include="Framework\TextObject.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="F:\BoulderDash\Framework\Animation.h" />
-    <ClInclude Include="F:\BoulderDash\Framework\AnimationSystem.h" />
-    <ClInclude Include="F:\BoulderDash\Framework\AssetManager.h" />
-    <ClInclude Include="F:\BoulderDash\Framework\GameObject.h" />
-    <ClInclude Include="F:\BoulderDash\Framework\SpriteObject.h" />
-    <ClInclude Include="F:\BoulderDash\Framework\TextObject.h" />
+    <ClInclude Include="Framework\Animation.h" />
+    <ClInclude Include="Framework\AnimationSystem.h" />
+    <ClInclude Include="Framework\AssetManager.h" />
+    <ClInclude Include="Framework\GameObject.h" />
+    <ClInclude Include="Framework\SpriteObject.h" />
+    <ClInclude Include="Framework\TextObject.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Player.h" />
