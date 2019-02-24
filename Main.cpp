@@ -4,6 +4,7 @@
 //Project includes
 #include "Framework/AssetManager.h"
 #include "Level.h"
+#include "Player.h"
 
 int main()
 {
@@ -13,10 +14,10 @@ int main()
 
 	//Window set up
 	sf::RenderWindow gameWindow;
-	gameWindow.create(sf::VideoMode(1080, 720), "Space Displacer", sf::Style::Titlebar | sf::Style::Close);
+	gameWindow.create(sf::VideoMode(1280, 720), "Space Displacer", sf::Style::Titlebar | sf::Style::Close);
 
 	// Seed our random number generator 
-	srand(time(NULL));
+	//srand(time(NULL));
 
 	// Create AssetManager
 	AssetManager assets;
@@ -25,7 +26,11 @@ int main()
 	sf::Clock gameClock;
 
 	// Create the game level
-	Level ourLevel;
+	//Level ourLevel;
+
+	// Create test objects
+	Player ourPlayer;
+	ourPlayer.SetPosition(250.0f, 250.0f);
 
 	// -----------------------------------------------
 	// Game Loop
@@ -40,8 +45,7 @@ int main()
 		sf::Event gameEvent;
 		while (gameWindow.pollEvent(gameEvent))
 		{
-			// Pass event to input objects
-			ourLevel.Input(gameEvent);
+			
 			//Did the player close the window?
 			if (gameEvent.type == sf::Event::Closed)
 			{
@@ -58,8 +62,10 @@ int main()
 		// Get the time passed since the last frame and restart our game clock
 		sf::Time frameTime = gameClock.restart();
 
-		// Pass update to level
-		ourLevel.Update(frameTime);
+
+		// TODO: Update all game objects
+		if (ourPlayer.IsActive())
+			ourPlayer.Update(frameTime);
 
 		// -----------------------------------------------
 		// Draw Section
@@ -67,6 +73,10 @@ int main()
 
 		// Clear the window to a single colour
 		gameWindow.clear(sf::Color::Black);
+
+		// TODO: Draw game object
+		if (ourPlayer.IsActive())
+			ourPlayer.Draw(gameWindow);
 
 		// Display the window contents on the screen
 		gameWindow.display();

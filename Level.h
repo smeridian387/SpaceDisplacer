@@ -1,7 +1,7 @@
 #pragma once
 
 // Project Includes
-#include 
+#include"MovingObject.h"
 
 // Library Includes
 #include <SFML/Graphics.hpp>
@@ -16,7 +16,7 @@ public:
 	void Update(sf::Time _frameTime);
 	void Input(sf::Event _gameEvent);
 
-	bool DeleteObject(GameObject* _toDelete);
+	bool DeleteObject(MovingObject* _toDelete);
 
 
 

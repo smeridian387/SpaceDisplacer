@@ -1,9 +1,9 @@
 #pragma once
 
 // Project Includes
-#include "GameObject.h"
+#include "MovingObject.h"
 
-class Player : public GameObject
+class Player : public MovingObject
 {
 
 public:
@@ -11,7 +11,6 @@ public:
 	Player();
 
 	// Overriding Methods
-	virtual void Input(sf::Event _gameEvent);
 	virtual void Update(sf::Time _frameTime);
 
 private:

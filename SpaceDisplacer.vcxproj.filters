@@ -34,6 +34,9 @@
     <ClCompile Include="Framework\TextObject.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
+    <ClCompile Include="MovingObject.cpp">
+      <Filter>Gamecode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">

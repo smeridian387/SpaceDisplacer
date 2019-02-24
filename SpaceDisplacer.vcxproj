@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{8beaeb30-0cab-474a-8125-a27ffcbf2046}</ProjectGuid>
     <RootNamespace>SpaceDisplacer</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -130,6 +130,7 @@
     <ClCompile Include="Framework\SpriteObject.cpp" />
     <ClCompile Include="Framework\TextObject.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MovingObject.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
