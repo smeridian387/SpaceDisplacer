@@ -37,6 +37,9 @@
     <ClCompile Include="MovingObject.cpp">
       <Filter>Gamecode</Filter>
     </ClCompile>
+    <ClCompile Include="Asteroid.cpp">
+      <Filter>Gamecode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -64,6 +67,9 @@
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="MovingObject.h">
+      <Filter>Gamecode</Filter>
+    </ClInclude>
+    <ClInclude Include="Asteroid.h">
       <Filter>Gamecode</Filter>
     </ClInclude>
   </ItemGroup>

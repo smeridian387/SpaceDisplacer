@@ -5,6 +5,8 @@
 #include "Framework/AssetManager.h"
 #include "Level.h"
 #include "Player.h"
+#include "Asteroid.h"
+#include "Framework/SpriteObject.h"
 
 int main()
 {
@@ -17,7 +19,7 @@ int main()
 	gameWindow.create(sf::VideoMode(1280, 720), "Space Displacer", sf::Style::Titlebar | sf::Style::Close);
 
 	// Seed our random number generator 
-	//srand(time(NULL));
+	srand(time(NULL));
 
 	// Create AssetManager
 	AssetManager assets;
@@ -29,9 +31,10 @@ int main()
 	//Level ourLevel;
 
 	// Create test objects
-	Player ourPlayer;
-	ourPlayer.SetPosition(250.0f, 250.0f);
-
+	Player myPlayer;
+	myPlayer.SetPosition(250.0f, 250.0f);
+	Asteroid myAsteroid;
+	myAsteroid.SetPosition()
 	// -----------------------------------------------
 	// Game Loop
 	// -----------------------------------------------
