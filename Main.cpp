@@ -34,7 +34,7 @@ int main()
 	Player myPlayer;
 	myPlayer.SetPosition(250.0f, 250.0f);
 	Asteroid myAsteroid;
-	myAsteroid.SetPosition()
+	myAsteroid.SetPosition(rand() % 1000+100, 40);
 	// -----------------------------------------------
 	// Game Loop
 	// -----------------------------------------------
@@ -67,8 +67,8 @@ int main()
 
 
 		// TODO: Update all game objects
-		if (ourPlayer.IsActive())
-			ourPlayer.Update(frameTime);
+		if (myPlayer.IsActive())
+			myPlayer.Update(frameTime);
 
 		// -----------------------------------------------
 		// Draw Section
@@ -78,8 +78,10 @@ int main()
 		gameWindow.clear(sf::Color::Black);
 
 		// TODO: Draw game object
-		if (ourPlayer.IsActive())
-			ourPlayer.Draw(gameWindow);
+		if (myPlayer.IsActive())
+			myPlayer.Draw(gameWindow);
+		if (myAsteroid.IsActive())
+			myAsteroid.Draw(gameWindow);
 
 		// Display the window contents on the screen
 		gameWindow.display();
