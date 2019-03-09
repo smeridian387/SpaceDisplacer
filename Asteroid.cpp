@@ -2,8 +2,6 @@
 #include "Asteroid.h"
 #include "Framework/AssetManager.h"
 
-//constants
-#define SPEED 500.0f
 
 Asteroid::Asteroid()
 	:MovingObject()
@@ -17,9 +15,14 @@ Asteroid::Asteroid()
 void Asteroid::Update(sf::Time _frameTime)
 {
 	// First, assume no keys are pressed
+	m_aproachSpeed = 10;
 	m_velocity.x = 0;
-	m_velocity.y = SPEED;
+	m_velocity.y = m_aproachSpeed;
 
 }
 
+void Asteroid::NumberOfAsteroids(int)
+{
 
+
+}

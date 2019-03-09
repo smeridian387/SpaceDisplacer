@@ -45,9 +45,6 @@
     <ClInclude Include="Player.h">
       <Filter>Gamecode</Filter>
     </ClInclude>
-    <ClInclude Include="Level.h">
-      <Filter>Gamecode</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\Animation.h">
       <Filter>Framework</Filter>
     </ClInclude>
@@ -70,6 +67,9 @@
       <Filter>Gamecode</Filter>
     </ClInclude>
     <ClInclude Include="Asteroid.h">
+      <Filter>Gamecode</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
       <Filter>Gamecode</Filter>
     </ClInclude>
   </ItemGroup>

@@ -13,11 +13,12 @@ public:
 	virtual void Update(sf::Time _frameTime);
 	// other fuctions i need
 	//function to determine asteroid sawn. would this be tetermined in update?
-	void NumberOfAsteroids();
+	void NumberOfAsteroids(int);
+	void Difficulty();
 	
 
 private:
 
-	sf::Vector2i m_aproachSpeed;
+	int m_aproachSpeed;
 
 };

@@ -1,9 +1,10 @@
 //Library includes
 #include <SFML/Graphics.hpp>
+#include <stdlib.h>
+#include <iostream>
 
 //Project includes
 #include "Framework/AssetManager.h"
-#include "Level.h"
 #include "Player.h"
 #include "Asteroid.h"
 #include "Framework/SpriteObject.h"
@@ -27,14 +28,19 @@ int main()
 	// Game Clock - to keep track of time passed each frame
 	sf::Clock gameClock;
 
-	// Create the game level
-	//Level ourLevel;
+	for (int i = 0; i < 10; ++i)
+	{
+		int random = std::rand() % 1260;
+		std::cout << random << std::endl;
+	}
 
 	// Create test objects
 	Player myPlayer;
-	myPlayer.SetPosition(250.0f, 250.0f);
+	myPlayer.SetPosition(800.0f, 250.0f);
 	Asteroid myAsteroid;
-	myAsteroid.SetPosition(rand() % 1000+100, 40);
+	int random = std::rand() % 1260;
+	myAsteroid.SetPosition(random, 250);
+	
 	// -----------------------------------------------
 	// Game Loop
 	// -----------------------------------------------

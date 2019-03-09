@@ -136,13 +136,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asteroid.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Framework\Animation.h" />
     <ClInclude Include="Framework\AnimationSystem.h" />
     <ClInclude Include="Framework\AssetManager.h" />
     <ClInclude Include="Framework\GameObject.h" />
     <ClInclude Include="Framework\SpriteObject.h" />
     <ClInclude Include="Framework\TextObject.h" />
-    <ClInclude Include="Level.h" />
     <ClInclude Include="MovingObject.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
