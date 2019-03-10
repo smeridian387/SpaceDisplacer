@@ -5,6 +5,8 @@
 
 Asteroid::Asteroid()
 	:MovingObject()
+	, m_isInPlay(true)
+	, m_velocity(0.0f,0.0f)
 {
 
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/asteroid.png"));
@@ -12,12 +14,19 @@ Asteroid::Asteroid()
 
 }
 
+void Asteroid::SetPosition(sf::Vector2f _position)
+{
+	int random = std::rand() % 1260;
+	_position.x = random;
+	_position.y = 250;
+
+
+}
+
 void Asteroid::Update(sf::Time _frameTime)
 {
-	// First, assume no keys are pressed
-	m_aproachSpeed = 10;
-	m_velocity.x = 0;
-	m_velocity.y = m_aproachSpeed;
+	
+
 
 }
 

@@ -38,8 +38,6 @@ int main()
 	Player myPlayer;
 	myPlayer.SetPosition(800.0f, 250.0f);
 	Asteroid myAsteroid;
-	int random = std::rand() % 1260;
-	myAsteroid.SetPosition(random, 250);
 	
 	// -----------------------------------------------
 	// Game Loop
@@ -75,6 +73,8 @@ int main()
 		// TODO: Update all game objects
 		if (myPlayer.IsActive())
 			myPlayer.Update(frameTime);
+		if (myAsteroid.IsActive())
+			myAsteroid.Draw(gameWindow);
 
 		// -----------------------------------------------
 		// Draw Section

@@ -10,9 +10,10 @@ public:
 	Asteroid();
 
 	//overiding Methods
+	void SetPosition(sf::Vector2f _position);
 	virtual void Update(sf::Time _frameTime);
-	// other fuctions i need
-	//function to determine asteroid sawn. would this be tetermined in update?
+	//functions
+	bool isInPlay();
 	void NumberOfAsteroids(int);
 	void Difficulty();
 	
@@ -20,5 +21,6 @@ public:
 private:
 
 	int m_aproachSpeed;
-
+	bool m_isInPlay;
+	sf::Vector2f m_velocity;
 };
