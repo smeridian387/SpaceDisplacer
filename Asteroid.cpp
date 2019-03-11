@@ -14,14 +14,18 @@ Asteroid::Asteroid()
 
 }
 
-void Asteroid::SetPosition(sf::Vector2f _position)
-{
-	int random = std::rand() % 1260;
-	_position.x = random;
-	_position.y = 250;
-
-
-}
+//void Asteroid::Draw(sf::RenderTarget& _target)
+//{
+//	/*for (int i = 0; i < m_numberOfAsteroids; ++i)
+//	{
+//		_target.draw(m_sprite);
+//
+//
+//
+//	}*/
+//
+//
+//}
 
 void Asteroid::Update(sf::Time _frameTime)
 {
