@@ -1,8 +1,8 @@
 #pragma once
 
-#include "MovingObject.h"
+#include "AsteroidBelt.h"
 
-class Asteroid : public MovingObject
+class Asteroid : public AsteroidBelt
 {
 
 public:
@@ -10,7 +10,6 @@ public:
 	Asteroid();
 
 	//overiding Methods
-	virtual void Update(sf::Time _frameTime);
 	bool isInPlay();
 	void Difficulty();
 	

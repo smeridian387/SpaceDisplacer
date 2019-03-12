@@ -40,6 +40,9 @@
     <ClCompile Include="Asteroid.cpp">
       <Filter>Gamecode</Filter>
     </ClCompile>
+    <ClCompile Include="AsteroidBelt.cpp">
+      <Filter>Gamecode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -72,7 +75,7 @@
     <ClInclude Include="Framework\SpriteObject.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="asteroidBelt.h">
+    <ClInclude Include="AsteroidBelt.h">
       <Filter>Gamecode</Filter>
     </ClInclude>
   </ItemGroup>

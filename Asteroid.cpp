@@ -4,7 +4,7 @@
 
 
 Asteroid::Asteroid()
-	:MovingObject()
+	:AsteroidBelt()
 	, m_isInPlay(true)
 	, m_velocity(0.0f,0.0f)
 {
@@ -13,10 +13,5 @@ Asteroid::Asteroid()
 	m_sprite.setScale(sf::Vector2f(1.0f, 1.0f));
 }
 
-void Asteroid::Update(sf::Time _frameTime)
-{
-	
 
-
-}
 
