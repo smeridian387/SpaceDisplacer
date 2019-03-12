@@ -57,9 +57,6 @@
     <ClInclude Include="Framework\GameObject.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\SpriteObject.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\TextObject.h">
       <Filter>Framework</Filter>
     </ClInclude>
@@ -70,6 +67,12 @@
       <Filter>Gamecode</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
+      <Filter>Gamecode</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\SpriteObject.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="asteroidBelt.h">
       <Filter>Gamecode</Filter>
     </ClInclude>
   </ItemGroup>
