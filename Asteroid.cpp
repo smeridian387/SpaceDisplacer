@@ -20,8 +20,6 @@ void Asteroid::Update(sf::Time _frameTime)
 {
 	sf::Vector2f move = sf::Vector2f(0, 10);
 	SetPosition(GetPosition() + move);
-	m_sprite.setPosition(sf::Vector2f(m_sprite.getPosition.X, m_sprite.getPosition.Y + 10));
-
 }
 
 bool Asteroid::isInPlay()
