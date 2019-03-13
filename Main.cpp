@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "Asteroid.h"
 #include "Framework/SpriteObject.h"
+#include "asteroidBelt.h"
 
 int main()
 {
@@ -37,7 +38,7 @@ int main()
 	// Create test objects
 	Player myPlayer;
 	myPlayer.SetPosition(800.0f, 250.0f);
-	Asteroid myAsteroid;
+	AsteroidBelt asteroidBelt;
 	
 	// -----------------------------------------------
 	// Game Loop
@@ -73,8 +74,8 @@ int main()
 		// TODO: Update all game objects
 		if (myPlayer.IsActive())
 			myPlayer.Update(frameTime);
-		if (myAsteroid.IsActive())
-			myAsteroid.Draw(gameWindow);
+		if (asteroidBelt.IsActive())
+			asteroidBelt.Update(frameTime);
 
 		// -----------------------------------------------
 		// Draw Section
@@ -86,8 +87,8 @@ int main()
 		// TODO: Draw game object
 		if (myPlayer.IsActive())
 			myPlayer.Draw(gameWindow);
-		if (myAsteroid.IsActive())
-			myAsteroid.Draw(gameWindow);
+		if (asteroidBelt.IsActive())
+			asteroidBelt.Draw(gameWindow);
 
 		// Display the window contents on the screen
 		gameWindow.display();

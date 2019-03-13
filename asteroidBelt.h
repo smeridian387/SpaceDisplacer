@@ -1,9 +1,9 @@
 #pragma once
 
 //project includes 
-#include "MovingObject.h"
+#include "Asteroid.h"
 
-class AsteroidBelt : public MovingObject
+class AsteroidBelt
 {
 
 public:
@@ -18,13 +18,14 @@ public:
 	bool DeleteObject(AsteroidBelt* _toDelete);
 	bool isInPlay();
 	//std::vector< AsteroidBelt* > GetObjectAt(sf::Vector2i _targetPos); //donno if i need this
+	bool IsActive();
 
 private:
 
 	int m_NoOfAsteroidsInPlay;
-	std::vector<Asteroid> asteroidBelt;
+	std::vector< Asteroid > asteroidBelt;
 	int m_difficulty;
 	bool m_isInPlay;
-
+	bool m_active;
 
 };
