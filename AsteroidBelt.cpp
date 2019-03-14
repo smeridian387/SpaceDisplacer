@@ -12,6 +12,8 @@ AsteroidBelt::AsteroidBelt()
 {
 	asteroidBelt;
 	asteroidBelt.push_back(Asteroid());
+	asteroidBelt.push_back(Asteroid());
+	asteroidBelt.push_back(Asteroid());
 }
 
 void AsteroidBelt::Difficulty()
@@ -31,14 +33,15 @@ void AsteroidBelt::Draw(sf::RenderTarget& _target)
 			asteroidBelt[i].Draw(_target);
 
 		}
-
-
-
 }
 
 void AsteroidBelt::Update(sf::Time _frameTime) 
 {
+	for (int i = 0; i < asteroidBelt.size(); i++)
+	{
+		asteroidBelt[i].Update(_frameTime);
 
+	}
 
 }
 

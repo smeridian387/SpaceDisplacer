@@ -1,3 +1,5 @@
+#include <iostream>
+
 //project includes
 #include "Asteroid.h"
 #include "Framework/AssetManager.h"
@@ -18,14 +20,24 @@ Asteroid::Asteroid()
 
 void Asteroid::Update(sf::Time _frameTime)
 {
-	sf::Vector2f move = sf::Vector2f(0, 10);
-	SetPosition(GetPosition() + move);
+	if (GetPosition().y > 750)
+	{
+		float random = std::rand() % 1260;
+		SetPosition(random, 40);
+
+	}
+	else
+	{
+		sf::Vector2f move = sf::Vector2f(0, 0.1);
+		SetPosition(GetPosition() + move);
+	}
 }
 
 bool Asteroid::isInPlay()
 {
-
+	
 	return true;
+
 }
 
 void Asteroid::Difficulty()
