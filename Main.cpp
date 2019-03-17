@@ -9,6 +9,7 @@
 #include "Asteroid.h"
 #include "Framework/SpriteObject.h"
 #include "asteroidBelt.h"
+#include "UserInterface.h"
 
 int main()
 {
@@ -31,7 +32,7 @@ int main()
 
 	for (int i = 0; i < 10; ++i)
 	{
-		int random = std::rand() % 1260;
+		int random = std::rand() % -20 + -60;
 		std::cout << random << std::endl;
 	}
 
@@ -39,6 +40,7 @@ int main()
 	Player myPlayer;
 	myPlayer.SetPosition(800.0f, 250.0f);
 	AsteroidBelt asteroidBelt;
+	UserInterface UI;
 	
 	// -----------------------------------------------
 	// Game Loop
@@ -85,10 +87,12 @@ int main()
 		gameWindow.clear(sf::Color::Black);
 
 		// TODO: Draw game object
+		UI.Draw(gameWindow);
 		if (myPlayer.IsActive())
 			myPlayer.Draw(gameWindow);
 		if (asteroidBelt.IsActive())
 			asteroidBelt.Draw(gameWindow);
+		
 
 		// Display the window contents on the screen
 		gameWindow.display();

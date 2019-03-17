@@ -14,16 +14,18 @@ Asteroid::Asteroid()
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/asteroid.png"));
 	m_sprite.setScale(sf::Vector2f(1.0f, 1.0f));
 
-	int random = std::rand() % 1260;
-	m_sprite.setPosition(sf::Vector2f(random, 40));
+	int random = std::rand() % (1080-200) + 200;
+	int random2 = std::rand() % -20 + -60;
+	m_sprite.setPosition(sf::Vector2f(random, random2));
 }
 
 void Asteroid::Update(sf::Time _frameTime)
 {
 	if (GetPosition().y > 750)
 	{
-		float random = std::rand() % 1260;
-		SetPosition(random, 40);
+		float random = std::rand() % (1080 - 200) + 200;
+		int random2 = std::rand() % -20 + -60;
+		SetPosition(random, random2);
 
 	}
 	else
