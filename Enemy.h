@@ -7,14 +7,15 @@ class Enemy : public MovingObject
 
 public:
 
+	Enemy();
+
 	void Update(sf::Time _frameTime);
-	void target(float);
 	bool isInPlay();
 
 
 private:
 
-	float m_rotation;
+	bool m_isInPlay;
 
 
 };

@@ -10,6 +10,8 @@
 #include "Framework/SpriteObject.h"
 #include "asteroidBelt.h"
 #include "UserInterface.h"
+#include "Enemy.h"
+#include "Persuit.h"
 
 int main()
 {
@@ -30,10 +32,10 @@ int main()
 	// Game Clock - to keep track of time passed each frame
 	sf::Clock gameClock;
 
-	for (int i = 0; i < 10; ++i)
+	for (int i = 0; i < 40; ++i)
 	{
-		int random = std::rand() % -20 + -60;
-		std::cout << random << std::endl;
+		int random = std::rand() % 260 + 40;
+		std::cout << -random << std::endl;
 	}
 
 	// Create test objects
@@ -41,6 +43,7 @@ int main()
 	myPlayer.SetPosition(800.0f, 250.0f);
 	AsteroidBelt asteroidBelt;
 	UserInterface UI;
+	Persuit thePersuit;
 	
 	// -----------------------------------------------
 	// Game Loop
@@ -78,6 +81,8 @@ int main()
 			myPlayer.Update(frameTime);
 		if (asteroidBelt.IsActive())
 			asteroidBelt.Update(frameTime);
+		if (thePersuit.IsActive())
+			thePersuit.Update(frameTime);
 
 		// -----------------------------------------------
 		// Draw Section
@@ -92,7 +97,8 @@ int main()
 			myPlayer.Draw(gameWindow);
 		if (asteroidBelt.IsActive())
 			asteroidBelt.Draw(gameWindow);
-		
+		if (thePersuit.IsActive())
+			thePersuit.Draw(gameWindow);
 
 		// Display the window contents on the screen
 		gameWindow.display();

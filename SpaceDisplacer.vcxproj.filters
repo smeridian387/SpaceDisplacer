@@ -49,6 +49,12 @@
     <ClCompile Include="UserInterface.cpp">
       <Filter>Gamecode</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Gamecode</Filter>
+    </ClCompile>
+    <ClCompile Include="Persuit.cpp">
+      <Filter>Gamecode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -88,6 +94,9 @@
       <Filter>Gamecode</Filter>
     </ClInclude>
     <ClInclude Include="UserInterface.h">
+      <Filter>Gamecode</Filter>
+    </ClInclude>
+    <ClInclude Include="Persuit.h">
       <Filter>Gamecode</Filter>
     </ClInclude>
   </ItemGroup>

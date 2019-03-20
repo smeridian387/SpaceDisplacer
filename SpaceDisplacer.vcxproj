@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{8beaeb30-0cab-474a-8125-a27ffcbf2046}</ProjectGuid>
     <RootNamespace>SpaceDisplacer</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="Asteroid.cpp" />
     <ClCompile Include="AsteroidBelt.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Framework\Animation.cpp" />
     <ClCompile Include="Framework\AnimationSystem.cpp" />
     <ClCompile Include="Framework\AssetManager.cpp" />
@@ -133,6 +134,7 @@
     <ClCompile Include="Framework\TextObject.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MovingObject.cpp" />
+    <ClCompile Include="Persuit.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="UserInterface.cpp" />
     <ClCompile Include="UserInterfaceMAN.cpp" />
@@ -148,6 +150,7 @@
     <ClInclude Include="Framework\SpriteObject.h" />
     <ClInclude Include="Framework\TextObject.h" />
     <ClInclude Include="MovingObject.h" />
+    <ClInclude Include="Persuit.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="UserInterface.h" />
     <ClInclude Include="UserInterfaceMAN.h" />
