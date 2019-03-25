@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "Framework/AssetManager.h"
-
+#include <cmath>
+#include <math.h>
 Enemy::Enemy()
 	: m_isInPlay(true)
 {
@@ -13,9 +14,13 @@ Enemy::Enemy()
 
 void Enemy::Update(sf::Time _frameTime)
 {
+	float* playerposx;
+	float* playerposy;
 
 
+	float enemyRotation = (float)atan2(*playerposy, *playerposx) + 3.14159265358979323846f / 2;
 
+	m_sprite.setRotation(m_sprite.getRotation() + enemyRotation);
 }
 
 bool Enemy::isInPlay()

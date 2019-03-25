@@ -2,6 +2,8 @@
 #include "Player.h"
 #include "Framework/AssetManager.h"
 
+#include <iostream>
+
 //constants
 #define SPEED 500.0f
 
@@ -12,6 +14,8 @@ Player::Player()
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/defiant.png"));
 	m_sprite.setScale(sf::Vector2f(0.2f, 0.2f));
 
+	float* playerposx = &m_velocity.x;
+	float* playerposy = &m_velocity.y;
 }
 
 void Player::Update(sf::Time _frameTime)

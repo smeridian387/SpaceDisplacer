@@ -22,7 +22,6 @@ private:
 	int m_NoOfAsteroidsInPlay;
 	std::vector< Asteroid > asteroidBelt;
 	int m_difficulty;
-	bool m_isInPlay;
 	bool m_active;
 
 };

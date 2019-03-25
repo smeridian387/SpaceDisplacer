@@ -6,7 +6,6 @@
 AsteroidBelt::AsteroidBelt()
 	: m_NoOfAsteroidsInPlay()
 	, m_difficulty(3)
-	, m_isInPlay(true)
 	, asteroidBelt()
 	, m_active(true)
 {
