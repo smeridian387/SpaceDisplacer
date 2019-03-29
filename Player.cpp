@@ -1,7 +1,7 @@
 // Project Includes
 #include "Player.h"
 #include "Framework/AssetManager.h"
-
+#include "MovingObject.h"
 #include <iostream>
 
 //constants
@@ -14,8 +14,6 @@ Player::Player()
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/defiant.png"));
 	m_sprite.setScale(sf::Vector2f(0.2f, 0.2f));
 
-	float* playerposx = &m_velocity.x;
-	float* playerposy = &m_velocity.y;
 }
 
 void Player::Update(sf::Time _frameTime)
@@ -47,6 +45,14 @@ void Player::Update(sf::Time _frameTime)
 	// the parent class
 	// This will actually move the character
 	MovingObject::Update(_frameTime);
+}
+
+
+sf::Vector2f Player::GetPlayerPos()
+{
+	sf::Vector2f pos = m_sprite.getPosition;
+	return pos;
+
 }
 
 //void Player::Collide(GameObject& _collider)
