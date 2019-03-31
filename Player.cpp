@@ -55,6 +55,20 @@ sf::Vector2f Player::GetPlayerPos()
 
 }
 
+float Player::GetPlayerX()
+{
+	float x = GetPosition.X;
+
+
+}
+
+float Player::GetPlayerY()
+{
+
+
+
+}
+
 //void Player::Collide(GameObject& _collider)
 //{
 	// Only do something if the thing

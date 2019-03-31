@@ -11,9 +11,11 @@ public:
 	Player();
 
 	// Overriding Methods
-	virtual void Update(sf::Time _frameTime);
+	void Update(sf::Time _frameTime);
 	//virtual void Collide(GameObject& _collider);
 	virtual sf::Vector2f GetPlayerPos();
+	float GetPlayerX();
+	float GetPlayerY();
 
 private:
 

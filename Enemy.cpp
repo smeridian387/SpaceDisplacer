@@ -16,7 +16,7 @@ Enemy::Enemy()
 void Enemy::Update(sf::Time _frameTime)
 {
 
-	/*if (m_player != nullptr)
+	if (m_player != nullptr)
 	{
 		float playerposx = m_player->GetPlayerPos().x;
 		float playerposy = m_player->GetPlayerPos().y;
@@ -25,7 +25,7 @@ void Enemy::Update(sf::Time _frameTime)
 		float enemyRotation = (float)atan2(playerposx,playerposy) + 3.14159265358979323846f / 2;
 
 		m_sprite.setRotation(m_sprite.getRotation() + enemyRotation);
-	}*/
+	}
 
 
 }
