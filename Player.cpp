@@ -50,24 +50,25 @@ void Player::Update(sf::Time _frameTime)
 
 sf::Vector2f Player::GetPlayerPos()
 {
-	sf::Vector2f pos = m_sprite.getPosition;
+	sf::Vector2f pos = GetPosition();
 	return pos;
 
 }
 
-float Player::GetPlayerX()
-{
-	float x = GetPosition.X;
-
-
-}
-
-float Player::GetPlayerY()
-{
-
-
-
-}
+//float Player::GetPlayerX()
+//{
+//	float x = m_sprite.getPosition().x;
+//	return x;
+//
+//}
+//
+//float Player::GetPlayerY()
+//{
+//
+//	float y = m_sprite.getPosition().y;
+//	return y;
+//
+//}
 
 //void Player::Collide(GameObject& _collider)
 //{

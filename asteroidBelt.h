@@ -1,7 +1,8 @@
 #pragma once
 
 //project includes 
-#include "Asteroid.h"
+#include "MovingObject.h"
+//#include "Asteroid.h"
 
 class AsteroidBelt
 {

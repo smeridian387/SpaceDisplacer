@@ -44,6 +44,10 @@ int main()
 	AsteroidBelt asteroidBelt;
 	UserInterface UI;
 	Persuit thePersuit;
+	thePersuit.SetPlayer(&myPlayer);
+	Enemy myEnemy;
+	//myEnemy.SetPersuit(&thePersuit);
+	
 	
 	// -----------------------------------------------
 	// Game Loop
@@ -83,6 +87,10 @@ int main()
 			asteroidBelt.Update(frameTime);
 		if (thePersuit.IsActive())
 			thePersuit.Update(frameTime);
+		/*if (myEnemy.IsActive())
+			myEnemy.Update(frameTime);*/
+			
+			
 
 		// -----------------------------------------------
 		// Draw Section
@@ -99,6 +107,8 @@ int main()
 			asteroidBelt.Draw(gameWindow);
 		if (thePersuit.IsActive())
 			thePersuit.Draw(gameWindow);
+		/*if (myEnemy.IsActive())
+			myEnemy.Draw(gameWindow);*/
 
 		// Display the window contents on the screen
 		gameWindow.display();

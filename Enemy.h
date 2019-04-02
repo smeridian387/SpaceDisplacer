@@ -1,7 +1,6 @@
 #pragma once
 
 #include "MovingObject.h"
-#include "Player.h"
 
 class Enemy : public MovingObject
 {
@@ -12,11 +11,11 @@ public:
 
 	void Update(sf::Time _frameTime);
 	bool isInPlay();
-	void SetPlayer(Player* _player);
+	//void SetPersuit(Persuit* _persuit);
 
 private:
 
 	bool m_isInPlay;
-	Player* m_player;
+	//Persuit* m_persuit;
 
 };
