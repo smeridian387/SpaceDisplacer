@@ -11,6 +11,7 @@ Persuit::Persuit()
 {
 	persuit;
 	persuit.push_back(Enemy());
+	persuit.push_back(Enemy());
 
 }
 

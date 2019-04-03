@@ -11,7 +11,8 @@ Player::Player()
 	:MovingObject()
 {
 
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/defiant.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/ThunderChildC.png"));
+	m_sprite.setOrigin(m_sprite.getTextureRect().width / 2, m_sprite.getTextureRect().height / 2);
 	m_sprite.setScale(sf::Vector2f(0.2f, 0.2f));
 
 }
@@ -47,28 +48,12 @@ void Player::Update(sf::Time _frameTime)
 	MovingObject::Update(_frameTime);
 }
 
-
 sf::Vector2f Player::GetPlayerPos()
 {
 	sf::Vector2f pos = GetPosition();
 	return pos;
 
 }
-
-//float Player::GetPlayerX()
-//{
-//	float x = m_sprite.getPosition().x;
-//	return x;
-//
-//}
-//
-//float Player::GetPlayerY()
-//{
-//
-//	float y = m_sprite.getPosition().y;
-//	return y;
-//
-//}
 
 //void Player::Collide(GameObject& _collider)
 //{
