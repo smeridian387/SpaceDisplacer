@@ -99,5 +99,8 @@
     <ClInclude Include="Persuit.h">
       <Filter>Gamecode</Filter>
     </ClInclude>
+    <ClInclude Include="SpaceDisplacer.h">
+      <Filter>Gamecode</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
