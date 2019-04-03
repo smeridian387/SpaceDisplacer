@@ -43,10 +43,11 @@ int main()
 	myPlayer.SetPosition(800.0f, 250.0f);
 	AsteroidBelt asteroidBelt;
 	UserInterface UI;
+	Enemy myEnemy;
+	myEnemy.SetPlayer(&myPlayer);
 	Persuit thePersuit;
 	thePersuit.SetPlayer(&myPlayer);
-	Enemy myEnemy;
-	//myEnemy.SetPersuit(&thePersuit);
+	
 	
 	
 	// -----------------------------------------------

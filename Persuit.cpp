@@ -18,6 +18,7 @@ void Persuit::SetPlayer(Player* _player)
 {
 	m_player = _player;
 }
+
 sf::Vector2f Persuit::Getplayerpos()
 {
 	sf::Vector2f playerpos = m_player->GetPosition();
@@ -37,6 +38,7 @@ void Persuit::Update(sf::Time _frameTime)
 {
 	for (int i = 0; i < persuit.size(); i++)
 	{
+		persuit[i].SetPlayer(m_player);
 		persuit[i].Update(_frameTime);
 
 	}
