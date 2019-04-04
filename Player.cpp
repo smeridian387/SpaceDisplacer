@@ -25,22 +25,24 @@ void Player::Update(sf::Time _frameTime)
 
 	// Use the keyboard function to check 
 	// which keys are currently held down
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)&& GetPosition().y > 30)
 	{
 		m_velocity.y = -SPEED;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && GetPosition().x > 220)
 	{
 		m_velocity.x = -SPEED;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && GetPosition().y < 685)
 	{
 		m_velocity.y = SPEED;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && GetPosition().x < 1060)
 	{
 		m_velocity.x = SPEED;
 	}
+
+	std::cout << GetPosition().x << "   " << GetPosition().y << std::endl;
 
 	// Call the update function manually on 
 	// the parent class

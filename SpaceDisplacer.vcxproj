@@ -136,8 +136,8 @@
     <ClCompile Include="MovingObject.cpp" />
     <ClCompile Include="Persuit.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SpaceDisplcer.cpp" />
     <ClCompile Include="UserInterface.cpp" />
-    <ClCompile Include="UserInterfaceMAN.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asteroid.h" />
@@ -154,7 +154,6 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="SpaceDisplacer.h" />
     <ClInclude Include="UserInterface.h" />
-    <ClInclude Include="UserInterfaceMAN.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

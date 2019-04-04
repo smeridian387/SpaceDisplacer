@@ -1,5 +1,4 @@
 //includes
-#include "MovingObject.h"
 #include "Asteroid.h"
 #include "asteroidBelt.h"
 

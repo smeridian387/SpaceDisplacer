@@ -40,7 +40,7 @@ int main()
 
 	// Create test objects
 	Player myPlayer;
-	myPlayer.SetPosition(800.0f, 250.0f);
+	myPlayer.SetPosition(400.0f, 400.0f);
 	AsteroidBelt asteroidBelt;
 	UserInterface UI;
 	Enemy myEnemy;

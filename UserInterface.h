@@ -9,6 +9,12 @@ public:
 
 	UserInterface();
 
+	//functions
+	//void Draw(sf::RenderTarget& _target);
 
+private:
+
+	bool m_active;
+	
 
 };
