@@ -9,7 +9,6 @@
 #include "Asteroid.h"
 #include "Framework/SpriteObject.h"
 #include "asteroidBelt.h"
-#include "UserInterface.h"
 #include "Enemy.h"
 #include "Persuit.h"
 #include "UIelements.h"
@@ -44,8 +43,7 @@ int main()
 	myPlayer.SetPosition(400.0f, 400.0f);
 	AsteroidBelt asteroidBelt;
 	UIelements UI_E;
-	UserInterface UI;
-	UI.SetUI(&UI_E);
+	//UserInterface UI;
 	Enemy myEnemy;
 	Persuit thePersuit;
 	thePersuit.SetPlayer(&myPlayer);
@@ -99,7 +97,7 @@ int main()
 		gameWindow.clear(sf::Color::Black);
 
 		// TODO: Draw game object
-		UI.Draw(gameWindow);
+		UI_E.Draw(gameWindow);
 		if (myPlayer.IsActive())
 			myPlayer.Draw(gameWindow);
 		if (asteroidBelt.IsActive())

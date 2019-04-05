@@ -43,9 +43,6 @@
     <ClCompile Include="AsteroidBelt.cpp">
       <Filter>Gamecode</Filter>
     </ClCompile>
-    <ClCompile Include="UserInterface.cpp">
-      <Filter>Gamecode</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>Gamecode</Filter>
     </ClCompile>
@@ -93,9 +90,6 @@
     <ClInclude Include="AsteroidBelt.h">
       <Filter>Gamecode</Filter>
     </ClInclude>
-    <ClInclude Include="UserInterface.h">
-      <Filter>Gamecode</Filter>
-    </ClInclude>
     <ClInclude Include="Persuit.h">
       <Filter>Gamecode</Filter>
     </ClInclude>
@@ -103,6 +97,9 @@
       <Filter>Gamecode</Filter>
     </ClInclude>
     <ClInclude Include="UIelements.h">
+      <Filter>Gamecode</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyFire.h">
       <Filter>Gamecode</Filter>
     </ClInclude>
   </ItemGroup>

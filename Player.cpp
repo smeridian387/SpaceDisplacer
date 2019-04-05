@@ -2,7 +2,6 @@
 #include "Player.h"
 #include "Framework/AssetManager.h"
 #include "MovingObject.h"
-#include <iostream>
 
 //constants
 #define SPEED 500.0f
@@ -42,7 +41,6 @@ void Player::Update(sf::Time _frameTime)
 		m_velocity.x = SPEED;
 	}
 
-	std::cout << GetPosition().x << "   " << GetPosition().y << std::endl;
 
 	// Call the update function manually on 
 	// the parent class

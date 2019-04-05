@@ -1,5 +1,3 @@
-#include <iostream>
-
 //project includes
 #include "Asteroid.h"
 #include "Framework/AssetManager.h"
@@ -34,9 +32,9 @@ void Asteroid::Update(sf::Time _frameTime)
 	}
 	else
 	{
-		sf::Vector2f move = sf::Vector2f(0, 0.2);
+		sf::Vector2f move = sf::Vector2f(0, 0.1);
 		SetPosition(GetPosition() + move);
-		float rotation = 0.2f;
+		float rotation = 0.15f;
 		m_sprite.setRotation(m_sprite.getRotation() +rotation);
 	}
 }
