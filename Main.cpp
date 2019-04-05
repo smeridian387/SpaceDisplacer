@@ -12,6 +12,7 @@
 #include "UserInterface.h"
 #include "Enemy.h"
 #include "Persuit.h"
+#include "UIelements.h"
 
 int main()
 {
@@ -42,7 +43,9 @@ int main()
 	Player myPlayer;
 	myPlayer.SetPosition(400.0f, 400.0f);
 	AsteroidBelt asteroidBelt;
+	UIelements UI_E;
 	UserInterface UI;
+	UI.SetUI(&UI_E);
 	Enemy myEnemy;
 	Persuit thePersuit;
 	thePersuit.SetPlayer(&myPlayer);

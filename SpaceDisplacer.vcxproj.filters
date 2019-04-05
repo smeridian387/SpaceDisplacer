@@ -55,6 +55,9 @@
     <ClCompile Include="SpaceDisplcer.cpp">
       <Filter>Gamecode</Filter>
     </ClCompile>
+    <ClCompile Include="UIelements.cpp">
+      <Filter>Gamecode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -97,6 +100,9 @@
       <Filter>Gamecode</Filter>
     </ClInclude>
     <ClInclude Include="SpaceDisplacer.h">
+      <Filter>Gamecode</Filter>
+    </ClInclude>
+    <ClInclude Include="UIelements.h">
       <Filter>Gamecode</Filter>
     </ClInclude>
   </ItemGroup>
