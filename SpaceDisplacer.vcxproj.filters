@@ -8,6 +8,9 @@
     <Filter Include="Framework">
       <UniqueIdentifier>{4846de2c-171c-494d-84e0-a0f4b4ca698a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Projectiles">
+      <UniqueIdentifier>{9b0261d8-228a-41ba-b0fd-1106f947441f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -55,6 +58,9 @@
     <ClCompile Include="UIelements.cpp">
       <Filter>Gamecode</Filter>
     </ClCompile>
+    <ClCompile Include="Torpedo.cpp">
+      <Filter>Projectiles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -101,6 +107,9 @@
     </ClInclude>
     <ClInclude Include="EnemyFire.h">
       <Filter>Gamecode</Filter>
+    </ClInclude>
+    <ClInclude Include="Torpedo.h">
+      <Filter>Projectiles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

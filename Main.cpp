@@ -12,6 +12,8 @@
 #include "Enemy.h"
 #include "Persuit.h"
 #include "UIelements.h"
+#include "EnemyFire.h"
+#include "Torpedo.h"
 
 int main()
 {
@@ -42,11 +44,16 @@ int main()
 	Player myPlayer;
 	myPlayer.SetPosition(400.0f, 400.0f);
 	AsteroidBelt asteroidBelt;
+	Torpedo myTorpedo;
 	UIelements UI_E;
-	//UserInterface UI;
+	//EnemyFire enemyFire;
 	Enemy myEnemy;
 	Persuit thePersuit;
-	thePersuit.SetPlayer(&myPlayer);
+	thePersuit.SetPlayer(&myPlayer); 
+	thePersuit.SetTorpedo(&myTorpedo);
+	//EnemyFire enemyFire;
+	//enemyFire.SetPersuit(&thePersuit);
+	//enemyFire.SetTorpedo(&myTorpedo);
 	
 	
 	
@@ -86,8 +93,11 @@ int main()
 			myPlayer.Update(frameTime);
 		if (asteroidBelt.IsActive())
 			asteroidBelt.Update(frameTime);
+		if (myTorpedo.IsActive())
+			myTorpedo.Update(frameTime);
 		if (thePersuit.IsActive())
 			thePersuit.Update(frameTime);
+
 
 		// -----------------------------------------------
 		// Draw Section
@@ -102,8 +112,11 @@ int main()
 			myPlayer.Draw(gameWindow);
 		if (asteroidBelt.IsActive())
 			asteroidBelt.Draw(gameWindow);
+		if (myTorpedo.IsActive())
+			myTorpedo.Draw(gameWindow);
 		if (thePersuit.IsActive())
 			thePersuit.Draw(gameWindow);
+		
 
 		// Display the window contents on the screen
 		gameWindow.display();

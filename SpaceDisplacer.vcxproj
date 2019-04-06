@@ -137,6 +137,7 @@
     <ClCompile Include="Persuit.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SpaceDisplcer.cpp" />
+    <ClCompile Include="Torpedo.cpp" />
     <ClCompile Include="UIelements.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +155,7 @@
     <ClInclude Include="Persuit.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SpaceDisplacer.h" />
+    <ClInclude Include="Torpedo.h" />
     <ClInclude Include="UIelements.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
