@@ -2,36 +2,41 @@
 #include "Framework/AssetManager.h"
 
 //constants
-#define SPEED 500.0f
+#define SPEED 10.0f
 
 Torpedo::Torpedo()
-	:m_isInPlay(true)
+	:m_isInPlay(false)
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/photons.png"));
 	m_sprite.setOrigin(m_sprite.getTextureRect().width / 2, m_sprite.getTextureRect().height / 2);
 	m_sprite.setScale(sf::Vector2f(0.2f, 0.2f));
 }
 
-void Torpedo::SetPosition(sf::Vector2f _spawnpos)
+void Torpedo::SetPersuit(Persuit* _persuit)
 {
-	m_sprite.setPosition(_spawnpos);
+	m_persuit = _persuit;
 }
 
-void Torpedo::SetRotation(float _rotation)
+void Torpedo::Draw(sf::RenderTarget& _target)
 {
-	m_sprite.setRotation(_rotation);
+	
+	_target.draw(m_sprite);
 }
 
 void Torpedo::Update(sf::Time _frameTime)
 {
-	m_velocity.x = m_velocity.x + 0.5f;
-	m_velocity.y = m_velocity.y - 0.5f;
-	/*if (GetPosition().y > 30)
-		m_active = false;
-	if (GetPosition().x > 220)
-		m_active = false;*/
-	/*if (GetPosition().x < 1060)
-		m_active = false;*/
+	if (m_isInPlay == false)
+	{
+		SetPosition(m_persuit->GetEnemyPos(2));
+	}
+	sf::Vector2f move = sf::Vector2f(0, 0.1);
+	SetPosition(GetPosition() + move);
+	/*if (GetPosition().y < 30)
+		m_isInPlay = false;
+	if (GetPosition().x < 220)
+		m_isInPlay = false;
+	if (GetPosition().x > 1060)
+		m_isInPlay = false;*/
 }
 
 bool Torpedo::GetIsActive()

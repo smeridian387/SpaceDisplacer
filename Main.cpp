@@ -14,6 +14,7 @@
 #include "UIelements.h"
 #include "EnemyFire.h"
 #include "Torpedo.h"
+#include "SpaceDisplacer.h"
 
 int main()
 {
@@ -42,6 +43,7 @@ int main()
 
 	// Create test objects
 	Player myPlayer;
+	SpaceDisplacer mySpaceDisplacer;
 	myPlayer.SetPosition(400.0f, 400.0f);
 	AsteroidBelt asteroidBelt;
 	Torpedo myTorpedo;
@@ -49,8 +51,8 @@ int main()
 	//EnemyFire enemyFire;
 	Enemy myEnemy;
 	Persuit thePersuit;
-	thePersuit.SetPlayer(&myPlayer); 
-	thePersuit.SetTorpedo(&myTorpedo);
+	thePersuit.SetPlayer(&myPlayer);
+	myTorpedo.SetPersuit(&thePersuit);
 	//EnemyFire enemyFire;
 	//enemyFire.SetPersuit(&thePersuit);
 	//enemyFire.SetTorpedo(&myTorpedo);
@@ -89,14 +91,15 @@ int main()
 
 
 		// TODO: Update all game objects
+		mySpaceDisplacer.Update(frameTime);
 		if (myPlayer.IsActive())
 			myPlayer.Update(frameTime);
 		if (asteroidBelt.IsActive())
 			asteroidBelt.Update(frameTime);
-		if (myTorpedo.IsActive())
-			myTorpedo.Update(frameTime);
 		if (thePersuit.IsActive())
 			thePersuit.Update(frameTime);
+		if (myTorpedo.IsActive())
+			myTorpedo.Update(frameTime);
 
 
 		// -----------------------------------------------
@@ -112,10 +115,10 @@ int main()
 			myPlayer.Draw(gameWindow);
 		if (asteroidBelt.IsActive())
 			asteroidBelt.Draw(gameWindow);
-		if (myTorpedo.IsActive())
-			myTorpedo.Draw(gameWindow);
 		if (thePersuit.IsActive())
 			thePersuit.Draw(gameWindow);
+		if (myTorpedo.IsActive())
+			myTorpedo.Draw(gameWindow);
 		
 
 		// Display the window contents on the screen

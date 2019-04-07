@@ -19,7 +19,9 @@ private:
 	int m_temp;
 	int m_SDcasing;
 	bool m_SDactive;
-	bool m_functional;
+	bool m_SDfunctional;
+	bool m_timer;
+	int m_preCurrentTime;
 
 
 

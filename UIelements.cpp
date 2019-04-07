@@ -10,8 +10,8 @@ UIelements::UIelements()
 	m_RightPanel.setPosition(1080.0f, 0.0f);
 	m_RightPanel.scale(0.666f, 0.666f);
 	m_WarningRect.setTexture(AssetManager::GetTexture("graphics/WarningRect.png"));
-	m_WarningRect.setPosition(15.0f, 420.0f);
-	m_WarningRect.setScale(0.5f, 0.5f);
+	m_WarningRect.setPosition(11.0f, 420.0f);
+	m_WarningRect.setScale(0.26f, 0.4f);
 
 }
 
