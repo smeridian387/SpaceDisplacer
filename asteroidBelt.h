@@ -2,7 +2,7 @@
 
 //project includes 
 #include "MovingObject.h"
-//#include "Asteroid.h"
+#include "SpaceDisplacer.h"
 
 class AsteroidBelt
 {

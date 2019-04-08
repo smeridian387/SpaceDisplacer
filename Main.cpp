@@ -45,6 +45,8 @@ int main()
 	Player myPlayer;
 	SpaceDisplacer mySpaceDisplacer;
 	myPlayer.SetPosition(400.0f, 400.0f);
+	Asteroid myAsteroid;
+	myAsteroid.SetSpaceDisplacer(&mySpaceDisplacer);
 	AsteroidBelt asteroidBelt;
 	Torpedo myTorpedo;
 	UIelements UI_E;
@@ -53,6 +55,7 @@ int main()
 	Persuit thePersuit;
 	thePersuit.SetPlayer(&myPlayer);
 	myTorpedo.SetPersuit(&thePersuit);
+	
 	//EnemyFire enemyFire;
 	//enemyFire.SetPersuit(&thePersuit);
 	//enemyFire.SetTorpedo(&myTorpedo);
@@ -91,9 +94,10 @@ int main()
 
 
 		// TODO: Update all game objects
-		mySpaceDisplacer.Update(frameTime);
 		if (myPlayer.IsActive())
 			myPlayer.Update(frameTime);
+		if (mySpaceDisplacer.)
+		mySpaceDisplacer.Update(frameTime);
 		if (asteroidBelt.IsActive())
 			asteroidBelt.Update(frameTime);
 		if (thePersuit.IsActive())
@@ -111,6 +115,7 @@ int main()
 
 		// TODO: Draw game object
 		UI_E.Draw(gameWindow);
+		mySpaceDisplacer.Draw(gameWindow);
 		if (myPlayer.IsActive())
 			myPlayer.Draw(gameWindow);
 		if (asteroidBelt.IsActive())
