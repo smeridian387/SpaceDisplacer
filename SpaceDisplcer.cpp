@@ -18,19 +18,26 @@ SpaceDisplacer::SpaceDisplacer()
 
 void SpaceDisplacer::Update(sf::Time _frameTime)
 {
-	
-	time_t time1;
-	if (m_timer == true)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
-		m_preCurrentTime = time(&time1);
-		m_timer = false;
+		time_t time1;
+		if (m_timer == true)
+		{
+			m_preCurrentTime = time(&time1);
+			m_timer = false;
+		}
+		if (time(&time1) == m_preCurrentTime + 1)
+		{
+			m_temp = m_temp++;
+				m_timer = true;
+			std::cout << m_temp << std::endl;
+		}
 	}
-	if (time(&time1) == m_preCurrentTime + 10)
+	else
 	{
-		m_temp = m_temp++;
 		m_timer = true;
-		std::cout << m_temp << std::endl;
 	}
+
 	m_SDactive = false;
 	
 }
