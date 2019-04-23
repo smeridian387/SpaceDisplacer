@@ -14,7 +14,7 @@ public:
 
 	void Draw(sf::RenderTarget& _target);
 	void Update(sf::Time _frameTime);
-	bool SDActive();
+	//bool SDActive();
 
 
 

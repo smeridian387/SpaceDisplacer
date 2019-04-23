@@ -50,10 +50,10 @@ void SpaceDisplacer::Draw(sf::RenderTarget& _target)
 	_target.draw(m_sprite);
 }
 
-bool SpaceDisplacer::SDActive()
-{
-	return m_SDactive;
-}
+//bool SpaceDisplacer::SDActive()
+//{
+//	return m_SDactive;
+//}
 
 void SpaceDisplacer::Update(sf::Time _frameTime)
 {
@@ -124,8 +124,8 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 	m_text.setString(std::to_string(m_temp) + "°");
 }
 
-bool SpaceDisplacer::IsActive()
-{
-	return m_active;
-}
+//bool SpaceDisplacer::IsActive()
+//{
+//	return m_active;
+//}
 

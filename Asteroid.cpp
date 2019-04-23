@@ -37,13 +37,13 @@ void Asteroid::Update(sf::Time _frameTime)
 	else
 	{
 		sf::Vector2f move = sf::Vector2f(0, 0.1);
-		bool m_SDactive = m_SD->SDActive();
-		if (m_SDactive == false)
-		{
+		//bool m_SDactive = m_SD->SDActive();
+		//if (m_SDactive == false)
+		//{
 			SetPosition(GetPosition() + move);
 			float rotation = 0.15f;
 			m_sprite.setRotation(m_sprite.getRotation() + rotation);
-		}
+		//}
 	}
 }
 
