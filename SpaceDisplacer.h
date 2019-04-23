@@ -14,13 +14,15 @@ public:
 
 	void Draw(sf::RenderTarget& _target);
 	void Update(sf::Time _frameTime);
-	//bool SDActive();
+	bool SDActive();
+	bool IsActive();
 
 
 
 private:
 
 	int m_temp;
+	bool m_active;
 	int m_SDcasing;
 	bool m_SDactive;
 	bool m_SDfunctional;

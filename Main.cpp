@@ -96,7 +96,7 @@ int main()
 		// TODO: Update all game objects
 		if (myPlayer.IsActive())
 			myPlayer.Update(frameTime);
-		//if (mySpaceDisplacer.)
+		if (mySpaceDisplacer.IsActive())
 		mySpaceDisplacer.Update(frameTime);
 		if (asteroidBelt.IsActive())
 			asteroidBelt.Update(frameTime);
