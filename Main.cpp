@@ -45,16 +45,16 @@ int main()
 	Player myPlayer;
 	SpaceDisplacer mySpaceDisplacer;
 	myPlayer.SetPosition(400.0f, 400.0f);
-	Asteroid myAsteroid;
-	myAsteroid.SetSpaceDisplacer(&mySpaceDisplacer);
 	AsteroidBelt asteroidBelt;
+	asteroidBelt.SetSpaceDisplacer(&mySpaceDisplacer);
+	Asteroid myAsteroid;
 	Torpedo myTorpedo;
 	UIelements UI_E;
 	//EnemyFire enemyFire;
 	Enemy myEnemy;
 	Persuit thePersuit;
 	thePersuit.SetPlayer(&myPlayer);
-	myTorpedo.SetPersuit(&thePersuit);
+	myTorpedo.SetPlayer(&myPlayer);
 	
 	//EnemyFire enemyFire;
 	//enemyFire.SetPersuit(&thePersuit);

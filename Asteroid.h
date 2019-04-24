@@ -1,6 +1,7 @@
 #pragma once
 
 #include "MovingObject.h"
+//#include "asteroidBelt.h"
 #include "SpaceDisplacer.h"
 
 class Asteroid : public MovingObject
@@ -20,9 +21,10 @@ public:
 
 private:
 
+	SpaceDisplacer* m_SD;
 	int m_aproachSpeed;
 	bool m_isInPlay;
 	sf::Vector2f m_velocity;
-	SpaceDisplacer* m_SD;
+	
 
 };

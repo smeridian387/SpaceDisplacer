@@ -15,10 +15,13 @@ public:
 	bool isInPlay();
 	void SetPlayer(Player* _player);
 
-
 private:
 
 	bool m_isInPlay;
 	Player* m_player;
 	float m_enemyRotation;
+
+	int m_fireType; // 1 = Torpedo, 2 = Laser, etc
+
+	//std::vector<EnemyFire*> m_bulletList;
 };

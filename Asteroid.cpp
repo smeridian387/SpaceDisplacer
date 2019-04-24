@@ -6,8 +6,8 @@
 Asteroid::Asteroid()
 	:MovingObject()
 	, m_isInPlay(true)
-	, m_velocity(0.0f,0.0f)
 	, m_SD(nullptr)
+	, m_velocity(0.0f,0.0f)
 {
 
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/asteroid.png"));

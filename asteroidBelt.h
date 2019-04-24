@@ -3,6 +3,7 @@
 //project includes 
 #include "MovingObject.h"
 #include "SpaceDisplacer.h"
+#include "Asteroid.h"
 
 class AsteroidBelt
 {
@@ -12,6 +13,7 @@ public:
 	AsteroidBelt();
 
 	//Functions
+	void SetSpaceDisplacer(SpaceDisplacer* _SD);
 	void Draw(sf::RenderTarget& _target);
 	void Update(sf::Time _frameTime);
 	void Difficulty();
@@ -20,6 +22,7 @@ public:
 
 private:
 
+	SpaceDisplacer* m_SD;
 	int m_NoOfAsteroidsInPlay;
 	std::vector< Asteroid > asteroidBelt;
 	int m_difficulty;

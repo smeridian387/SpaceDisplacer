@@ -7,6 +7,7 @@ AsteroidBelt::AsteroidBelt()
 	, m_difficulty(3)
 	, asteroidBelt()
 	, m_active(true)
+	, m_SD(nullptr)
 {
 	asteroidBelt;
 	asteroidBelt.push_back(Asteroid());
@@ -25,6 +26,11 @@ void AsteroidBelt::Difficulty()
 
 }
 
+void AsteroidBelt::SetSpaceDisplacer(SpaceDisplacer* _SD)
+{
+	m_SD = _SD;
+}
+
 void AsteroidBelt::Draw(sf::RenderTarget& _target)
 {
 	for (int i = 0; i < asteroidBelt.size(); i++)
@@ -38,6 +44,7 @@ void AsteroidBelt::Update(sf::Time _frameTime)
 {
 	for (int i = 0; i < asteroidBelt.size(); i++)
 	{
+		asteroidBelt[i].SetSpaceDisplacer(m_SD);
 		asteroidBelt[i].Update(_frameTime);
 
 	}
