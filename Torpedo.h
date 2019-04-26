@@ -19,6 +19,8 @@ public:
 
 private:
 
+	bool ini;
+	sf::Vector2f m_bulletSpeed;
 	sf::Vector2f m_direction;
 	bool m_isInPlay;
 	Player* m_player;

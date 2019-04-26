@@ -51,8 +51,6 @@ void SpaceDisplacer::Draw(sf::RenderTarget& _target)
 	_target.draw(m_sprite);
 }
 
-
-
 void SpaceDisplacer::Update(sf::Time _frameTime)
 {
 	m_animation.Update(_frameTime);//plays spacedisplacer animation
@@ -68,7 +66,7 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 		{
 			m_temp = m_temp + 25;
 				m_timer = true;
-			std::cout << m_temp << std::endl;
+			//std::cout << m_temp << std::endl;
 		}
 		m_idleSD.SetPlayBackSpeed(25.0f);
 		m_SDcolorchange = m_temp;
@@ -105,7 +103,7 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 				m_temp = m_temp - 10;
 			}
 			m_timer2 = true;
-			std::cout << m_temp << std::endl;
+			//std::cout << m_temp << std::endl;
 		}
 		m_SDcolorchange = m_temp;
 		if (m_temp >= 199)

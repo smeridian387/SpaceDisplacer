@@ -6,6 +6,8 @@
 Persuit::Persuit()
 	: m_numberInPersuit()
 	, persuit()
+	, m_timer(true)
+	, m_timer2(true)
 	, m_active(true)
 	, m_player(nullptr)
 {

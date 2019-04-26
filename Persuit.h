@@ -25,6 +25,8 @@ public:
 private:
 
 	int m_numberInPersuit;
+	bool m_timer;
+	bool m_timer2;
 	bool m_isInPlay;
 	bool m_active;
 	Player* m_player;
