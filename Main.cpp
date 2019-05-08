@@ -55,6 +55,7 @@ int main()
 	Persuit thePersuit;
 	thePersuit.SetPlayer(&myPlayer);
 	myTorpedo.SetPlayer(&myPlayer);
+	myTorpedo.initialize();
 	
 	//EnemyFire enemyFire;
 	//enemyFire.SetPersuit(&thePersuit);

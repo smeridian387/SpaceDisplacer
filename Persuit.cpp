@@ -10,6 +10,7 @@ Persuit::Persuit()
 	, m_timer2(true)
 	, m_active(true)
 	, m_player(nullptr)
+	, m_preCurrentTime()
 {
 	persuit;
 	persuit.push_back(Enemy());
@@ -75,7 +76,6 @@ void Persuit::Draw(sf::RenderTarget& _target)
 	for(int i = 0; i < persuit.size(); i++)
 	{
 		persuit[i].Draw(_target);
-
 	}
 }
 
@@ -85,11 +85,19 @@ void Persuit::Update(sf::Time _frameTime)
 	{
 		persuit[i].SetPlayer(m_player);
 		persuit[i].Update(_frameTime);
-
 	}
 
-
-
+	time_t time1;
+	if (m_timer == true)
+	{
+		m_preCurrentTime = time(&time1);
+		m_timer = false;
+	}
+	if (time(&time1) == m_preCurrentTime + 1)
+	{
+		//Spawn bullet
+		m_timer = true;
+	}
 }
 
 bool Persuit::IsActive()
