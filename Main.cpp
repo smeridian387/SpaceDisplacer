@@ -44,7 +44,7 @@ int main()
 	// Create test objects
 	Player myPlayer;
 	SpaceDisplacer mySpaceDisplacer;
-	myPlayer.SetPosition(400.0f, 400.0f);
+	myPlayer.SetPosition(500.0f, 400.0f);
 	AsteroidBelt asteroidBelt;
 	asteroidBelt.SetSpaceDisplacer(&mySpaceDisplacer);
 	Asteroid myAsteroid;
@@ -54,6 +54,7 @@ int main()
 	Enemy myEnemy;
 	Persuit thePersuit;
 	thePersuit.SetPlayer(&myPlayer);
+	thePersuit.SetTorpedo(&myTorpedo);
 	myTorpedo.SetPlayer(&myPlayer);
 	myTorpedo.initialize();
 	

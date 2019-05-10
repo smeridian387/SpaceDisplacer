@@ -15,13 +15,14 @@ public:
 	void Draw(sf::RenderTarget& _target);
 	void Update(sf::Time _frameTime);
 	bool GetIsActive();
+	void SetIsActive(bool _IsActive);
 	
 
 private:
 
 	bool ini;
+	bool m_isActive;
 	sf::Vector2f m_bulletSpeed;
 	sf::Vector2f m_direction;
-	bool m_isInPlay;
 	Player* m_player;
 };

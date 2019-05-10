@@ -8,7 +8,7 @@
 # define M_PI           3.14159265358979323846  /* pi */
 
 Torpedo::Torpedo()
-	:m_isInPlay(false)
+	: m_isActive(true)
 	, m_direction()
 	, m_bulletSpeed()
 	, ini(true)
@@ -32,9 +32,8 @@ void Torpedo::initialize()
 	float m_torpedoRotation = ((float)atan2(distance.y, distance.x)) * 180.0f / M_PI + 90.0f;
 	float magnitude = sqrt(distance.x*distance.x + distance.y*distance.y);
 	sf::Vector2f distanceUnitVector = distance / magnitude;
-	m_velocity = (distanceUnitVector) * 20.0f;
+	m_velocity = (distanceUnitVector) * 300.0f;
 	SetPosition(enemyPos);
-	
 	m_sprite.setRotation(m_torpedoRotation);
 }
 
@@ -47,15 +46,15 @@ void Torpedo::Update(sf::Time _frameTime)
 {
 	if (GetPosition().x < 220)
 	{
-		//delete self
+		m_isActive = false;
 	}
 	if (GetPosition().x > 1060)
 	{
-		//delete self
+		m_isActive = false;
 	}
 	if (GetPosition().y < 30)
 	{
-		//delete self
+		m_isActive = false;
 	}
 	
 	
@@ -67,6 +66,11 @@ void Torpedo::Update(sf::Time _frameTime)
 	//float offset = distance * m_bulletSpeed;
 	//SetPosition( GetPosition() + (distance * m_bulletSpeed));
 	MovingObject::Update(_frameTime);
+}
+
+void Torpedo::SetIsActive(bool _IsActive)
+{
+	m_isActive = _IsActive;
 }
 
 bool Torpedo::GetIsActive()

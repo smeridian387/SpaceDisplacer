@@ -5,6 +5,7 @@
 #include "MovingObject.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Torpedo.h"
 
 class Persuit
 {
@@ -14,6 +15,7 @@ public:
 	Persuit();
 
 	void SetPlayer(Player* _player);
+	void SetTorpedo(Torpedo* _Torpedo);
 	void Draw(sf::RenderTarget& _target);
 	virtual sf::Vector2f Getplayerpos();
 	sf::Vector2f GetEnemyPos(int _whichenemy);
@@ -30,6 +32,7 @@ private:
 	int m_preCurrentTime;
 	bool m_isInPlay;
 	bool m_active;
+	Torpedo* m_torpedo;
 	Player* m_player;
 	std::vector< Enemy > persuit;
 

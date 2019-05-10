@@ -26,6 +26,11 @@ void Persuit::SetPlayer(Player* _player)
 	m_player = _player;
 }
 
+void Persuit::SetTorpedo(Torpedo* _Torpedo)
+{
+	m_torpedo = _Torpedo;
+}
+
 sf::Vector2f Persuit::Getplayerpos()
 {
 	sf::Vector2f playerpos = m_player->GetPosition();
@@ -76,6 +81,7 @@ void Persuit::Draw(sf::RenderTarget& _target)
 	for(int i = 0; i < persuit.size(); i++)
 	{
 		persuit[i].Draw(_target);
+		persuit[i].SetPlayer(m_player);
 	}
 }
 
@@ -83,21 +89,22 @@ void Persuit::Update(sf::Time _frameTime)
 {
 	for (int i = 0; i < persuit.size(); i++)
 	{
-		persuit[i].SetPlayer(m_player);
+		
 		persuit[i].Update(_frameTime);
 	}
-
 	time_t time1;
 	if (m_timer == true)
 	{
 		m_preCurrentTime = time(&time1);
 		m_timer = false;
+
 	}
 	if (time(&time1) == m_preCurrentTime + 1)
 	{
-		//Spawn bullet
 		m_timer = true;
+		//m_torpedo->initialize();
 	}
+	
 }
 
 bool Persuit::IsActive()
