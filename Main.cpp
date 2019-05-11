@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <stdlib.h>
 #include <iostream>
+#include <chrono>
 
 //Project includes
 #include "Framework/AssetManager.h"
@@ -15,6 +16,7 @@
 #include "EnemyFire.h"
 #include "Torpedo.h"
 #include "SpaceDisplacer.h"
+
 
 int main()
 {
@@ -40,7 +42,9 @@ int main()
 		int random = std::rand() % 260 + 40;
 		std::cout << -random << std::endl;
 	}
-
+	//start game time counter
+	auto start_time = std::chrono::high_resolution_clock::now();
+	int secondsPassed;
 	// Create test objects
 	Player myPlayer;
 	SpaceDisplacer mySpaceDisplacer;
@@ -54,9 +58,12 @@ int main()
 	Enemy myEnemy;
 	Persuit thePersuit;
 	thePersuit.SetPlayer(&myPlayer);
+	thePersuit.SetSpaceDisplacer(&mySpaceDisplacer);
 	thePersuit.SetTorpedo(&myTorpedo);
 	myTorpedo.SetPlayer(&myPlayer);
-	myTorpedo.initialize();
+
+
+	
 	
 	//EnemyFire enemyFire;
 	//enemyFire.SetPersuit(&thePersuit);
@@ -90,10 +97,13 @@ int main()
 		// -----------------------------------------------
 		// Update Section
 		// -----------------------------------------------
+		//counts time passed since game starts
+		auto current_time = std::chrono::high_resolution_clock::now();
 
+		secondsPassed = std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count();
+		std::cout << secondsPassed << std::endl;
 		// Get the time passed since the last frame and restart our game clock
 		sf::Time frameTime = gameClock.restart();
-
 
 		// TODO: Update all game objects
 		if (myPlayer.IsActive())
@@ -101,11 +111,16 @@ int main()
 		if (mySpaceDisplacer.IsActive())
 		mySpaceDisplacer.Update(frameTime);
 		if (asteroidBelt.IsActive())
+		{
 			asteroidBelt.Update(frameTime);
+			asteroidBelt.SetGameTimer(secondsPassed);
+		}
 		if (thePersuit.IsActive())
+		{
 			thePersuit.Update(frameTime);
-		if (myTorpedo.IsActive())
-			myTorpedo.Update(frameTime);
+			thePersuit.SetGameTimer(secondsPassed);
+		}
+			
 
 
 		// -----------------------------------------------
@@ -124,8 +139,6 @@ int main()
 			asteroidBelt.Draw(gameWindow);
 		if (thePersuit.IsActive())
 			thePersuit.Draw(gameWindow);
-		if (myTorpedo.IsActive())
-			myTorpedo.Draw(gameWindow);
 		
 
 		// Display the window contents on the screen

@@ -11,7 +11,7 @@ public:
 	Torpedo();
 
 	void SetPlayer(Player* _player);
-	void initialize();
+	void initialize(sf::Vector2f _enemyposition);
 	void Draw(sf::RenderTarget& _target);
 	void Update(sf::Time _frameTime);
 	bool GetIsActive();

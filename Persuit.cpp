@@ -2,14 +2,20 @@
 //#include "MovingObject.h"
 #include "Enemy.h"
 #include "Persuit.h"
+#include <stdlib.h>
+#include <iostream>
 
 Persuit::Persuit()
 	: m_numberInPersuit()
+	, m_timeSinceGameStart()
 	, persuit()
+	, Torpedos()
 	, m_timer(true)
 	, m_timer2(true)
 	, m_active(true)
 	, m_player(nullptr)
+	, m_torpedo(nullptr)
+	, m_SD(nullptr)
 	, m_preCurrentTime()
 {
 	persuit;
@@ -18,7 +24,21 @@ Persuit::Persuit()
 	persuit.push_back(Enemy());
 	persuit.push_back(Enemy());
 	persuit.push_back(Enemy());
+	Torpedos;
+	Torpedos.push_back(Torpedo());
+	Torpedos.push_back(Torpedo());
+	Torpedos.push_back(Torpedo());
+	Torpedos.push_back(Torpedo());
+	Torpedos.push_back(Torpedo());
+	Torpedos.push_back(Torpedo());
+	Torpedos.push_back(Torpedo());
+	Torpedos.push_back(Torpedo());
+	Torpedos.push_back(Torpedo());
+}
 
+void Persuit::SetGameTimer(int _gametime)
+{
+	m_timeSinceGameStart = _gametime;
 }
 
 void Persuit::SetPlayer(Player* _player)
@@ -29,6 +49,11 @@ void Persuit::SetPlayer(Player* _player)
 void Persuit::SetTorpedo(Torpedo* _Torpedo)
 {
 	m_torpedo = _Torpedo;
+}
+
+void Persuit::SetSpaceDisplacer(SpaceDisplacer* _SD)
+{
+	m_SD = _SD;
 }
 
 sf::Vector2f Persuit::Getplayerpos()
@@ -78,10 +103,24 @@ void Persuit::Draw(sf::RenderTarget& _target)
 	persuit[2].SetPosition(640.0f, 700.0f);
 	persuit[3].SetPosition(840.0f, 700.0f);
 	persuit[4].SetPosition(1040.0f, 700.0f);
+	for (int i = 0; i < Torpedos.size(); i++)
+	{
+		Torpedos[i].SetPlayer(m_player);
+		Torpedos[i].Draw(_target);
+	}
 	for(int i = 0; i < persuit.size(); i++)
 	{
-		persuit[i].Draw(_target);
+		//persuit[i].Draw(_target);
 		persuit[i].SetPlayer(m_player);
+	}
+	persuit[2].Draw(_target);
+	if (m_timeSinceGameStart > 5)
+	{
+		persuit[3].Draw(_target);
+	}
+	if (m_timeSinceGameStart > 10)
+	{
+		persuit[1].Draw(_target);
 	}
 }
 
@@ -89,8 +128,15 @@ void Persuit::Update(sf::Time _frameTime)
 {
 	for (int i = 0; i < persuit.size(); i++)
 	{
-		
 		persuit[i].Update(_frameTime);
+	}
+	for (int i = 0; i < Torpedos.size(); i++)
+	{
+		bool m_SDactive = m_SD->SDActive();
+		if (m_SDactive == false)
+		{
+			Torpedos[i].Update(_frameTime);
+		}
 	}
 	time_t time1;
 	if (m_timer == true)
@@ -101,9 +147,61 @@ void Persuit::Update(sf::Time _frameTime)
 	}
 	if (time(&time1) == m_preCurrentTime + 1)
 	{
+		/*for (int i = 0; i < Torpedos.size(); i++)
+		{
+			if (Torpedos[i].GetIsActive() == false)
+			{
+				Torpedos[i].initialize();
+			}
+		}*/
+		if (Torpedos[0].GetIsActive() == false)
+		{
+			Torpedos[0].initialize(persuit[2].GetPosition());
+		}
+		else if(Torpedos[1].GetIsActive() == false)
+		{
+			Torpedos[1].initialize(persuit[2].GetPosition());
+		}
+		else if (Torpedos[2].GetIsActive() == false)
+		{
+			Torpedos[2].initialize(persuit[2].GetPosition());
+		}
+		if (m_timeSinceGameStart > 5)
+		{
+			//insert second enemy firing logic
+			if (Torpedos[3].GetIsActive() == false)
+			{
+				Torpedos[3].initialize(persuit[3].GetPosition());
+			}
+			else if (Torpedos[4].GetIsActive() == false)
+			{
+				Torpedos[4].initialize(persuit[3].GetPosition());
+			}
+			else if (Torpedos[5].GetIsActive() == false)
+			{
+				Torpedos[5].initialize(persuit[3].GetPosition());
+			}
+		}
+		if (m_timeSinceGameStart > 10)
+		{
+			//insert second enemy firing logic
+			if (Torpedos[5].GetIsActive() == false)
+			{
+				Torpedos[5].initialize(persuit[1].GetPosition());
+			}
+			else if (Torpedos[6].GetIsActive() == false)
+			{
+				Torpedos[6].initialize(persuit[1].GetPosition());
+			}
+			else if (Torpedos[7].GetIsActive() == false)
+			{
+				Torpedos[7].initialize(persuit[1].GetPosition());
+			}
+		}
 		m_timer = true;
-		//m_torpedo->initialize();
 	}
+	
+	
 	
 }
 

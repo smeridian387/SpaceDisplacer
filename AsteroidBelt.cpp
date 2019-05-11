@@ -16,6 +16,11 @@ AsteroidBelt::AsteroidBelt()
 	asteroidBelt.push_back(Asteroid());
 }
 
+void AsteroidBelt::SetGameTimer(int _gametime)
+{
+	m_timeSinceGameStart = _gametime;
+}
+
 void AsteroidBelt::Difficulty()
 {
 	//this function will determine the difficulty 

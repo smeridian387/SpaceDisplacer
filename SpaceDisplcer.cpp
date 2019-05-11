@@ -56,6 +56,7 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 	m_animation.Update(_frameTime);//plays spacedisplacer animation
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
+		
 		time_t time1;
 		if (m_timer == true)
 		{
@@ -65,8 +66,7 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 		if (time(&time1) == m_preCurrentTime + 1)
 		{
 			m_temp = m_temp + 25;
-				m_timer = true;
-			//std::cout << m_temp << std::endl;
+			m_timer = true;
 		}
 		m_idleSD.SetPlayBackSpeed(25.0f);
 		m_SDcolorchange = m_temp;
@@ -103,7 +103,6 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 				m_temp = m_temp - 10;
 			}
 			m_timer2 = true;
-			//std::cout << m_temp << std::endl;
 		}
 		m_SDcolorchange = m_temp;
 		if (m_temp >= 199)

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "MovingObject.h"
-//#include "asteroidBelt.h"
 #include "SpaceDisplacer.h"
 
 class Asteroid : public MovingObject
@@ -16,7 +15,6 @@ public:
 	void Update(sf::Time _frameTime);
 	bool isInPlay();
 	void Difficulty();
-	bool IsActive();
 	
 
 private:
