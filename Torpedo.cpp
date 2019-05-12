@@ -9,9 +9,11 @@
 
 Torpedo::Torpedo()
 	: m_isActive(false)
+	, m_player(nullptr)
 	, m_direction()
 	, m_bulletSpeed()
 	, ini(true)
+	, m_standardVelocity()
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/photons.png"));
 	m_sprite.setOrigin(m_sprite.getTextureRect().width / 2, m_sprite.getTextureRect().height / 2);
@@ -21,6 +23,11 @@ Torpedo::Torpedo()
 void Torpedo::SetPlayer(Player* _player)
 {
 	m_player = _player;
+}
+
+void Torpedo::ResetVelocity()
+{
+	m_velocity = m_standardVelocity;
 }
 
 void Torpedo::initialize(sf::Vector2f _enemyposition)
@@ -33,6 +40,7 @@ void Torpedo::initialize(sf::Vector2f _enemyposition)
 	float m_torpedoRotation = ((float)atan2(distance.y, distance.x)) * 180.0f / M_PI + 90.0f;
 	float magnitude = sqrt(distance.x*distance.x + distance.y*distance.y);
 	sf::Vector2f distanceUnitVector = distance / magnitude;
+	m_standardVelocity = (distanceUnitVector) * 600.0f;
 	m_velocity = (distanceUnitVector) * 600.0f;
 	SetPosition(enemyPos);
 	m_sprite.setRotation(m_torpedoRotation);
@@ -45,6 +53,7 @@ void Torpedo::Draw(sf::RenderTarget& _target)
 
 void Torpedo::Update(sf::Time _frameTime)
 {
+	MovingObject::Update(_frameTime);
 	if (GetPosition().x < 220)
 	{
 		m_isActive = false;
@@ -57,16 +66,26 @@ void Torpedo::Update(sf::Time _frameTime)
 	{
 		m_isActive = false;
 	}
+	if (m_sprite.getGlobalBounds().intersects(m_player->GetBounds()))
+	{
+		m_sprite.setPosition(500,-1000);
+		m_player->SetHullIntegrity(-20);
+	}
+	/*if (m_sprite.getGlobalBounds().intersects(m_asteroidBelt->WhichAsteroid()))
+	{
+			m_sprite.setPosition(500, -1000);
+	}*/
+	/*for (auto it = m_asteroidBelt->asteroidBelt().begin(); it != myPlatforms.end(); ++it)
+	{
+		platformColliders.push_back(it->GetCollider());
+	}*/
+
 	
-	
-	//sf::Vector2f m_x = m_player->GetPosition() - m_sprite.getPosition();
-	//sf::Vector2f distance = sf::Vector2f(((m_player->GetPosition().x - m_sprite.getPosition().x) * (m_player->GetPosition().x - m_sprite.getPosition().x)),((m_player->GetPosition().y - m_sprite.getPosition().y) * (m_player->GetPosition().y - m_sprite.getPosition().y)));
-	//distance = sf::Vector2f(sqrt(distance.x), sqrt(distance.y));
-	//m_bulletSpeed = sf::Vector2f(0.0f, -0.10f);
-	//sf::Vector2f m_temp = sf::Vector2f( m_bulletSpeed.x * m_direction.x, m_bulletSpeed.y * m_direction.y);
-	//float offset = distance * m_bulletSpeed;
-	//SetPosition( GetPosition() + (distance * m_bulletSpeed));
-	MovingObject::Update(_frameTime);
+}
+
+void Torpedo::SetVelocitynull()
+{
+	m_velocity = sf::Vector2f(0.0f, 0.0f);
 }
 
 void Torpedo::SetIsActive(bool _IsActive)

@@ -17,6 +17,7 @@ public:
 
 	void SetPlayer(Player* _player);
 	void SetTorpedo(Torpedo* _Torpedo);
+	void SetAsteroid(Asteroid*_Asteroid);
 	void SetGameTimer(int _gametime);
 	void SetSpaceDisplacer(SpaceDisplacer* _SD);
 	void Draw(sf::RenderTarget& _target);
@@ -38,6 +39,7 @@ private:
 	bool m_active;
 	Torpedo* m_torpedo;
 	Player* m_player;
+	Asteroid* m_asteroid;
 	SpaceDisplacer* m_SD;
 	std::vector< Enemy > persuit;
 	std::vector<Torpedo> Torpedos;

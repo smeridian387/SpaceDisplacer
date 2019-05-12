@@ -8,6 +8,7 @@ AsteroidBelt::AsteroidBelt()
 	, asteroidBelt()
 	, m_active(true)
 	, m_SD(nullptr)
+	, test()
 {
 	asteroidBelt;
 	asteroidBelt.push_back(Asteroid());
@@ -36,6 +37,28 @@ void AsteroidBelt::SetSpaceDisplacer(SpaceDisplacer* _SD)
 	m_SD = _SD;
 }
 
+//void AsteroidBelt::SetTorpedo(Torpedo* _torpedo)
+//{
+//	m_torpedo = _torpedo;
+//}
+//
+//void AsteroidBelt::SetPlayer(Player* _player)
+//{
+//	m_player = _player;
+//}
+
+int AsteroidBelt::GetAsteroidBeltSize()
+{
+	int i;
+	i = asteroidBelt.size();
+	return i;
+}
+
+sf::FloatRect AsteroidBelt::WhichAsteroid()
+{
+	return test;
+}
+
 void AsteroidBelt::Draw(sf::RenderTarget& _target)
 {
 	for (int i = 0; i < asteroidBelt.size(); i++)
@@ -51,7 +74,10 @@ void AsteroidBelt::Update(sf::Time _frameTime)
 	{
 		asteroidBelt[i].SetSpaceDisplacer(m_SD);
 		asteroidBelt[i].Update(_frameTime);
-
+		/*if (asteroidBelt[i].GetBounds().intersects(m_player->GetBounds()))
+		{
+			m_player->SetHullIntegrity(-20);
+		}*/
 	}
 
 }

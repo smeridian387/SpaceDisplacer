@@ -8,12 +8,18 @@
 
 Player::Player()
 	:MovingObject()
+	, m_hull(100)
 {
-
+	m_text.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
+	m_text.setPosition(210.0f, 670.0f);
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/ThunderChildC.png"));
 	m_sprite.setOrigin(m_sprite.getTextureRect().width / 2, m_sprite.getTextureRect().height / 2);
 	m_sprite.setScale(sf::Vector2f(0.1f, 0.1f));
+}
 
+void Player::SetHullIntegrity(int _int)
+{
+	m_hull = m_hull + _int;
 }
 
 void Player::Update(sf::Time _frameTime)
@@ -40,12 +46,18 @@ void Player::Update(sf::Time _frameTime)
 	{
 		m_velocity.x = SPEED;
 	}
-
+	m_text.setString(std::to_string(m_hull));
 
 	// Call the update function manually on 
 	// the parent class
 	// This will actually move the character
 	MovingObject::Update(_frameTime);
+}
+
+void Player::Draw(sf::RenderTarget& _target)
+{
+	_target.draw(m_text);
+	_target.draw(m_sprite);
 }
 
 sf::Vector2f Player::GetPlayerPos()

@@ -60,14 +60,11 @@ int main()
 	thePersuit.SetPlayer(&myPlayer);
 	thePersuit.SetSpaceDisplacer(&mySpaceDisplacer);
 	thePersuit.SetTorpedo(&myTorpedo);
-	myTorpedo.SetPlayer(&myPlayer);
+	thePersuit.SetAsteroid(&myAsteroid);
 
 
+	//testing zone
 	
-	
-	//EnemyFire enemyFire;
-	//enemyFire.SetPersuit(&thePersuit);
-	//enemyFire.SetTorpedo(&myTorpedo);
 	
 	
 	
@@ -99,9 +96,17 @@ int main()
 		// -----------------------------------------------
 		//counts time passed since game starts
 		auto current_time = std::chrono::high_resolution_clock::now();
-
 		secondsPassed = std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count();
-		std::cout << secondsPassed << std::endl;
+		//std::cout << secondsPassed << std::endl;
+
+		// Collision detection
+		/*std::vector<sf::FloatRect> platformColliders;
+		for (auto it = myTorpedo.begin(); it != myPlatforms.end(); ++it)
+		{
+			platformColliders.push_back(it->GetCollider());
+		}
+		myPlayer.HandleCollision(platformColliders);*/
+
 		// Get the time passed since the last frame and restart our game clock
 		sf::Time frameTime = gameClock.restart();
 
