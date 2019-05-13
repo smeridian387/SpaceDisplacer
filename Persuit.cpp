@@ -106,22 +106,16 @@ void Persuit::Draw(sf::RenderTarget& _target)
 	persuit[4].SetPosition(1040.0f, 700.0f);
 	for (int i = 0; i < Torpedos.size(); i++)
 	{
-		Torpedos[i].SetPlayer(m_player);
 		Torpedos[i].Draw(_target);
-	}
-	for(int i = 0; i < persuit.size(); i++)
-	{
-		//persuit[i].Draw(_target);
-		persuit[i].SetPlayer(m_player);
 	}
 	persuit[2].Draw(_target);
 	if (m_timeSinceGameStart > 5)
 	{
-		persuit[3].Draw(_target);
+		persuit[4].Draw(_target);
 	}
 	if (m_timeSinceGameStart > 10)
 	{
-		persuit[1].Draw(_target);
+		persuit[0].Draw(_target);
 	}
 }
 
@@ -134,15 +128,17 @@ void Persuit::Update(sf::Time _frameTime)
 			Torpedos[i].SetIsActive(false);
 		}
 	}*/
+	//random number generator for iratic firing 
+	//float random = std::rand() % 0 + 1;
 	
 	for (int i = 0; i < persuit.size(); i++)
 	{
 		persuit[i].Update(_frameTime);
+		persuit[i].SetPlayer(m_player);
 	}
 	for (int i = 0; i < Torpedos.size(); i++)
 	{
 		Torpedos[i].SetPlayer(m_player);
-		//Torpedos[i].SetAsteroid(m_asteroid);
 		Torpedos[i].Update(_frameTime);
 		bool m_SDactive = m_SD->SDActive();
 		if (m_SDactive == true)
@@ -196,19 +192,19 @@ void Persuit::Update(sf::Time _frameTime)
 				//insert second enemy firing logic
 				if (Torpedos[4].GetIsActive() == false)
 				{
-					Torpedos[4].initialize(persuit[3].GetPosition());
+					Torpedos[4].initialize(persuit[4].GetPosition());
 				}
 				else if (Torpedos[5].GetIsActive() == false)
 				{
-					Torpedos[5].initialize(persuit[3].GetPosition());
+					Torpedos[5].initialize(persuit[4].GetPosition());
 				}
 				else if (Torpedos[6].GetIsActive() == false)
 				{
-					Torpedos[6].initialize(persuit[3].GetPosition());
+					Torpedos[6].initialize(persuit[4].GetPosition());
 				}
 				else if (Torpedos[7].GetIsActive() == false)
 				{
-					Torpedos[7].initialize(persuit[3].GetPosition());
+					Torpedos[7].initialize(persuit[4].GetPosition());
 				}
 			}
 			if (m_timeSinceGameStart > 10)
@@ -216,19 +212,19 @@ void Persuit::Update(sf::Time _frameTime)
 				//insert second enemy firing logic
 				if (Torpedos[8].GetIsActive() == false)
 				{
-					Torpedos[8].initialize(persuit[1].GetPosition());
+					Torpedos[8].initialize(persuit[0].GetPosition());
 				}
 				else if (Torpedos[9].GetIsActive() == false)
 				{
-					Torpedos[9].initialize(persuit[1].GetPosition());
+					Torpedos[9].initialize(persuit[0].GetPosition());
 				}
 				else if (Torpedos[10].GetIsActive() == false)
 				{
-					Torpedos[10].initialize(persuit[1].GetPosition());
+					Torpedos[10].initialize(persuit[0].GetPosition());
 				}
 				else if (Torpedos[11].GetIsActive() == false)
 				{
-					Torpedos[11].initialize(persuit[1].GetPosition());
+					Torpedos[11].initialize(persuit[0].GetPosition());
 				}
 			}
 			m_timer = true;

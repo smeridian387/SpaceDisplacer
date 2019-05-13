@@ -30,8 +30,11 @@ private:
 	bool m_timer2;
 	int m_preCurrentTime;
 	int m_SDcolorchange;
-	sf::Text m_text;
+	float m_warnRectIn;
+	sf::Text m_SDtempText;
+	sf::Text m_SDcasingText;
 	sf::Sprite m_sprite;
+	sf::Sprite m_warningRect;
 	AnimationSystem m_animation;
 	Animation& m_idleSD;
 

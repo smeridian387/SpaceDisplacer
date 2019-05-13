@@ -1,6 +1,7 @@
 #pragma once
 
 #include "MovingObject.h"
+#include "Framework/AssetManager.h"
 #include "Player.h"
 #include "AsteroidBelt.h"
 #include "Asteroid.h"
@@ -30,4 +31,5 @@ private:
 	sf::Vector2f m_bulletSpeed;
 	sf::Vector2f m_direction;
 	Player* m_player;
+	sf::Sound m_hit;
 };

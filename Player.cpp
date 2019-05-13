@@ -11,7 +11,7 @@ Player::Player()
 	, m_hull(100)
 {
 	m_text.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
-	m_text.setPosition(210.0f, 670.0f);
+	m_text.setPosition(1100.0f, 670.0f);
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/ThunderChildC.png"));
 	m_sprite.setOrigin(m_sprite.getTextureRect().width / 2, m_sprite.getTextureRect().height / 2);
 	m_sprite.setScale(sf::Vector2f(0.1f, 0.1f));
@@ -46,7 +46,7 @@ void Player::Update(sf::Time _frameTime)
 	{
 		m_velocity.x = SPEED;
 	}
-	m_text.setString(std::to_string(m_hull));
+	m_text.setString(std::to_string(m_hull)+ "%");
 
 	// Call the update function manually on 
 	// the parent class

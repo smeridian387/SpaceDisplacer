@@ -8,6 +8,7 @@ AsteroidBelt::AsteroidBelt()
 	, asteroidBelt()
 	, m_active(true)
 	, m_SD(nullptr)
+	, m_player(nullptr)
 	, test()
 {
 	asteroidBelt;
@@ -35,6 +36,11 @@ void AsteroidBelt::Difficulty()
 void AsteroidBelt::SetSpaceDisplacer(SpaceDisplacer* _SD)
 {
 	m_SD = _SD;
+}
+
+void AsteroidBelt::SetPlayer(Player* _player)
+{
+	m_player = _player;
 }
 
 //void AsteroidBelt::SetTorpedo(Torpedo* _torpedo)
@@ -73,6 +79,7 @@ void AsteroidBelt::Update(sf::Time _frameTime)
 	for (int i = 0; i < asteroidBelt.size(); i++)
 	{
 		asteroidBelt[i].SetSpaceDisplacer(m_SD);
+		asteroidBelt[i].SetPlayer(m_player);
 		asteroidBelt[i].Update(_frameTime);
 		/*if (asteroidBelt[i].GetBounds().intersects(m_player->GetBounds()))
 		{

@@ -17,6 +17,7 @@ public:
 
 	//Functions
 	void SetSpaceDisplacer(SpaceDisplacer* _SD);
+	void SetPlayer(Player* _player);
 	void Draw(sf::RenderTarget& _target);
 	void Update(sf::Time _frameTime);
 	void Difficulty();
@@ -29,6 +30,7 @@ public:
 private:
 
 	SpaceDisplacer* m_SD;
+	Player* m_player;
 	int m_NoOfAsteroidsInPlay;
 	int m_timeSinceGameStart;
 	std::vector< Asteroid > asteroidBelt;

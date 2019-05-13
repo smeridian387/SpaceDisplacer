@@ -6,7 +6,10 @@
 Asteroid::Asteroid()
 	:MovingObject()
 	, m_isInPlay(true)
+	, m_timer(true)
+	, m_preCurrentTime()
 	, m_SD(nullptr)
+	, m_player(nullptr)
 	, m_velocity(0.0f,0.0f)
 {
 
@@ -23,6 +26,11 @@ Asteroid::Asteroid()
 void Asteroid::SetSpaceDisplacer(SpaceDisplacer* _SD)
 {
 	m_SD = _SD;
+}
+
+void Asteroid::SetPlayer(Player* _player)
+{
+	m_player = _player;
 }
 
 void Asteroid::Update(sf::Time _frameTime)
@@ -44,6 +52,21 @@ void Asteroid::Update(sf::Time _frameTime)
 			SetPosition(GetPosition() + move);
 			float rotation = 0.15f;
 			m_sprite.setRotation(m_sprite.getRotation() + rotation);
+		}
+	}
+
+	time_t time1;
+	if (m_timer == true)
+	{
+		m_preCurrentTime = time(&time1);
+		m_timer = false;
+	}
+	if (time(&time1) == m_preCurrentTime + 1)
+	{
+		m_timer = true;
+		if (m_sprite.getGlobalBounds().intersects(m_player->GetBounds()))
+		{
+			m_player->SetHullIntegrity(-20);
 		}
 	}
 }

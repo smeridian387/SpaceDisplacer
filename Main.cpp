@@ -51,6 +51,7 @@ int main()
 	myPlayer.SetPosition(500.0f, 400.0f);
 	AsteroidBelt asteroidBelt;
 	asteroidBelt.SetSpaceDisplacer(&mySpaceDisplacer);
+	asteroidBelt.SetPlayer(&myPlayer);
 	Asteroid myAsteroid;
 	Torpedo myTorpedo;
 	UIelements UI_E;
@@ -61,6 +62,7 @@ int main()
 	thePersuit.SetSpaceDisplacer(&mySpaceDisplacer);
 	thePersuit.SetTorpedo(&myTorpedo);
 	thePersuit.SetAsteroid(&myAsteroid);
+	
 
 
 	//testing zone
@@ -136,15 +138,14 @@ int main()
 		gameWindow.clear(sf::Color::Black);
 
 		// TODO: Draw game object
+		if (thePersuit.IsActive())
+			thePersuit.Draw(gameWindow);
 		UI_E.Draw(gameWindow);
 		mySpaceDisplacer.Draw(gameWindow);
 		if (myPlayer.IsActive())
 			myPlayer.Draw(gameWindow);
 		if (asteroidBelt.IsActive())
 			asteroidBelt.Draw(gameWindow);
-		if (thePersuit.IsActive())
-			thePersuit.Draw(gameWindow);
-		
 
 		// Display the window contents on the screen
 		gameWindow.display();
