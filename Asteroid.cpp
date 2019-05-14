@@ -1,5 +1,6 @@
 //project includes
 #include "Asteroid.h"
+#include <iostream>
 #include "Framework/AssetManager.h"
 
 
@@ -7,9 +8,13 @@ Asteroid::Asteroid()
 	:MovingObject()
 	, m_isInPlay(true)
 	, m_timer(true)
+	, m_timer2(true)
 	, m_preCurrentTime()
+	, m_approachSpeed(0.0f,0.0f)
+	, m_approachSpeedY(0.1f)
 	, m_SD(nullptr)
 	, m_player(nullptr)
+	, m_timeSinceGameStart()
 	, m_velocity(0.0f,0.0f)
 {
 
@@ -17,7 +22,6 @@ Asteroid::Asteroid()
 	m_sprite.setOrigin(m_sprite.getTextureRect().width / 2, m_sprite.getTextureRect().height / 2);
 	int randomsize = std::rand() % 20 + 5;
 	m_sprite.setScale(sf::Vector2f(randomsize/10, randomsize/10));
-
 	int random = std::rand() % (1030-220) + 220;
 	int random2 = std::rand() % 360 + 40;
 	m_sprite.setPosition(sf::Vector2f(random, -random2));
@@ -33,8 +37,14 @@ void Asteroid::SetPlayer(Player* _player)
 	m_player = _player;
 }
 
+void Asteroid::SetGameTimer(int _timeSinceStart)
+{
+	m_timeSinceGameStart = _timeSinceStart;
+}
+
 void Asteroid::Update(sf::Time _frameTime)
 {
+	//std::cout << m_timeSinceGameStart << std::endl;
 	if (GetPosition().y > 750)
 	{
 		int randomx = std::rand() % (1030 - 220) + 220;
@@ -45,30 +55,39 @@ void Asteroid::Update(sf::Time _frameTime)
 	}
 	else
 	{
-		sf::Vector2f move = sf::Vector2f(0, 0.1);
+		time_t time1;
+		if (m_timer == true)
+		{
+			m_preCurrentTime = m_timeSinceGameStart;
+			m_timer = false;
+		}
+		if (m_timeSinceGameStart == m_preCurrentTime + 10)
+		{
+			m_approachSpeedY = m_approachSpeedY + 0.05f;
+			m_timer = true;
+		}
 		bool m_SDactive = m_SD->SDActive();
 		if (m_SDactive == false)
 		{
-			SetPosition(GetPosition() + move);
+			m_approachSpeed = sf::Vector2f(0.0f, m_approachSpeedY);
+			SetPosition(GetPosition() + m_approachSpeed);
 			float rotation = 0.15f;
 			m_sprite.setRotation(m_sprite.getRotation() + rotation);
 		}
-	}
-
-	time_t time1;
-	if (m_timer == true)
-	{
-		m_preCurrentTime = time(&time1);
-		if (m_sprite.getGlobalBounds().intersects(m_player->GetBounds()))
+		if (m_timer2 == true)
 		{
-			m_player->SetHullIntegrity(-20);
+			m_preCurrentTime = m_timeSinceGameStart;
+			if (m_sprite.getGlobalBounds().intersects(m_player->GetBounds()))
+			{
+				m_player->SetHullIntegrity(-20);
+			}
+			m_timer2 = false;
 		}
-		m_timer = false;
-	}
-	if (time(&time1) == m_preCurrentTime + 1)
-	{
-		m_timer = true;
-		
+		if (m_timeSinceGameStart == m_preCurrentTime + 1)
+		{
+			m_timer2 = true;
+
+		}
 	}
 }
 

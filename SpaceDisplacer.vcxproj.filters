@@ -61,6 +61,9 @@
     <ClCompile Include="Torpedo.cpp">
       <Filter>Projectiles</Filter>
     </ClCompile>
+    <ClCompile Include="Pickups.cpp">
+      <Filter>Gamecode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -110,6 +113,9 @@
     </ClInclude>
     <ClInclude Include="Torpedo.h">
       <Filter>Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Pickups.h">
+      <Filter>Gamecode</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

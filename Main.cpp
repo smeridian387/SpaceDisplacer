@@ -16,6 +16,7 @@
 #include "EnemyFire.h"
 #include "Torpedo.h"
 #include "SpaceDisplacer.h"
+#include "Pickups.h"
 
 
 int main()
@@ -53,6 +54,7 @@ int main()
 	asteroidBelt.SetSpaceDisplacer(&mySpaceDisplacer);
 	asteroidBelt.SetPlayer(&myPlayer);
 	Asteroid myAsteroid;
+	PickUp myPickUp;
 	Torpedo myTorpedo;
 	UIelements UI_E;
 	//EnemyFire enemyFire;
@@ -62,6 +64,7 @@ int main()
 	thePersuit.SetSpaceDisplacer(&mySpaceDisplacer);
 	thePersuit.SetTorpedo(&myTorpedo);
 	thePersuit.SetAsteroid(&myAsteroid);
+	myPickUp.SetPlayer(&myPlayer);
 	
 
 
@@ -127,6 +130,8 @@ int main()
 			thePersuit.Update(frameTime);
 			thePersuit.SetGameTimer(secondsPassed);
 		}
+		myPickUp.Update(frameTime);
+		myPickUp.SetGameTimer(secondsPassed);
 			
 
 
@@ -146,6 +151,7 @@ int main()
 			myPlayer.Draw(gameWindow);
 		if (asteroidBelt.IsActive())
 			asteroidBelt.Draw(gameWindow);
+		myPickUp.Draw(gameWindow);
 
 		// Display the window contents on the screen
 		gameWindow.display();

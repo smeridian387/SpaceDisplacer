@@ -31,7 +31,6 @@ SpaceDisplacer::SpaceDisplacer()
 	m_warningRect.setScale(sf::Vector2f(0.2f, 0.3f));
 	//m_warningRect.setPosition(45.0f, 700.0f);//bottom position
 	m_warningRect.setPosition(45.0f, 700.0f);//top position
-	//Animation& m_idleSD = m_animation.CreateAnimation("idle");
 	for (int i = 0; i < 15; ++i)
 	{
 		m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop00" + std::to_string(i) +".png")));
@@ -43,16 +42,20 @@ SpaceDisplacer::SpaceDisplacer()
 
 void SpaceDisplacer::Draw(sf::RenderTarget& _target)
 {
-	_target.draw(m_SDtempText);
-	_target.draw(m_sprite);
+	
+	if (m_SDcasing > 0)
+	{
+		_target.draw(m_sprite);
+		_target.draw(m_warningRect);
+	}
 	_target.draw(m_SDcasingText);
-	_target.draw(m_warningRect);
+	_target.draw(m_SDtempText);
 }
 
 void SpaceDisplacer::Update(sf::Time _frameTime)
 {
 	m_animation.Update(_frameTime);//plays spacedisplacer animation
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)&&m_SDcasing >0)
 	{
 		
 		time_t time1;
@@ -123,10 +126,16 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 	{
 		m_timer2 = true;
 	}
-	//m_SDactive = false;
-	m_SDtempText.setString(std::to_string(m_temp) + "°");
-	m_SDcasingText.setString(std::to_string(m_SDcasing));
-	std::cout << m_warningRect.getPosition().y << std::endl;
+	if (m_SDcasing <= 0)
+	{
+		m_SDcasingText.setString("NA");
+		m_SDtempText.setString("NA");
+	}
+	else
+	{
+		m_SDtempText.setString(std::to_string(m_temp) + "°");
+		m_SDcasingText.setString(std::to_string(m_SDcasing));
+	}
 }
 
 bool SpaceDisplacer::SDActive()
