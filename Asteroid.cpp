@@ -59,15 +59,16 @@ void Asteroid::Update(sf::Time _frameTime)
 	if (m_timer == true)
 	{
 		m_preCurrentTime = time(&time1);
+		if (m_sprite.getGlobalBounds().intersects(m_player->GetBounds()))
+		{
+			m_player->SetHullIntegrity(-20);
+		}
 		m_timer = false;
 	}
 	if (time(&time1) == m_preCurrentTime + 1)
 	{
 		m_timer = true;
-		if (m_sprite.getGlobalBounds().intersects(m_player->GetBounds()))
-		{
-			m_player->SetHullIntegrity(-20);
-		}
+		
 	}
 }
 

@@ -32,22 +32,10 @@ SpaceDisplacer::SpaceDisplacer()
 	//m_warningRect.setPosition(45.0f, 700.0f);//bottom position
 	m_warningRect.setPosition(45.0f, 700.0f);//top position
 	//Animation& m_idleSD = m_animation.CreateAnimation("idle");
-	m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop000.png")));
-	m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop001.png")));
-	m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop002.png")));
-	m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop003.png")));
-	m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop004.png")));
-	m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop005.png")));
-	m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop006.png")));
-	m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop007.png")));
-	m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop008.png")));
-	m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop009.png")));
-	m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop010.png")));
-	m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop011.png")));
-	m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop012.png")));
-	m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop013.png")));
-	m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop014.png")));
-	m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop015.png")));
+	for (int i = 0; i < 15; ++i)
+	{
+		m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop00" + std::to_string(i) +".png")));
+	}
 	m_idleSD.SetLoop(true);
 	m_sprite.setPosition(69.0f, 91.0f);
 	m_animation.Play("idle");

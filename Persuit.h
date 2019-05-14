@@ -25,7 +25,6 @@ public:
 	sf::Vector2f GetEnemyPos(int _whichenemy);
 	int GetEnemyRot(int _whichenemy);
 	void Update(sf::Time _frameTime);
-	void Difficulty();
 	bool IsActive();
 
 private:
