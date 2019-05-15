@@ -18,6 +18,7 @@ Persuit::Persuit()
 	, m_asteroid(nullptr)
 	, m_SD(nullptr)
 	, m_preCurrentTime()
+	, m_preCurrentTime1()
 {
 	persuit;
 	persuit.push_back(Enemy());
@@ -108,12 +109,15 @@ void Persuit::Draw(sf::RenderTarget& _target)
 	{
 		Torpedos[i].Draw(_target);
 	}
-	persuit[2].Draw(_target);
 	if (m_timeSinceGameStart > 5)
+	{
+		persuit[2].Draw(_target);
+	}
+	if (m_timeSinceGameStart > 10)
 	{
 		persuit[4].Draw(_target);
 	}
-	if (m_timeSinceGameStart > 10)
+	if (m_timeSinceGameStart > 20)
 	{
 		persuit[0].Draw(_target);
 	}
@@ -157,37 +161,32 @@ void Persuit::Update(sf::Time _frameTime)
 		if (m_timer == true)
 		{
 			m_preCurrentTime = time(&time1);
+			m_preCurrentTime1 = m_preCurrentTime;
 			m_timer = false;
 
 		}
 		if (time(&time1) == m_preCurrentTime + 1)
 		{
-			/*for (int i = 0; i < Torpedos.size(); i++)
-			{
-				if (Torpedos[i].GetIsActive() == false)
-				{
-					Torpedos[i].initialize();
-				}
-			}*/
-			//Torpedos[i].GetBounds().intersects(m_player->GetBounds())
-
-			if (Torpedos[0].GetIsActive() == false)
-			{
-				Torpedos[0].initialize(persuit[2].GetPosition());
-			}
-			else if (Torpedos[1].GetIsActive() == false)
-			{
-				Torpedos[1].initialize(persuit[2].GetPosition());
-			}
-			else if (Torpedos[2].GetIsActive() == false)
-			{
-				Torpedos[2].initialize(persuit[2].GetPosition());
-			}
-			else if (Torpedos[3].GetIsActive() == false)
-			{
-				Torpedos[3].initialize(persuit[2].GetPosition());
-			}
 			if (m_timeSinceGameStart > 5)
+			{
+				if (Torpedos[0].GetIsActive() == false)
+				{
+					Torpedos[0].initialize(persuit[2].GetPosition());
+				}
+				else if (Torpedos[1].GetIsActive() == false)
+				{
+					Torpedos[1].initialize(persuit[2].GetPosition());
+				}
+				else if (Torpedos[2].GetIsActive() == false)
+				{
+					Torpedos[2].initialize(persuit[2].GetPosition());
+				}
+				else if (Torpedos[3].GetIsActive() == false)
+				{
+					Torpedos[3].initialize(persuit[2].GetPosition());
+				}
+			}
+			if (m_timeSinceGameStart > 10)
 			{
 				//insert second enemy firing logic
 				if (Torpedos[4].GetIsActive() == false)
@@ -207,7 +206,7 @@ void Persuit::Update(sf::Time _frameTime)
 					Torpedos[7].initialize(persuit[4].GetPosition());
 				}
 			}
-			if (m_timeSinceGameStart > 10)
+			if (m_timeSinceGameStart > 20)
 			{
 				//insert second enemy firing logic
 				if (Torpedos[8].GetIsActive() == false)
@@ -229,7 +228,7 @@ void Persuit::Update(sf::Time _frameTime)
 			}
 			m_timer = true;
 		}
-
+		m_preCurrentTime = m_preCurrentTime1;
 	}
 	
 	time_t time1;

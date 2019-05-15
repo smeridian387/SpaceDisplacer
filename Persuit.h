@@ -34,6 +34,7 @@ private:
 	bool m_timer;
 	bool m_timer2;
 	int m_preCurrentTime;
+	int m_preCurrentTime1;
 	bool m_isInPlay;
 	bool m_active;
 	Torpedo* m_torpedo;

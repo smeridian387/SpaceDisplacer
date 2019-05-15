@@ -71,18 +71,24 @@ void PickUp::Update(sf::Time _frameTime)
 		}
 		else
 		{
-			sf::Vector2f move(0.0f, 0.2);
-			m_spareParts.setPosition(m_spareParts.getPosition() + move);
-			float rotation = 0.15f;
-			m_spareParts.setRotation(m_spareParts.getRotation() + rotation);
+			bool m_SDactive = m_SD->SDActive();
+			if (m_SDactive == false)
+			{
+				sf::Vector2f move(0.0f, 0.2);
+				m_spareParts.setPosition(m_spareParts.getPosition() + move);
+				float rotation = 0.15f;
+				m_spareParts.setRotation(m_spareParts.getRotation() + rotation);
+			}
 			if (m_spareParts.getGlobalBounds().intersects(m_player->GetBounds()))
 			{
-				m_SD->SetSDcasing(50);
+				m_SD->SetSDcasing(30);
+				m_player->SetHullIntegrity(50);
 				int randomx = std::rand() % (1030 - 220) + 220;
 				int randomy = std::rand() % 360 + 40;
 				int randomsize = std::rand() % 15 + 10;
 				m_spareParts.setPosition(randomx, -randomy);
 				m_spawnSP = false;
+				m_timer = false;
 			}
 		}
 	}
@@ -98,22 +104,27 @@ void PickUp::Update(sf::Time _frameTime)
 		}
 		else
 		{
-			sf::Vector2f move(0.0f, 0.2);
-			m_liquidNitrogen.setPosition(m_liquidNitrogen.getPosition() + move);
-			float rotation = 0.15f;
-			m_liquidNitrogen.setRotation(m_liquidNitrogen.getRotation() + rotation);
+			bool m_SDactive = m_SD->SDActive();
+			if (m_SDactive == false)
+			{
+				sf::Vector2f move(0.0f, 0.2);
+				m_liquidNitrogen.setPosition(m_liquidNitrogen.getPosition() + move);
+				float rotation = 0.15f;
+				m_liquidNitrogen.setRotation(m_liquidNitrogen.getRotation() + rotation);
+			}
 			if (m_liquidNitrogen.getGlobalBounds().intersects(m_player->GetBounds()))
 			{
-				m_SD->SetSDTemp(0);
+				m_SD->SetSDTemp(-80);
+				m_SD->LNWarningMove();
 				int randomx = std::rand() % (1030 - 220) + 220;
 				int randomy = std::rand() % 360 + 40;
 				int randomsize = std::rand() % 15 + 10;
 				m_liquidNitrogen.setPosition(randomx, -randomy);
 				m_spawnLN = false;
+				m_timer = false;
 			}
 		}
 	}
-	
 	if (m_timer == true)
 	{
 		m_preCurrentTime = m_timeSinceGameStart;
@@ -121,19 +132,20 @@ void PickUp::Update(sf::Time _frameTime)
 	}
 	if (m_timeSinceGameStart == m_preCurrentTime + 5)
 	{
-		//int random = std::rand() % (1030 - 220) + 220;
 		int random = std::rand() % 100;
-		std::cout << std::to_string(m_spawnSP) << std::endl;
+			std::cout << random << std::endl;
+		if (random < 5)
+		{
+			m_spawnLN = true;
+		}
+		int random2 = std::rand() % 100;
 		std::cout << random << std::endl;
-		if (random < 50)
+		if (random2 < 5)
 		{
 			m_spawnSP = true;
-			m_spawnLN = true;
-			//m_spawnSPlock = false;
 		}
 		m_timer = true;
 	}
-
 	
 }
 

@@ -16,6 +16,7 @@ public:
 	void Update(sf::Time _frameTime);
 	void SetSDTemp(int _newTemp);
 	void SetSDcasing(int _repair);
+	void LNWarningMove();
 	bool SDActive();
 	bool IsActive();
 
@@ -33,6 +34,7 @@ private:
 	int m_preCurrentTime;
 	int m_SDcolorchange;
 	float m_warnRectIn;
+	float m_LNPickUp;
 	sf::Text m_SDtempText;
 	sf::Text m_SDcasingText;
 	sf::Sprite m_sprite;

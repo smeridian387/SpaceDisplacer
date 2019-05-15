@@ -24,6 +24,10 @@ void Player::SetHullIntegrity(int _int)
 
 void Player::Update(sf::Time _frameTime)
 {
+	if (m_hull > 100)
+	{
+		m_hull = 100;
+	}
 	// First, assume no keys are pressed
 	m_velocity.x = 0.0f;
 	m_velocity.y = 0.0f;

@@ -119,7 +119,7 @@ void AsteroidBelt::Update(sf::Time _frameTime)
 				if (m_timer == true)
 				{
 					m_player->SetHullIntegrity(-20);
-					//m_hit.play();
+					m_hit.play();
 					m_preCurrentTime = m_timeSinceGameStart;
 					m_timer = false;
 				}

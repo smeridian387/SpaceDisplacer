@@ -103,7 +103,7 @@ int main()
 		//counts time passed since game starts
 		auto current_time = std::chrono::high_resolution_clock::now();
 		secondsPassed = std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count();
-		//std::cout << secondsPassed << std::endl;
+		std::cout << secondsPassed << std::endl;
 
 		// Collision detection
 		/*std::vector<sf::FloatRect> platformColliders;
@@ -146,13 +146,14 @@ int main()
 		// TODO: Draw game object
 		if (thePersuit.IsActive())
 			thePersuit.Draw(gameWindow);
+		if (asteroidBelt.IsActive())
+			asteroidBelt.Draw(gameWindow);
+		myPickUp.Draw(gameWindow);
 		UI_E.Draw(gameWindow);
 		mySpaceDisplacer.Draw(gameWindow);
 		if (myPlayer.IsActive())
 			myPlayer.Draw(gameWindow);
-		if (asteroidBelt.IsActive())
-			asteroidBelt.Draw(gameWindow);
-		myPickUp.Draw(gameWindow);
+		
 
 		// Display the window contents on the screen
 		gameWindow.display();

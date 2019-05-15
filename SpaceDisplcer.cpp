@@ -19,6 +19,7 @@ SpaceDisplacer::SpaceDisplacer()
 	, m_animation()
 	, m_SDcolorchange(0)
 	, m_warnRectIn(700.0f)
+	, m_LNPickUp(0)
 	, m_idleSD(m_animation.CreateAnimation("idle"))
 {
 	m_SDtempText.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
@@ -54,7 +55,7 @@ void SpaceDisplacer::Draw(sf::RenderTarget& _target)
 
 void SpaceDisplacer::SetSDTemp(int _newTemp)
 {
-	m_temp = _newTemp;
+	m_temp = m_temp + _newTemp;
 }
 
 void SpaceDisplacer::SetSDcasing(int _repair)
@@ -62,8 +63,18 @@ void SpaceDisplacer::SetSDcasing(int _repair)
 	m_SDcasing = m_SDcasing + _repair;
 }
 
+void SpaceDisplacer::LNWarningMove()
+{
+	m_LNPickUp = 151.84;
+	m_warningRect.setPosition(m_warningRect.getPosition().x, m_warningRect.getPosition().y + 151.84);
+}
+
 void SpaceDisplacer::Update(sf::Time _frameTime)
 {
+	if (m_temp < 0)
+	{
+		m_temp = 0;
+	}
 	if (m_SDcasing > 100)
 	{
 		m_SDcasing = 100;
@@ -154,6 +165,7 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 		m_SDtempText.setString(std::to_string(m_temp) + "°");
 		m_SDcasingText.setString(std::to_string(m_SDcasing));
 	}
+	m_LNPickUp = 0;
 }
 
 bool SpaceDisplacer::SDActive()
