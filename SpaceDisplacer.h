@@ -14,6 +14,8 @@ public:
 
 	void Draw(sf::RenderTarget& _target);
 	void Update(sf::Time _frameTime);
+	void SetSDTemp(int _newTemp);
+	void SetSDcasing(int _repair);
 	bool SDActive();
 	bool IsActive();
 

@@ -52,8 +52,26 @@ void SpaceDisplacer::Draw(sf::RenderTarget& _target)
 	_target.draw(m_SDtempText);
 }
 
+void SpaceDisplacer::SetSDTemp(int _newTemp)
+{
+	m_temp = _newTemp;
+}
+
+void SpaceDisplacer::SetSDcasing(int _repair)
+{
+	m_SDcasing = m_SDcasing + _repair;
+}
+
 void SpaceDisplacer::Update(sf::Time _frameTime)
 {
+	if (m_SDcasing > 100)
+	{
+		m_SDcasing = 100;
+	}
+	if (m_temp == 0)
+	{
+		m_warningRect.setPosition(45.0f, 700.0f);
+	}
 	m_animation.Update(_frameTime);//plays spacedisplacer animation
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)&&m_SDcasing >0)
 	{

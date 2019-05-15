@@ -1,6 +1,5 @@
 //project includes
 #include "Asteroid.h"
-#include <iostream>
 #include "Framework/AssetManager.h"
 
 

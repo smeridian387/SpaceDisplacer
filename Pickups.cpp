@@ -1,16 +1,18 @@
 #include "Framework/AssetManager.h"
 #include "MovingObject.h"
 #include "Pickups.h"
+#include <iostream>
 
 PickUp::PickUp()
 	: MovingObject()
 	, m_player(nullptr)
+	, m_SD(nullptr)
 	, m_spawnLN(false)
-	, m_spawnSP(true)
+	, m_spawnSP(false)
 	, m_timer(true)
-	, m_spawnSPlock(false)
 	, m_preCurrentTime()
 	, m_timeSinceGameStart()
+	, random()
 {
 	m_spareParts.setTexture(AssetManager::GetTexture("graphics/SparePartsCrate.png"));
 	m_spareParts.setOrigin(m_spareParts.getTextureRect().width / 2, m_spareParts.getTextureRect().height / 2);
@@ -21,12 +23,20 @@ PickUp::PickUp()
 	int random = std::rand() % (1030 - 220) + 220;
 	int random2 = std::rand() % 360 + 40;
 	m_spareParts.setPosition(sf::Vector2f(random, -random2));
+	int random3 = std::rand() % (1030 - 220) + 220;
+	int random4 = std::rand() % 360 + 40;
+	m_liquidNitrogen.setPosition(sf::Vector2f(random3, -random4));
 	
 }
 
 void PickUp::SetPlayer(Player* _player)
 {
 	m_player = _player;
+}
+
+void PickUp::SetSpaceDisplacer(SpaceDisplacer* _SD)
+{
+	m_SD = _SD;
 }
 
 void PickUp::SetGameTimer(int _gametime)
@@ -49,22 +59,15 @@ void PickUp::Draw(sf::RenderTarget&_target)
 void PickUp::Update(sf::Time _frameTime)
 {
 	MovingObject::Update(_frameTime);
-	m_spareParts.setPosition(400.0f, 400.0f);
 	if (m_spawnSP == true)
 	{
-		if (m_spawnSPlock == false)
-		{
-			int random = std::rand() % (1030 - 220) + 220;
-			int random2 = std::rand() % 360 + 40;
-			m_spareParts.setPosition(sf::Vector2f(random, -random2));
-			m_spawnSPlock = true;
-		}
-		if (m_spareParts.getPosition().y > 750)
+		if (m_spareParts.getPosition().y > 760)
 		{
 			int randomx = std::rand() % (1030 - 220) + 220;
 			int randomy = std::rand() % 360 + 40;
 			int randomsize = std::rand() % 15 + 10;
 			m_spareParts.setPosition(randomx, -randomy);
+			m_spawnSP = false;
 		}
 		else
 		{
@@ -72,6 +75,15 @@ void PickUp::Update(sf::Time _frameTime)
 			m_spareParts.setPosition(m_spareParts.getPosition() + move);
 			float rotation = 0.15f;
 			m_spareParts.setRotation(m_spareParts.getRotation() + rotation);
+			if (m_spareParts.getGlobalBounds().intersects(m_player->GetBounds()))
+			{
+				m_SD->SetSDcasing(50);
+				int randomx = std::rand() % (1030 - 220) + 220;
+				int randomy = std::rand() % 360 + 40;
+				int randomsize = std::rand() % 15 + 10;
+				m_spareParts.setPosition(randomx, -randomy);
+				m_spawnSP = false;
+			}
 		}
 	}
 	if (m_spawnLN == true)
@@ -82,6 +94,7 @@ void PickUp::Update(sf::Time _frameTime)
 			int randomy = std::rand() % 360 + 40;
 			int randomsize = std::rand() % 15 + 10;
 			m_liquidNitrogen.setPosition(randomx, -randomy);
+			m_spawnLN = false;
 		}
 		else
 		{
@@ -91,7 +104,12 @@ void PickUp::Update(sf::Time _frameTime)
 			m_liquidNitrogen.setRotation(m_liquidNitrogen.getRotation() + rotation);
 			if (m_liquidNitrogen.getGlobalBounds().intersects(m_player->GetBounds()))
 			{
-				m_spawnSP = false;
+				m_SD->SetSDTemp(0);
+				int randomx = std::rand() % (1030 - 220) + 220;
+				int randomy = std::rand() % 360 + 40;
+				int randomsize = std::rand() % 15 + 10;
+				m_liquidNitrogen.setPosition(randomx, -randomy);
+				m_spawnLN = false;
 			}
 		}
 	}
@@ -103,15 +121,19 @@ void PickUp::Update(sf::Time _frameTime)
 	}
 	if (m_timeSinceGameStart == m_preCurrentTime + 5)
 	{
-		int random = std::rand() % (1030 - 220) + 220;
-		if (random < 1000)
+		//int random = std::rand() % (1030 - 220) + 220;
+		int random = std::rand() % 100;
+		std::cout << std::to_string(m_spawnSP) << std::endl;
+		std::cout << random << std::endl;
+		if (random < 50)
 		{
 			m_spawnSP = true;
-			m_spawnSPlock = false;
+			m_spawnLN = true;
+			//m_spawnSPlock = false;
 		}
 		m_timer = true;
 	}
 
-
+	
 }
 

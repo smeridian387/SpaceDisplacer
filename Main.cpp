@@ -65,6 +65,7 @@ int main()
 	thePersuit.SetTorpedo(&myTorpedo);
 	thePersuit.SetAsteroid(&myAsteroid);
 	myPickUp.SetPlayer(&myPlayer);
+	myPickUp.SetSpaceDisplacer(&mySpaceDisplacer);
 	
 
 

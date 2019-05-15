@@ -139,7 +139,7 @@ void AsteroidBelt::Update(sf::Time _frameTime)
 				m_timer = true;
 			}
 		}
-	std::cout << m_timer << std::endl;
+	//std::cout << m_timer << std::endl;
 }
 
 bool AsteroidBelt::IsActive()
