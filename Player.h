@@ -15,6 +15,7 @@ public:
 	void Update(sf::Time _frameTime);
 	void Draw(sf::RenderTarget& _target);
 	void SetHullIntegrity(int _int);
+	int GetHullIntergity();
 	//virtual void Collide(GameObject& _collider);
 	virtual sf::Vector2f GetPlayerPos();
 

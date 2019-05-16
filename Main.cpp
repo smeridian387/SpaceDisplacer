@@ -66,6 +66,7 @@ int main()
 	thePersuit.SetAsteroid(&myAsteroid);
 	myPickUp.SetPlayer(&myPlayer);
 	myPickUp.SetSpaceDisplacer(&mySpaceDisplacer);
+	UI_E.SetPlayer(&myPlayer);
 	
 
 
@@ -103,7 +104,7 @@ int main()
 		//counts time passed since game starts
 		auto current_time = std::chrono::high_resolution_clock::now();
 		secondsPassed = std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count();
-		std::cout << secondsPassed << std::endl;
+		//std::cout << secondsPassed << std::endl;
 
 		// Collision detection
 		/*std::vector<sf::FloatRect> platformColliders;
@@ -133,7 +134,7 @@ int main()
 		}
 		myPickUp.Update(frameTime);
 		myPickUp.SetGameTimer(secondsPassed);
-			
+		UI_E.Update(frameTime);
 
 
 		// -----------------------------------------------

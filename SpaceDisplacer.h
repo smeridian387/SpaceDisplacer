@@ -31,7 +31,13 @@ private:
 	bool m_SDfunctional;
 	bool m_timer;
 	bool m_timer2;
+	bool m_timer3;
+	bool m_timer4;
+	bool m_timer5;
+	bool m_overHeating;
 	int m_preCurrentTime;
+	int m_preCurrentTime2;
+	int m_preCurrentTime3;
 	int m_SDcolorchange;
 	float m_warnRectIn;
 	float m_LNPickUp;
@@ -39,6 +45,8 @@ private:
 	sf::Text m_SDcasingText;
 	sf::Sprite m_sprite;
 	sf::Sprite m_warningRect;
+	sf::Sprite m_lightFilter;
+	sf::Sprite m_lights;
 	AnimationSystem m_animation;
 	Animation& m_idleSD;
 

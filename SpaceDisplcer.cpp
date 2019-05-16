@@ -14,7 +14,13 @@ SpaceDisplacer::SpaceDisplacer()
 	, m_SDfunctional(true)
 	, m_timer(true)
 	, m_timer2(true)
+	, m_timer3(true)
+	, m_timer4(false)
+	, m_timer5(true)
+	, m_overHeating()
 	, m_preCurrentTime()
+	, m_preCurrentTime2()
+	, m_preCurrentTime3()
 	, m_sprite()
 	, m_animation()
 	, m_SDcolorchange(0)
@@ -32,6 +38,11 @@ SpaceDisplacer::SpaceDisplacer()
 	m_warningRect.setScale(sf::Vector2f(0.2f, 0.3f));
 	//m_warningRect.setPosition(45.0f, 700.0f);//bottom position
 	m_warningRect.setPosition(45.0f, 700.0f);//top position
+	m_lights.setTexture(AssetManager::GetTexture("graphics/light.png"));
+	m_lights.setPosition(640.0f,20.0f);
+	m_lights.setScale(sf::Vector2f(0.659f, 0.659f));
+	m_lights.setOrigin(m_lights.getTextureRect().width / 2, m_lights.getTextureRect().height / 2);
+	m_lightFilter.setTexture(AssetManager::GetTexture("graphics/lightfliter.png"));
 	for (int i = 0; i < 15; ++i)
 	{
 		m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop00" + std::to_string(i) +".png")));
@@ -51,6 +62,11 @@ void SpaceDisplacer::Draw(sf::RenderTarget& _target)
 	}
 	_target.draw(m_SDcasingText);
 	_target.draw(m_SDtempText);
+	if (m_overHeating == true)
+	{
+  		_target.draw(m_lightFilter);
+		_target.draw(m_lights);
+	}
 }
 
 void SpaceDisplacer::SetSDTemp(int _newTemp)
@@ -82,6 +98,10 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 	if (m_temp == 0)
 	{
 		m_warningRect.setPosition(45.0f, 700.0f);
+	}
+	if (m_warningRect.getPosition().y < 415.0F)
+	{
+		m_warningRect.setPosition(45.0f, 415.0f);
 	}
 	m_animation.Update(_frameTime);//plays spacedisplacer animation
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)&&m_SDcasing >0)
@@ -133,7 +153,10 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 			{
 				m_SDcasing = m_SDcasing - 10;
 			}
-			m_warningRect.setPosition(45.0f, m_warningRect.getPosition().y + 9.49f);
+			if (m_temp < 150)
+			{
+				m_warningRect.setPosition(45.0f, m_warningRect.getPosition().y + 9.49f);
+			}
 			if (m_temp == 5)
 			{
 				m_temp = m_temp - 5;
@@ -166,6 +189,77 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 		m_SDcasingText.setString(std::to_string(m_SDcasing));
 	}
 	m_LNPickUp = 0;
+	
+
+
+	//over heating lights
+	
+	/*time_t time5;
+	if (m_timer5 == true)
+	{
+		m_preCurrentTime3 = time(&time5);
+	}
+	if (time(&time5) == m_preCurrentTime3 + 1)
+	{
+		m_timer5 = true;
+		m_timer3 = true;
+	}*/
+	
+	if (m_temp > 150)
+	{
+		m_overHeating = true;
+		time_t time3;
+		if (m_timer3 == true)
+		{
+			m_overHeating = true;
+			m_preCurrentTime = time(&time3);
+			m_timer3 = false;
+		}
+		if (time(&time3) == m_preCurrentTime + 1)
+		{
+			m_overHeating = false;
+			m_timer4 = true;
+		}
+		time_t time2;
+		if (m_timer4 == true)
+		{
+			m_preCurrentTime2 = time(&time2);
+			m_timer4 = false;
+		}
+		if (time(&time2) == m_preCurrentTime2 + 1)
+		{
+			m_timer3 = true;
+			m_timer4 = true;
+		}
+		//std::cout << << std::endl;
+	}
+	else
+	{
+		m_overHeating = false;
+	}
+	/*time_t time3;
+	if (m_timer3 == true)
+	{
+		m_overHeating = true;
+		m_preCurrentTime = time(&time3);
+		m_timer3 = false;
+	}
+	if (time(&time3) == m_preCurrentTime + 1)
+	{
+		m_overHeating = false;
+		m_timer4 = true;
+	}
+	time_t time2;
+	if (m_timer4 == true)
+	{
+		m_preCurrentTime2 = time(&time2);
+		m_timer4 = false;
+	}
+	if (time(&time2) == m_preCurrentTime2 + 1)
+	{
+		m_timer3 = true;
+		m_timer4 = true;
+	}*/
 }
 
 bool SpaceDisplacer::SDActive()

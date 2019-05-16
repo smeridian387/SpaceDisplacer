@@ -65,7 +65,7 @@ void PickUp::Update(sf::Time _frameTime)
 		{
 			int randomx = std::rand() % (1030 - 220) + 220;
 			int randomy = std::rand() % 360 + 40;
-			int randomsize = std::rand() % 15 + 10;
+			//int randomsize = std::rand() % 15 + 10;
 			m_spareParts.setPosition(randomx, -randomy);
 			m_spawnSP = false;
 		}
@@ -85,7 +85,7 @@ void PickUp::Update(sf::Time _frameTime)
 				m_player->SetHullIntegrity(50);
 				int randomx = std::rand() % (1030 - 220) + 220;
 				int randomy = std::rand() % 360 + 40;
-				int randomsize = std::rand() % 15 + 10;
+				//int randomsize = std::rand() % 15 + 10;
 				m_spareParts.setPosition(randomx, -randomy);
 				m_spawnSP = false;
 				m_timer = false;
@@ -98,7 +98,7 @@ void PickUp::Update(sf::Time _frameTime)
 		{
 			int randomx = std::rand() % (1030 - 220) + 220;
 			int randomy = std::rand() % 360 + 40;
-			int randomsize = std::rand() % 15 + 10;
+			//int randomsize = std::rand() % 15 + 10;
 			m_liquidNitrogen.setPosition(randomx, -randomy);
 			m_spawnLN = false;
 		}
@@ -118,7 +118,7 @@ void PickUp::Update(sf::Time _frameTime)
 				m_SD->LNWarningMove();
 				int randomx = std::rand() % (1030 - 220) + 220;
 				int randomy = std::rand() % 360 + 40;
-				int randomsize = std::rand() % 15 + 10;
+				//int randomsize = std::rand() % 15 + 10;
 				m_liquidNitrogen.setPosition(randomx, -randomy);
 				m_spawnLN = false;
 				m_timer = false;
@@ -140,7 +140,7 @@ void PickUp::Update(sf::Time _frameTime)
 		}
 		int random2 = std::rand() % 100;
 		std::cout << random << std::endl;
-		if (random2 < 5)
+		if (random2 < 50)
 		{
 			m_spawnSP = true;
 		}

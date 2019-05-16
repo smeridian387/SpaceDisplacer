@@ -22,6 +22,11 @@ void Player::SetHullIntegrity(int _int)
 	m_hull = m_hull + _int;
 }
 
+int Player::GetHullIntergity()
+{
+	return m_hull;
+}
+
 void Player::Update(sf::Time _frameTime)
 {
 	if (m_hull > 100)
