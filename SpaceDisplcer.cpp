@@ -87,6 +87,7 @@ void SpaceDisplacer::LNWarningMove()
 
 void SpaceDisplacer::Update(sf::Time _frameTime)
 {
+
 	if (m_temp < 0)
 	{
 		m_temp = 0;
@@ -106,7 +107,16 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 	m_animation.Update(_frameTime);//plays spacedisplacer animation
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)&&m_SDcasing >0)
 	{
-		
+		//// NOTE: SET THIS TO ZERO AT TOP!
+		//int milliSecondsSinceLastFrame = _frameTime.asMilliseconds();
+		//m_millisecondsSinceSpacePressed += milliSecondsSinceLastFrame;
+		//if (m_millisecondsSinceSpacePressed >= 500)
+		//{
+		//	// Do the thing
+		//	// reset timer? if so  m_millisecondsSinceSpacePressed = 0;
+		//}
+
+
 		time_t time1;
 		if (m_timer == true)
 		{
@@ -134,6 +144,7 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 	}
 	else
 	{
+		//m_millisecondsSinceSpacePressed = 0;
 		m_timer = true;
 		m_idleSD.SetPlayBackSpeed(15.0f);
 		m_SDactive = false;

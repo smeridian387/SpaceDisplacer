@@ -31,7 +31,6 @@ private:
 	float m_approachSpeedY;
 	int m_timeSinceGameStart;
 	bool m_isInPlay;
-	sf::Vector2f m_velocity;
 	
 
 };

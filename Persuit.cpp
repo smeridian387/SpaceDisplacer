@@ -169,7 +169,16 @@ void Persuit::Update(sf::Time _frameTime)
 		{
 			if (m_timeSinceGameStart > 5)
 			{
-				if (Torpedos[0].GetIsActive() == false)
+				for (int i = 0; i <= 3; ++i)
+				{
+					if (Torpedos[i].GetIsActive() == false)
+					{
+						Torpedos[i].initialize(persuit[2].GetPosition());
+						break;
+					}
+				}
+
+				/*if (Torpedos[0].GetIsActive() == false)
 				{
 					Torpedos[0].initialize(persuit[2].GetPosition());
 				}
@@ -184,7 +193,7 @@ void Persuit::Update(sf::Time _frameTime)
 				else if (Torpedos[3].GetIsActive() == false)
 				{
 					Torpedos[3].initialize(persuit[2].GetPosition());
-				}
+				}*/
 			}
 			if (m_timeSinceGameStart > 10)
 			{

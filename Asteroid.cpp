@@ -10,11 +10,10 @@ Asteroid::Asteroid()
 	, m_timer2(true)
 	, m_preCurrentTime()
 	, m_approachSpeed(0.0f,0.0f)
-	, m_approachSpeedY(0.1f)
+	, m_approachSpeedY(100.0f)
 	, m_SD(nullptr)
 	, m_player(nullptr)
 	, m_timeSinceGameStart()
-	, m_velocity(0.0f,0.0f)
 {
 
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/asteroid.png"));
@@ -68,10 +67,13 @@ void Asteroid::Update(sf::Time _frameTime)
 		bool m_SDactive = m_SD->SDActive();
 		if (m_SDactive == false)
 		{
-			m_approachSpeed = sf::Vector2f(0.0f, m_approachSpeedY);
-			SetPosition(GetPosition() + m_approachSpeed);
+			//m_approachSpeed = sf::Vector2f(0.0f, m_approachSpeedY);
+			m_velocity = sf::Vector2f(0.0f, m_approachSpeedY);
+			//SetPosition(GetPosition() + m_approachSpeed);
 			float rotation = 0.15f;
 			m_sprite.setRotation(m_sprite.getRotation() + rotation);
+
+			MovingObject::Update(_frameTime);
 		}
 		if (m_timer2 == true)
 		{

@@ -49,6 +49,6 @@ private:
 	sf::Sprite m_lights;
 	AnimationSystem m_animation;
 	Animation& m_idleSD;
-
+	int m_millisecondsSinceSpacePressed;
 
 };
