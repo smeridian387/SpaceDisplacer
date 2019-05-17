@@ -17,7 +17,6 @@ public:
 	void SetGameTimer(int _timeSinceStart);
 	void Update(sf::Time _frameTime);
 	bool isInPlay();
-	void Difficulty();
 	
 
 private:
@@ -27,6 +26,7 @@ private:
 	bool m_timer;
 	bool m_timer2;
 	int m_preCurrentTime;
+	int m_preCurrentTime2;
 	sf::Vector2f m_approachSpeed;
 	float m_approachSpeedY;
 	int m_timeSinceGameStart;

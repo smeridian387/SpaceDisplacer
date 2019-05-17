@@ -1,6 +1,7 @@
 //project includes
 #include "Asteroid.h"
 #include "Framework/AssetManager.h"
+#include <iostream>
 
 
 Asteroid::Asteroid()
@@ -9,7 +10,7 @@ Asteroid::Asteroid()
 	, m_timer(true)
 	, m_timer2(true)
 	, m_preCurrentTime()
-	, m_approachSpeed(0.0f,0.0f)
+	, m_preCurrentTime2()
 	, m_approachSpeedY(100.0f)
 	, m_SD(nullptr)
 	, m_player(nullptr)
@@ -61,48 +62,42 @@ void Asteroid::Update(sf::Time _frameTime)
 		}
 		if (m_timeSinceGameStart == m_preCurrentTime + 10)
 		{
-			m_approachSpeedY = m_approachSpeedY + 0.05f;
+			m_approachSpeedY = m_approachSpeedY + 50.0f;
 			m_timer = true;
 		}
 		bool m_SDactive = m_SD->SDActive();
 		if (m_SDactive == false)
 		{
-			//m_approachSpeed = sf::Vector2f(0.0f, m_approachSpeedY);
 			m_velocity = sf::Vector2f(0.0f, m_approachSpeedY);
-			//SetPosition(GetPosition() + m_approachSpeed);
-			float rotation = 0.15f;
+			float rotation = 0.12f;
 			m_sprite.setRotation(m_sprite.getRotation() + rotation);
-
 			MovingObject::Update(_frameTime);
+		}
+		else
+		{
+			m_velocity = sf::Vector2f(0.0f, 0.0f);
 		}
 		if (m_timer2 == true)
 		{
-			m_preCurrentTime = m_timeSinceGameStart;
+			m_preCurrentTime2 = m_timeSinceGameStart;
 			if (m_sprite.getGlobalBounds().intersects(m_player->GetBounds()))
 			{
 				m_player->SetHullIntegrity(-20);
 			}
 			m_timer2 = false;
 		}
-		if (m_timeSinceGameStart == m_preCurrentTime + 1)
+		if (m_timeSinceGameStart == m_preCurrentTime2 + 1)
 		{
 			m_timer2 = true;
-
 		}
 	}
+	//std::cout <<  << std::endl;
+	
 }
 
 bool Asteroid::isInPlay()
 {
-	
 	return true;
-
-}
-
-void Asteroid::Difficulty()
-{
-
-
 }
 
 

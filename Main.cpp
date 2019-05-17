@@ -67,7 +67,7 @@ int main()
 	myPickUp.SetPlayer(&myPlayer);
 	myPickUp.SetSpaceDisplacer(&mySpaceDisplacer);
 	UI_E.SetPlayer(&myPlayer);
-	
+	UI_E.SetSpaceDisplacer(&mySpaceDisplacer);
 
 
 	//testing zone
