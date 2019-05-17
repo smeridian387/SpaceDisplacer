@@ -145,12 +145,12 @@ int main()
 		gameWindow.clear(sf::Color::Black);
 
 		// TODO: Draw game object
+		UI_E.Draw(gameWindow);
 		if (thePersuit.IsActive())
 			thePersuit.Draw(gameWindow);
 		if (asteroidBelt.IsActive())
 			asteroidBelt.Draw(gameWindow);
 		myPickUp.Draw(gameWindow);
-		UI_E.Draw(gameWindow);
 		mySpaceDisplacer.Draw(gameWindow);
 		if (myPlayer.IsActive())
 			myPlayer.Draw(gameWindow);

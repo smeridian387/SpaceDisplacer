@@ -20,8 +20,9 @@ private:
 	sf::Sprite m_RightPanel;
 	sf::Sprite m_WarningRect;
 	sf::Sprite m_healthBar;
+	sf::Sprite m_stars;
+	sf::Sprite m_stars1;
 	Player* m_player;
 	float m_healthBarsize;
-	float m_scale;
 
 };
