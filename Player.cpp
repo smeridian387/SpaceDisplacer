@@ -9,12 +9,34 @@
 Player::Player()
 	:MovingObject()
 	, m_hull(100)
+	, m_playerBankLeft(m_animation.CreateAnimation("Left"))
+	, m_playerBankRight(m_animation.CreateAnimation("Right"))
 {
 	m_text.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
 	m_text.setPosition(1100.0f, 670.0f);
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/ThunderChildC.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/tempusBankLeft/tempus1.png"));
 	m_sprite.setOrigin(m_sprite.getTextureRect().width / 2, m_sprite.getTextureRect().height / 2);
 	m_sprite.setScale(sf::Vector2f(0.1f, 0.1f));
+
+
+	m_animation.SetSprite(m_bankLeft);
+	m_animation.SetSprite(m_bankRight);
+	//load sprite for bankleft
+	for (int i = 0; i < 28; ++i)
+	{
+		m_playerBankLeft.AddFrame((AssetManager::GetTexture("graphics/tempusBankLeft/tempus" + std::to_string(i) + ".png")));
+	}
+	//load sprites for bankright
+	for (int i = 0; i < 28; ++i)
+	{
+		m_playerBankRight.AddFrame((AssetManager::GetTexture("graphics/tempusBankRight/tempusR" + std::to_string(i) + ".png")));
+	}
+
+	//m_animation.SetSprite(m_sprite);
+	m_playerBankLeft.SetLoop(false);
+	m_playerBankLeft.SetPlayBackSpeed(10.0f);
+	m_playerBankRight.SetLoop(false);
+
 }
 
 void Player::SetHullIntegrity(int _int)
@@ -46,6 +68,7 @@ void Player::Update(sf::Time _frameTime)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && GetPosition().x > 220)
 	{
 		m_velocity.x = -SPEED;
+		
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && GetPosition().y < 685)
 	{
@@ -56,7 +79,7 @@ void Player::Update(sf::Time _frameTime)
 		m_velocity.x = SPEED;
 	}
 	m_text.setString(std::to_string(m_hull)+ "%");
-
+	m_animation.Play("Left");
 	// Call the update function manually on 
 	// the parent class
 	// This will actually move the character
@@ -65,8 +88,16 @@ void Player::Update(sf::Time _frameTime)
 
 void Player::Draw(sf::RenderTarget& _target)
 {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	{
+		_target.draw(m_bankLeft);
+	}
+	else
+	{
+		_target.draw(m_sprite);
+	}
 	_target.draw(m_text);
-	_target.draw(m_sprite);
+	
 }
 
 sf::Vector2f Player::GetPlayerPos()
