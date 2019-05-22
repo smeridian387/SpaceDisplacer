@@ -28,7 +28,5 @@ private:
 	int m_hull;
 	sf::Sprite m_bankLeft;
 	sf::Sprite m_bankRight;
-	AnimationSystem m_animation;
-	Animation& m_playerBankLeft;
-	Animation& m_playerBankRight;
+	AnimationSystem m_animationSystem;
 };

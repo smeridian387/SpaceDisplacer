@@ -39,11 +39,14 @@ Animation& AnimationSystem::CreateAnimation(std::string _name)
 
 void AnimationSystem::Play(std::string _newAnimation)
 {
-	if (m_currentAnimation)
-		m_currentAnimation->Stop();
-
 	// Throw an error if this animation is NOT in our system
 	assert(m_animations.find(_newAnimation) != m_animations.end());
+
+	if (m_currentAnimation == &m_animations[_newAnimation])
+		return;
+
+	if (m_currentAnimation)
+		m_currentAnimation->Stop();
 
 	m_currentAnimation = &m_animations[_newAnimation];
 	m_currentAnimation->Play();
