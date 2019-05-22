@@ -14,7 +14,7 @@ Player::Player()
 	m_text.setPosition(1100.0f, 670.0f);
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/tempusBankLeft/tempus1.png"));
 	m_sprite.setOrigin(m_sprite.getTextureRect().width / 2, m_sprite.getTextureRect().height / 2);
-	m_sprite.setScale(sf::Vector2f(0.12f, 0.12f));
+	m_sprite.setScale(sf::Vector2f(0.09f, 0.09f));
 
 
 	Animation& playerBankLeft(m_animationSystem.CreateAnimation("Left"));
@@ -36,11 +36,11 @@ Player::Player()
 			playerBankRight.AddFrame((AssetManager::GetTexture("graphics/tempusBankRight/tempusR" + std::to_string(i) + ".png")));
 	}
 
-	playerBankIdle.AddFrame((AssetManager::GetTexture("graphics/tempusBankLeft/tempus1.png")));
+	playerBankIdle.AddFrame((AssetManager::GetTexture("graphics/tempusIdle.png")));
 
 	//m_animationSystem.SetSprite(m_sprite);
-	playerBankRight.SetPlayBackSpeed(40.0f);
-	playerBankLeft.SetPlayBackSpeed(40.0f);
+	playerBankRight.SetPlayBackSpeed(80.0f);
+	playerBankLeft.SetPlayBackSpeed(80.0f);
 	m_animationSystem.Play("Idle");
 }
 

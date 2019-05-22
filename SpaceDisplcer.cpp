@@ -62,11 +62,15 @@ void SpaceDisplacer::Draw(sf::RenderTarget& _target)
 	}
 	_target.draw(m_SDcasingText);
 	_target.draw(m_SDtempText);
-	if (m_overHeating == true)
+	if (m_SDfunctional == true)
 	{
-  		_target.draw(m_lightFilter);
-		_target.draw(m_lights);
+		if (m_overHeating == true)
+		{
+			_target.draw(m_lightFilter);
+			_target.draw(m_lights);
+		}
 	}
+	
 }
 
 void SpaceDisplacer::SetSDTemp(int _newTemp)
