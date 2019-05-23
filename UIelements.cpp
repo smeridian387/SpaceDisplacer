@@ -7,10 +7,12 @@ UIelements::UIelements()
 	: m_healthBarsize(3.16f)
 	, m_player(nullptr)
 	, m_SD(nullptr)
+	, currentTime()
 {
 
 	m_gametime.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
-	m_gametime.setPosition(400.0f, 400.0f);
+	m_gametime.setPosition(1100.0f, 80.0f);
+	m_gametime.setScale(0.7f, 0.7f);
 
 	m_LeftPanel.setTexture(AssetManager::GetTexture("graphics/LeftPanel.png"));
 	m_LeftPanel.setPosition(0.0f, 0.0f);
@@ -46,6 +48,11 @@ UIelements::UIelements()
 	m_starsf2.setScale(1.6f, 1.6f);
 }
 
+void UIelements::SetMillisecondsSinceGameStart(float _time)
+{
+	currentTime = _time;
+}
+
 void UIelements::Draw(sf::RenderTarget& _target)
 {
 	_target.draw(m_starsn);
@@ -56,6 +63,7 @@ void UIelements::Draw(sf::RenderTarget& _target)
 	_target.draw(m_RightPanel);
 	_target.draw(m_WarningRect);
 	_target.draw(m_healthBar);
+	_target.draw(m_gametime);
 }
 
 void UIelements::SetPlayer(Player* _player)
@@ -67,11 +75,6 @@ void UIelements::SetSpaceDisplacer(SpaceDisplacer* _SD)
 {
 	m_SD = _SD;
 }
-
-//void SetGameTimer(int _gametime)
-//{
-//	
-//}
 
 void UIelements::Update(sf::Time _frameTime)
 {
@@ -110,8 +113,17 @@ void UIelements::Update(sf::Time _frameTime)
 	{
 		m_healthBar.setScale(0.125f, 3.16f);
 	}
-	float time = _frameTime.asMilliseconds() / 1000;
-	m_gametime.setString(std::to_string(time));
+	/*bool timer = true;
+	if (timer == true)
+	{
+		int milliSecondsSinceLastFrame = _frameTime.asMilliseconds();
+		timer = false;
+	}*/
+	//int milliSecondsSinceLastFrame = _frameTime.asMilliseconds();
+	//m_millisecondsSinceSpacePressed += milliSecondsSinceLastFrame;
+
+	////currentTime += (milliSecondsSinceLastFrame/1000);
+	m_gametime.setString(std::to_string(currentTime/1000));
 
 	MovingObject::Update(_frameTime);
 }

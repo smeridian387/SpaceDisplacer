@@ -43,9 +43,20 @@ int main()
 		int random = std::rand() % 260 + 40;
 		std::cout << -random << std::endl;
 	}
+	
 	//start game time counter
 	auto start_time = std::chrono::high_resolution_clock::now();
 	int secondsPassed;
+
+	//start game time counter millisecond
+	auto start_timeMill = std::chrono::high_resolution_clock::now();
+	float millisecondsPassed;
+
+	//spalshscreen and gameover
+
+	bool splashscreen = true;
+	bool gameover = false;
+
 	// Create test objects
 	Player myPlayer;
 	SpaceDisplacer mySpaceDisplacer;
@@ -73,7 +84,7 @@ int main()
 	//testing zone
 	
 	
-	
+	bool timer = true;
 	
 	// -----------------------------------------------
 	// Game Loop
@@ -102,40 +113,74 @@ int main()
 		// Update Section
 		// -----------------------------------------------
 		//counts time passed since game starts
+
+		//millisecond clock
+
+		auto current_timeMill = std::chrono::high_resolution_clock::now();
+		millisecondsPassed = std::chrono::duration_cast<std::chrono::milliseconds>(current_timeMill - start_time).count();
 		auto current_time = std::chrono::high_resolution_clock::now();
 		secondsPassed = std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count();
-		//std::cout << secondsPassed << std::endl;
 
-		// Collision detection
-		/*std::vector<sf::FloatRect> platformColliders;
-		for (auto it = myTorpedo.begin(); it != myPlatforms.end(); ++it)
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
 		{
-			platformColliders.push_back(it->GetCollider());
+			splashscreen = false;
 		}
-		myPlayer.HandleCollision(platformColliders);*/
 
 		// Get the time passed since the last frame and restart our game clock
 		sf::Time frameTime = gameClock.restart();
 
-		// TODO: Update all game objects
-		if (myPlayer.IsActive())
-			myPlayer.Update(frameTime);
-		if (mySpaceDisplacer.IsActive())
-		mySpaceDisplacer.Update(frameTime);
-		if (asteroidBelt.IsActive())
+		if (splashscreen == false && gameover == false)
 		{
-			asteroidBelt.Update(frameTime);
-			asteroidBelt.SetGameTimer(secondsPassed);
-		}
-		if (thePersuit.IsActive())
-		{
-			thePersuit.Update(frameTime);
-			thePersuit.SetGameTimer(secondsPassed);
-		}
-		myPickUp.Update(frameTime);
-		myPickUp.SetGameTimer(secondsPassed);
-		UI_E.Update(frameTime);
+			/*int milliSecondsSinceLastFrame;
+			bool clockStartMilliSeconds = true;
+			if (clockStartMilliSeconds == true)
+			{
+				milliSecondsSinceLastFrame = frameTime.asMilliseconds();
+			}
+			float millisecondsPassed;
 
+			millisecondsPassed += milliSecondsSinceLastFrame;
+			millisecondsPassed = millisecondsPassed / 100;
+
+			int SecondsSinceLastFrame;
+			bool clockStartSeconds = true;
+			if (clockStartSeconds == true)
+			{
+				SecondsSinceLastFrame = frameTime.asSeconds();
+			}
+			int secondsPassed;
+
+			secondsPassed += SecondsSinceLastFrame;*/
+			int secondsPassed1;
+			float millisecondsPassed1;
+			if (timer = true)
+			{
+				secondsPassed1 = secondsPassed - secondsPassed;
+				millisecondsPassed1 = (millisecondsPassed - millisecondsPassed) ;
+				timer = false;
+			}
+			
+			// TODO: Update all game objects
+			if (myPlayer.IsActive())
+				myPlayer.Update(frameTime);
+			if (mySpaceDisplacer.IsActive())
+				mySpaceDisplacer.Update(frameTime);
+			if (asteroidBelt.IsActive())
+			{
+				asteroidBelt.Update(frameTime);
+				asteroidBelt.SetGameTimer(secondsPassed1);
+			}
+			if (thePersuit.IsActive())
+			{
+				thePersuit.Update(frameTime);
+				thePersuit.SetGameTimer(secondsPassed1);
+			}
+			myPickUp.Update(frameTime);
+			myPickUp.SetGameTimer(secondsPassed1);
+			UI_E.SetMillisecondsSinceGameStart(millisecondsPassed);
+			UI_E.Update(frameTime);
+		}
 
 		// -----------------------------------------------
 		// Draw Section

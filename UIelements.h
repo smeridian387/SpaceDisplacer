@@ -14,6 +14,7 @@ public:
 
 	UIelements();
 	void SetSpaceDisplacer(SpaceDisplacer* _SD);
+	void SetMillisecondsSinceGameStart(float _time);
 	void Draw(sf::RenderTarget& _target);
 	void Update(sf::Time _frameTime);
 	void SetPlayer(Player* _player);
@@ -33,5 +34,6 @@ private:
 	Player* m_player;
 	SpaceDisplacer* m_SD;
 	float m_healthBarsize;
+	float currentTime;
 
 };
