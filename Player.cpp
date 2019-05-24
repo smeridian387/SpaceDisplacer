@@ -15,6 +15,7 @@ Player::Player()
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/tempusBankLeft/tempus1.png"));
 	m_sprite.setOrigin(m_sprite.getTextureRect().width / 2, m_sprite.getTextureRect().height / 2);
 	m_sprite.setScale(sf::Vector2f(0.09f, 0.09f));
+	m_sprite.setPosition(640.0f, 450.0f);
 
 
 	Animation& playerBankLeft(m_animationSystem.CreateAnimation("Left"));
@@ -118,28 +119,3 @@ sf::Vector2f Player::GetPlayerPos()
 	return pos;
 
 }
-
-//void Player::Collide(GameObject& _collider)
-//{
-	// Only do something if the thing
-	// we touched was a wall
-
-	// Dynamic cast the GameObjec ref
-	// into a Wall pointer
-	// if it succeeds, it was a wall
-	//Wall* wallCollider = dynamic_cast<Wall*>(&_collider);
-
-	// If it was a wall we hit, we need to more ourselves
-	// outside the wall's bounds, aka back where we were
-	//if (wallCollider != nullptr)
-	//{
-		// We did hit a wall!!!
-
-		// Return to our previous position that we just
-		// moved away from this frame
-		//m_sprite.setPosition(m_previousPosition);
-
-		// clumsy - results in "sticky" walls
-		// But good enough for this game
-	//}
-//}

@@ -60,7 +60,6 @@ int main()
 	// Create test objects
 	Player myPlayer;
 	SpaceDisplacer mySpaceDisplacer;
-	myPlayer.SetPosition(500.0f, 400.0f);
 	AsteroidBelt asteroidBelt;
 	asteroidBelt.SetSpaceDisplacer(&mySpaceDisplacer);
 	asteroidBelt.SetPlayer(&myPlayer);
@@ -83,9 +82,10 @@ int main()
 
 	//testing zone
 	
-	
+	float milliseconds = 0;
+	int seconds = 0;
 	bool timer = true;
-	
+	int secondsnow = 0;
 	// -----------------------------------------------
 	// Game Loop
 	// -----------------------------------------------
@@ -115,11 +115,11 @@ int main()
 		//counts time passed since game starts
 
 		//millisecond clock
-
-		auto current_timeMill = std::chrono::high_resolution_clock::now();
+		
+		/*auto current_timeMill = std::chrono::high_resolution_clock::now();
 		millisecondsPassed = std::chrono::duration_cast<std::chrono::milliseconds>(current_timeMill - start_time).count();
 		auto current_time = std::chrono::high_resolution_clock::now();
-		secondsPassed = std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count();
+		secondsPassed = std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count();*/
 
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
@@ -132,35 +132,22 @@ int main()
 
 		if (splashscreen == false && gameover == false)
 		{
-			/*int milliSecondsSinceLastFrame;
-			bool clockStartMilliSeconds = true;
-			if (clockStartMilliSeconds == true)
+			milliseconds = milliseconds + (float)frameTime.asMilliseconds();
+			
+			time_t time1;
+			if (timer == true)
 			{
-				milliSecondsSinceLastFrame = frameTime.asMilliseconds();
-			}
-			float millisecondsPassed;
-
-			millisecondsPassed += milliSecondsSinceLastFrame;
-			millisecondsPassed = millisecondsPassed / 100;
-
-			int SecondsSinceLastFrame;
-			bool clockStartSeconds = true;
-			if (clockStartSeconds == true)
-			{
-				SecondsSinceLastFrame = frameTime.asSeconds();
-			}
-			int secondsPassed;
-
-			secondsPassed += SecondsSinceLastFrame;*/
-			int secondsPassed1;
-			float millisecondsPassed1;
-			if (timer = true)
-			{
-				secondsPassed1 = secondsPassed - secondsPassed;
-				millisecondsPassed1 = (millisecondsPassed - millisecondsPassed) ;
+				secondsnow = time(&time1);
 				timer = false;
 			}
-			
+			if (time(&time1) == secondsnow + 1)
+			{
+				seconds++;
+				timer = true;
+			}
+
+
+			std::cout << seconds << std::endl;
 			// TODO: Update all game objects
 			if (myPlayer.IsActive())
 				myPlayer.Update(frameTime);
@@ -169,16 +156,16 @@ int main()
 			if (asteroidBelt.IsActive())
 			{
 				asteroidBelt.Update(frameTime);
-				asteroidBelt.SetGameTimer(secondsPassed1);
+				asteroidBelt.SetGameTimer(seconds);
 			}
 			if (thePersuit.IsActive())
 			{
 				thePersuit.Update(frameTime);
-				thePersuit.SetGameTimer(secondsPassed1);
+				thePersuit.SetGameTimer(seconds);
 			}
 			myPickUp.Update(frameTime);
-			myPickUp.SetGameTimer(secondsPassed1);
-			UI_E.SetMillisecondsSinceGameStart(millisecondsPassed);
+			myPickUp.SetGameTimer(seconds);
+			UI_E.SetMillisecondsSinceGameStart(milliseconds *10);
 			UI_E.Update(frameTime);
 		}
 
