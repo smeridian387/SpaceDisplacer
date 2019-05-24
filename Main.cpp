@@ -134,7 +134,8 @@ int main()
 		{
 			milliseconds = milliseconds + (float)frameTime.asMilliseconds();
 			
-			time_t time1;
+			seconds = seconds + (int)frameTime.asMilliseconds();
+			/*time_t time1;
 			if (timer == true)
 			{
 				secondsnow = time(&time1);
@@ -144,8 +145,8 @@ int main()
 			{
 				seconds++;
 				timer = true;
-			}
-
+			}*/
+			seconds = milliseconds / 1000;
 
 			std::cout << seconds << std::endl;
 			// TODO: Update all game objects
@@ -165,7 +166,7 @@ int main()
 			}
 			myPickUp.Update(frameTime);
 			myPickUp.SetGameTimer(seconds);
-			UI_E.SetMillisecondsSinceGameStart(milliseconds *10);
+			UI_E.SetMillisecondsSinceGameStart(milliseconds/1000);
 			UI_E.Update(frameTime);
 		}
 

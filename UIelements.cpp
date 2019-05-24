@@ -2,6 +2,8 @@
 #include "Framework/AssetManager.h"
 #include "Framework/TextObject.h"
 #include <iostream>
+#include <iomanip> // setprecision
+#include <sstream> // stringstream
 
 UIelements::UIelements()
 	: m_healthBarsize(3.16f)
@@ -123,7 +125,10 @@ void UIelements::Update(sf::Time _frameTime)
 	//m_millisecondsSinceSpacePressed += milliSecondsSinceLastFrame;
 
 	////currentTime += (milliSecondsSinceLastFrame/1000);
-	m_gametime.setString(std::to_string(currentTime/1000));
+	std::stringstream stream;
+	stream << std::fixed << std::setprecision(2) << currentTime;
+	std::string timeString = stream.str();
+	m_gametime.setString(timeString);
 
 	MovingObject::Update(_frameTime);
 }

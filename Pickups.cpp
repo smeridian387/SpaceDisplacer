@@ -74,10 +74,10 @@ void PickUp::Update(sf::Time _frameTime)
 			bool m_SDactive = m_SD->SDActive();
 			if (m_SDactive == false)
 			{
-				sf::Vector2f move(0.0f, 0.2);
-				m_spareParts.setPosition(m_spareParts.getPosition() + move);
+				sf::Vector2f move(0.0f, 0.2); // multiply this by 30 or 60 ish
+				m_spareParts.setPosition(m_spareParts.getPosition() + move * _frameTime.asSeconds());
 				float rotation = 0.15f;
-				m_spareParts.setRotation(m_spareParts.getRotation() + rotation);
+				m_spareParts.setRotation(m_spareParts.getRotation() + rotation * _frameTime.asSeconds());
 			}
 			if (m_spareParts.getGlobalBounds().intersects(m_player->GetBounds()))
 			{
