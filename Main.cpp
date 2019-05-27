@@ -112,19 +112,16 @@ int main()
 		// -----------------------------------------------
 		// Update Section
 		// -----------------------------------------------
-		//counts time passed since game starts
-
-		//millisecond clock
 		
-		/*auto current_timeMill = std::chrono::high_resolution_clock::now();
-		millisecondsPassed = std::chrono::duration_cast<std::chrono::milliseconds>(current_timeMill - start_time).count();
-		auto current_time = std::chrono::high_resolution_clock::now();
-		secondsPassed = std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count();*/
-
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
 		{
 			splashscreen = false;
+		}
+		
+		if (myPlayer.GetHullIntergity() <= 0)
+		{
+			gameover = true;
 		}
 
 		// Get the time passed since the last frame and restart our game clock
@@ -135,18 +132,8 @@ int main()
 			milliseconds = milliseconds + (float)frameTime.asMilliseconds();
 			
 			seconds = seconds + (int)frameTime.asMilliseconds();
-			/*time_t time1;
-			if (timer == true)
-			{
-				secondsnow = time(&time1);
-				timer = false;
-			}
-			if (time(&time1) == secondsnow + 1)
-			{
-				seconds++;
-				timer = true;
-			}*/
-			seconds = milliseconds / 1000;
+			//turn milliseconds into seconds
+			seconds = milliseconds / 100;
 
 			std::cout << seconds << std::endl;
 			// TODO: Update all game objects
@@ -166,10 +153,16 @@ int main()
 			}
 			myPickUp.Update(frameTime);
 			myPickUp.SetGameTimer(seconds);
-			UI_E.SetMillisecondsSinceGameStart(milliseconds/1000);
+			UI_E.SetMillisecondsSinceGameStart(milliseconds/100);
+			UI_E.SetGameTimer(seconds);
 			UI_E.Update(frameTime);
 		}
-
+		UI_E.Update(frameTime);
+		UI_E.IsGameOver(gameover);
+		if (gameover == true && sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+		{
+			gameWindow.close();
+		}
 		// -----------------------------------------------
 		// Draw Section
 		// -----------------------------------------------
@@ -179,14 +172,22 @@ int main()
 
 		// TODO: Draw game object
 		UI_E.Draw(gameWindow);
-		if (thePersuit.IsActive())
-			thePersuit.Draw(gameWindow);
-		if (asteroidBelt.IsActive())
-			asteroidBelt.Draw(gameWindow);
-		myPickUp.Draw(gameWindow);
-		mySpaceDisplacer.Draw(gameWindow);
-		if (myPlayer.IsActive())
-			myPlayer.Draw(gameWindow);
+		if (gameover == false)
+		{
+			mySpaceDisplacer.Draw(gameWindow);
+			if (thePersuit.IsActive())
+				thePersuit.Draw(gameWindow);
+			if (asteroidBelt.IsActive())
+				asteroidBelt.Draw(gameWindow);
+			myPickUp.Draw(gameWindow);
+			if (myPlayer.IsActive())
+				myPlayer.Draw(gameWindow);
+		}
+		else
+		{
+			//draw game over screen
+		}
+		
 		
 
 		// Display the window contents on the screen

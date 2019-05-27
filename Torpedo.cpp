@@ -71,18 +71,8 @@ void Torpedo::Update(sf::Time _frameTime)
 	{
 		m_sprite.setPosition(500,-1000);
 		m_player->SetHullIntegrity(-20);
-		//m_hit.play();
+		m_hit.play();
 	}
-	/*if (m_sprite.getGlobalBounds().intersects(m_asteroidBelt->WhichAsteroid()))
-	{
-			m_sprite.setPosition(500, -1000);
-	}*/
-	/*for (auto it = m_asteroidBelt->asteroidBelt().begin(); it != myPlatforms.end(); ++it)
-	{
-		platformColliders.push_back(it->GetCollider());
-	}*/
-
-	
 }
 
 void Torpedo::SetVelocitynull()

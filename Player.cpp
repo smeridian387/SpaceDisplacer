@@ -101,14 +101,7 @@ void Player::Update(sf::Time _frameTime)
 
 void Player::Draw(sf::RenderTarget& _target)
 {
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-	//{
-		//_target.draw(m_bankLeft);
-	//}
-	//else
-	//{
-		_target.draw(m_sprite);
-	//}
+	_target.draw(m_sprite);
 	_target.draw(m_text);
 	
 }

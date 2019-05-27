@@ -21,7 +21,6 @@ SpaceDisplacer::SpaceDisplacer()
 	, m_preCurrentTime()
 	, m_preCurrentTime2()
 	, m_preCurrentTime3()
-	//, m_sprite()
 	, m_animation()
 	, m_SDcolorchange(0)
 	, m_warnRectIn(700.0f)
@@ -66,8 +65,8 @@ void SpaceDisplacer::Draw(sf::RenderTarget& _target)
 	{
 		if (m_overHeating == true)
 		{
-			_target.draw(m_lightFilter);
-			_target.draw(m_lights);
+				_target.draw(m_lightFilter);
+				_target.draw(m_lights);
 		}
 	}
 	
@@ -111,16 +110,6 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 	m_animation.Update(_frameTime);//plays spacedisplacer animation
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)&&m_SDcasing >0)
 	{
-		//// NOTE: SET THIS TO ZERO AT TOP!
-		//int milliSecondsSinceLastFrame = _frameTime.asMilliseconds();
-		//m_millisecondsSinceSpacePressed += milliSecondsSinceLastFrame;
-		//if (m_millisecondsSinceSpacePressed >= 500)
-		//{
-		//	// Do the thing
-		//	// reset timer? if so  m_millisecondsSinceSpacePressed = 0;
-		//}
-
-
 		time_t time1;
 		if (m_timer == true)
 		{

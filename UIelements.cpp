@@ -1,7 +1,6 @@
 #include "UIelements.h"
 #include "Framework/AssetManager.h"
 #include "Framework/TextObject.h"
-#include <iostream>
 #include <iomanip> // setprecision
 #include <sstream> // stringstream
 
@@ -10,17 +9,35 @@ UIelements::UIelements()
 	, m_player(nullptr)
 	, m_SD(nullptr)
 	, currentTime()
+	, m_secondsSinceGameStart()
+	, gameovertime()
 {
 
 	m_gametime.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
-	m_gametime.setPosition(1100.0f, 80.0f);
-	m_gametime.setScale(0.7f, 0.7f);
+	m_gametime.setPosition(1135.0f, 100.0f);
+	m_gametime.setScale(1.0f, 1.0f);
+
+	m_timeText.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
+	m_timeText.setPosition(1130.0f, 60.0f);
+	m_timeText.setScale(1.0f, 1.0f);
+
+	m_enemyShips.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
+	m_enemyShips.setPosition(1135.0f, 170.0f);
+	m_enemyShips.setScale(0.5f, 0.5f);
+
+	m_noOfShips.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
+	m_noOfShips.setPosition(1160.0f, 210.0f);
+	m_noOfShips.setScale(1.5f, 1.5f);
+
+	m_gameOverTime.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
+	m_gameOverTime.setPosition(640.0f, 450.0f);
+	m_gameOverTime.setScale(1.5f, 1.5f);
 
 	m_LeftPanel.setTexture(AssetManager::GetTexture("graphics/LeftPanel.png"));
 	m_LeftPanel.setPosition(0.0f, 0.0f);
 	m_LeftPanel.setScale(0.666f, 0.666f);
 
-	m_RightPanel.setTexture(AssetManager::GetTexture("graphics/RightPanel.png"));
+	m_RightPanel.setTexture(AssetManager::GetTexture("graphics/RightPannel.png"));
 	m_RightPanel.setPosition(1080.0f, 0.0f);
 	m_RightPanel.scale(0.666f, 0.666f);
 
@@ -50,9 +67,24 @@ UIelements::UIelements()
 	m_starsf2.setScale(1.6f, 1.6f);
 }
 
+void UIelements::IsGameOver(bool _gameover)
+{
+	m_gameover = _gameover;
+}
+
 void UIelements::SetMillisecondsSinceGameStart(float _time)
 {
 	currentTime = _time;
+}
+
+void UIelements::SetGameTimer(int _gametime)
+{
+	m_secondsSinceGameStart = _gametime;
+}
+
+void UIelements::SetGameOverTime(float _gameovertime)
+{
+	gameovertime = _gameovertime;
 }
 
 void UIelements::Draw(sf::RenderTarget& _target)
@@ -66,6 +98,14 @@ void UIelements::Draw(sf::RenderTarget& _target)
 	_target.draw(m_WarningRect);
 	_target.draw(m_healthBar);
 	_target.draw(m_gametime);
+	_target.draw(m_timeText);
+	_target.draw(m_enemyShips);
+	_target.draw(m_noOfShips);
+	if (m_gameover == true)
+	{
+		_target.draw(m_gameOverTime);
+	}
+	
 }
 
 void UIelements::SetPlayer(Player* _player)
@@ -115,21 +155,29 @@ void UIelements::Update(sf::Time _frameTime)
 	{
 		m_healthBar.setScale(0.125f, 3.16f);
 	}
-	/*bool timer = true;
-	if (timer == true)
-	{
-		int milliSecondsSinceLastFrame = _frameTime.asMilliseconds();
-		timer = false;
-	}*/
-	//int milliSecondsSinceLastFrame = _frameTime.asMilliseconds();
-	//m_millisecondsSinceSpacePressed += milliSecondsSinceLastFrame;
-
-	////currentTime += (milliSecondsSinceLastFrame/1000);
 	std::stringstream stream;
 	stream << std::fixed << std::setprecision(2) << currentTime;
 	std::string timeString = stream.str();
 	m_gametime.setString(timeString);
-
+	m_timeText.setString("Time");
+	m_enemyShips.setString("Ships in \nPersuit");
+	m_gameOverTime.setString(timeString);
+	if (m_secondsSinceGameStart < 5)
+	{
+		m_noOfShips.setString("0");
+	}
+	else if (m_secondsSinceGameStart > 5 && m_secondsSinceGameStart < 10)
+	{
+		m_noOfShips.setString("1");
+	}
+	else if (m_secondsSinceGameStart > 10 && m_secondsSinceGameStart < 15)
+	{
+		m_noOfShips.setString("2");
+	}
+	else if (m_secondsSinceGameStart > 15)
+	{
+		m_noOfShips.setString("3");
+	}
 	MovingObject::Update(_frameTime);
 }
 
