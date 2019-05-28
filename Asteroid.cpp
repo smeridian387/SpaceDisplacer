@@ -43,7 +43,6 @@ void Asteroid::SetGameTimer(int _timeSinceStart)
 
 void Asteroid::Update(sf::Time _frameTime)
 {
-	//std::cout << m_timeSinceGameStart << std::endl;
 	if (GetPosition().y > 750)
 	{
 		int randomx = std::rand() % (1030 - 220) + 220;
@@ -91,7 +90,6 @@ void Asteroid::Update(sf::Time _frameTime)
 			m_timer2 = true;
 		}
 	}
-	//std::cout <<  << std::endl;
 	
 }
 

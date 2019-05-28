@@ -38,50 +38,39 @@ int main()
 	// Game Clock - to keep track of time passed each frame
 	sf::Clock gameClock;
 
+	//generates a few random numbers
 	for (int i = 0; i < 40; ++i)
 	{
 		int random = std::rand() % 260 + 40;
 		std::cout << -random << std::endl;
 	}
-	
-	//start game time counter
-	auto start_time = std::chrono::high_resolution_clock::now();
-	int secondsPassed;
-
-	//start game time counter millisecond
-	auto start_timeMill = std::chrono::high_resolution_clock::now();
-	float millisecondsPassed;
 
 	//spalshscreen and gameover
-
 	bool splashscreen = true;
 	bool gameover = false;
 
 	// Create test objects
-	Player myPlayer;
-	SpaceDisplacer mySpaceDisplacer;
-	AsteroidBelt asteroidBelt;
-	asteroidBelt.SetSpaceDisplacer(&mySpaceDisplacer);
-	asteroidBelt.SetPlayer(&myPlayer);
-	Asteroid myAsteroid;
-	PickUp myPickUp;
-	Torpedo myTorpedo;
-	UIelements UI_E;
-	//EnemyFire enemyFire;
-	Enemy myEnemy;
-	Persuit thePersuit;
-	thePersuit.SetPlayer(&myPlayer);
-	thePersuit.SetSpaceDisplacer(&mySpaceDisplacer);
-	thePersuit.SetTorpedo(&myTorpedo);
-	thePersuit.SetAsteroid(&myAsteroid);
-	myPickUp.SetPlayer(&myPlayer);
-	myPickUp.SetSpaceDisplacer(&mySpaceDisplacer);
-	UI_E.SetPlayer(&myPlayer);
-	UI_E.SetSpaceDisplacer(&mySpaceDisplacer);
+	Player myPlayer; //player object
+	SpaceDisplacer mySpaceDisplacer;// space displacer object
+	AsteroidBelt asteroidBelt;// asteroid belt object (asteroid manager object)
+	asteroidBelt.SetSpaceDisplacer(&mySpaceDisplacer);//passing asteroid belt a pointer to the space displacer
+	asteroidBelt.SetPlayer(&myPlayer);//passing asteroid belt a pointer for the player
+	Asteroid myAsteroid;//asteroid object
+	PickUp myPickUp;//pick up object
+	Torpedo myTorpedo;//torpedo object
+	UIelements UI_E;//interface object
+	Enemy myEnemy;//enemy object
+	Persuit thePersuit;//persuit object (enemy manager object)
+	thePersuit.SetPlayer(&myPlayer);//passing the persuit a pointer to player
+	thePersuit.SetSpaceDisplacer(&mySpaceDisplacer);//passing the persuit a pointer to space displacer
+	thePersuit.SetTorpedo(&myTorpedo);//passing the persuit a pointer to the torpedo object
+	thePersuit.SetAsteroid(&myAsteroid);//passing the persuit a pointer
+	myPickUp.SetPlayer(&myPlayer);//passing the pick up object a pointer to the player
+	myPickUp.SetSpaceDisplacer(&mySpaceDisplacer);//passing the pick up object a ponter to the space dsplacer
+	UI_E.SetPlayer(&myPlayer);//passing the interface object a pointer to the player
+	UI_E.SetSpaceDisplacer(&mySpaceDisplacer);//passing the interface object a pointer to space displacer
 
-
-	//testing zone
-	
+	//global variables
 	float milliseconds = 0;
 	int seconds = 0;
 	bool timer = true;
@@ -112,13 +101,12 @@ int main()
 		// -----------------------------------------------
 		// Update Section
 		// -----------------------------------------------
-		
-
+		//removes the splash screen when the player hits enter
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
 		{
 			splashscreen = false;
 		}
-		
+		// if the players health is equal to or less than the game will end 
 		if (myPlayer.GetHullIntergity() <= 0)
 		{
 			gameover = true;

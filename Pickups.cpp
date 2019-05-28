@@ -74,9 +74,9 @@ void PickUp::Update(sf::Time _frameTime)
 			bool m_SDactive = m_SD->SDActive();
 			if (m_SDactive == false)
 			{
-				sf::Vector2f move(0.0f, 0.2); // multiply this by 30 or 60 ish
+				sf::Vector2f move(0.0f, 250.0f); // multiply this by 30 or 60 ish
 				m_spareParts.setPosition(m_spareParts.getPosition() + move * _frameTime.asSeconds());
-				float rotation = 0.15f;
+				float rotation = 120.0f;
 				m_spareParts.setRotation(m_spareParts.getRotation() + rotation * _frameTime.asSeconds());
 			}
 			if (m_spareParts.getGlobalBounds().intersects(m_player->GetBounds()))
@@ -107,10 +107,10 @@ void PickUp::Update(sf::Time _frameTime)
 			bool m_SDactive = m_SD->SDActive();
 			if (m_SDactive == false)
 			{
-				sf::Vector2f move(0.0f, 0.2);
-				m_liquidNitrogen.setPosition(m_liquidNitrogen.getPosition() + move);
-				float rotation = 0.15f;
-				m_liquidNitrogen.setRotation(m_liquidNitrogen.getRotation() + rotation);
+				sf::Vector2f move(0.0f, 250.0f);
+				m_liquidNitrogen.setPosition(m_liquidNitrogen.getPosition() + move * _frameTime.asSeconds());
+				float rotation = 120.0f;
+				m_liquidNitrogen.setRotation(m_liquidNitrogen.getRotation() + rotation * _frameTime.asSeconds());
 			}
 			if (m_liquidNitrogen.getGlobalBounds().intersects(m_player->GetBounds()))
 			{
@@ -134,13 +134,13 @@ void PickUp::Update(sf::Time _frameTime)
 	{
 		int random = std::rand() % 100;
 			std::cout << random << std::endl;
-		if (random < 5)
+		if (random < 100)
 		{
 			m_spawnLN = true;
 		}
 		int random2 = std::rand() % 100;
 		std::cout << random << std::endl;
-		if (random2 < 50)
+		if (random2 < 100)
 		{
 			m_spawnSP = true;
 		}

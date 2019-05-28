@@ -91,14 +91,14 @@ void AsteroidBelt::Update(sf::Time _frameTime)
 			asteroidBelt[5].SetGameTimer(m_timeSinceGameStart);
 			asteroidBelt[5].Update(_frameTime);
 		}
-		if (m_timeSinceGameStart > 20)
+		if (m_timeSinceGameStart > 15)
 		{
 			asteroidBelt[6].SetSpaceDisplacer(m_SD);
 			asteroidBelt[6].SetPlayer(m_player);
 			asteroidBelt[6].SetGameTimer(m_timeSinceGameStart);
 			asteroidBelt[6].Update(_frameTime);
 		}	
-		if (m_timeSinceGameStart > 25)
+		if (m_timeSinceGameStart > 30)
 		{
 			asteroidBelt[7].SetSpaceDisplacer(m_SD);
 			asteroidBelt[7].SetPlayer(m_player);

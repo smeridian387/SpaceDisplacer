@@ -181,15 +181,15 @@ void UIelements::Update(sf::Time _frameTime)
 	{
 		m_noOfShips.setString("0");
 	}
-	else if (m_secondsSinceGameStart > 5 && m_secondsSinceGameStart < 10)
+	else if (m_secondsSinceGameStart > 5 && m_secondsSinceGameStart < 15)
 	{
 		m_noOfShips.setString("1");
 	}
-	else if (m_secondsSinceGameStart > 10 && m_secondsSinceGameStart < 15)
+	else if (m_secondsSinceGameStart > 15 && m_secondsSinceGameStart < 30)
 	{
 		m_noOfShips.setString("2");
 	}
-	else if (m_secondsSinceGameStart > 15)
+	else if (m_secondsSinceGameStart > 30)
 	{
 		m_noOfShips.setString("3");
 	}

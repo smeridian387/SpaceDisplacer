@@ -90,9 +90,9 @@ void Persuit::Draw(sf::RenderTarget& _target)
 {
 	//in order from left to right so on screen looks like
 	//  0  1  2  //
-	persuit[0].SetPosition(240.0f, 700.0f);
-	persuit[1].SetPosition(640.0f, 700.0f);
-	persuit[2].SetPosition(1040.0f, 700.0f);
+	persuit[0].SetPosition(240.0f, 760.0f);
+	persuit[1].SetPosition(640.0f, 760.0f);
+	persuit[2].SetPosition(1040.0f, 760.0f);
 	for (int i = 0; i < Torpedos.size(); i++)
 	{
 		Torpedos[i].Draw(_target);
@@ -156,7 +156,7 @@ void Persuit::Update(sf::Time _frameTime)
 					}
 				}
 			}
-			if (m_timeSinceGameStart > 10)
+			if (m_timeSinceGameStart > 15)
 			{
 				
 				if (Torpedos[4].GetIsActive() == false)
@@ -176,7 +176,7 @@ void Persuit::Update(sf::Time _frameTime)
 					Torpedos[7].initialize(persuit[2].GetPosition());
 				}
 			}
-			if (m_timeSinceGameStart > 20)
+			if (m_timeSinceGameStart > 30)
 			{
 				if (Torpedos[8].GetIsActive() == false)
 				{
