@@ -12,11 +12,10 @@ public:
 	Asteroid();
 
 	//overiding Methods
-	void SetSpaceDisplacer(SpaceDisplacer* _SD);
-	void SetPlayer(Player* _player);
-	void SetGameTimer(int _timeSinceStart);
-	void Update(sf::Time _frameTime);
-	bool isInPlay();
+	void SetSpaceDisplacer(SpaceDisplacer* _SD);//main passes in a pointer to the space displacer object
+	void SetPlayer(Player* _player);//main passes in a pointer to the player object
+	void SetGameTimer(int _timeSinceStart);//main passes in the time since the game screen stated
+	void Update(sf::Time _frameTime);//main passes in the frameTime
 	
 
 private:
@@ -30,7 +29,6 @@ private:
 	sf::Vector2f m_approachSpeed;
 	float m_approachSpeedY;
 	int m_timeSinceGameStart;
-	bool m_isInPlay;
 	
 
 };

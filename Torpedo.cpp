@@ -34,9 +34,7 @@ void Torpedo::ResetVelocity()
 void Torpedo::initialize(sf::Vector2f _enemyposition)
 {
 	m_isActive = true;
-	//placeholder 
 	sf::Vector2f enemyPos(_enemyposition);
-	//----------
 	sf::Vector2f distance = m_player->GetPosition() - enemyPos;
 	float m_torpedoRotation = ((float)atan2(distance.y, distance.x)) * 180.0f / M_PI + 90.0f;
 	float magnitude = sqrt(distance.x*distance.x + distance.y*distance.y);

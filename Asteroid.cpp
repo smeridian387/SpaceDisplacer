@@ -6,7 +6,6 @@
 
 Asteroid::Asteroid()
 	:MovingObject()
-	, m_isInPlay(true)
 	, m_timer(true)
 	, m_timer2(true)
 	, m_preCurrentTime()
@@ -91,11 +90,6 @@ void Asteroid::Update(sf::Time _frameTime)
 		}
 	}
 	
-}
-
-bool Asteroid::isInPlay()
-{
-	return true;
 }
 
 

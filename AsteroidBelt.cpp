@@ -39,18 +39,6 @@ void AsteroidBelt::SetPlayer(Player* _player)
 	m_player = _player;
 }
 
-int AsteroidBelt::GetAsteroidBeltSize()
-{
-	int i;
-	i = asteroidBelt.size();
-	return i;
-}
-
-sf::FloatRect AsteroidBelt::WhichAsteroid()
-{
-	return test;
-}
-
 void AsteroidBelt::Draw(sf::RenderTarget& _target)
 {
 	for (int i = 0; i < asteroidBelt.size(); i++)
@@ -139,7 +127,6 @@ void AsteroidBelt::Update(sf::Time _frameTime)
 				m_timer = true;
 			}
 		}
-	//std::cout << m_timer << std::endl;
 }
 
 bool AsteroidBelt::IsActive()

@@ -70,11 +70,13 @@ int main()
 	//global variables
 	float milliseconds = 0;
 	int seconds = 0;
+	//timer bools
 	bool timer = true;
 	bool timer2 = false;
-	int secondsnow = 0;
+	//timer holders
 	int preCurrentTime;
 	int preCurrentTime2;
+	//game screen bools
 	bool mainmenu = true;
 	bool splashscreen = true;
 	bool gameover = false;
@@ -104,23 +106,19 @@ int main()
 		// -----------------------------------------------
 		// Update Section
 		// -----------------------------------------------
-		//removes the splash screen when the player hits enter
-		/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
-		{
-			splashscreen = false;
-		}*/
 		// if the players health is equal to or less than the game will end 
 		if (myPlayer.GetHullIntergity() <= 0)
 		{
 			gameover = true;
 		}
 		
+		//timers that manage game screen transitions
 		time_t m_time;
 		if (timer == true)
 		{
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
 			{
-				mainmenu = false;
+				mainmenu = false;//removes title screen
 				timer = false;
 			}
 			preCurrentTime = time(&m_time);
@@ -129,24 +127,16 @@ int main()
 		{
 			timer2 = true;
 		}
-		/*if (time(&m_time) == preCurrentTime + 4)
-		{
-			timer2 = true;
-		}*/
 		time_t m_time2;
 		if (timer2 == true)
 		{
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
 			{
-				splashscreen = false;
+				splashscreen = false;//removes tutorial screen
 			}
 			preCurrentTime2 = time(&m_time2);
 			timer2 = false;
 		}
-			/*if (time(&m_time2) == preCurrentTime2 + 1)
-			{
-				timer2 = true;
-			}*/
 
 		// Get the time passed since the last frame and restart our game clock
 		sf::Time frameTime = gameClock.restart();
@@ -181,6 +171,7 @@ int main()
 			UI_E.SetGameTimer(seconds);
 			UI_E.Update(frameTime);
 		}
+		//passing game screen booleans so the objects and draw properly
 		UI_E.Update(frameTime);
 		UI_E.IsGameOver(gameover);
 		UI_E.IsMainMenuActive(mainmenu);
@@ -205,15 +196,10 @@ int main()
 			mySpaceDisplacer.Draw(gameWindow);
 			if (thePersuit.IsActive())
 				thePersuit.Draw(gameWindow);
-			if (asteroidBelt.IsActive())
-				asteroidBelt.Draw(gameWindow);
+			asteroidBelt.Draw(gameWindow);
 			myPickUp.Draw(gameWindow);
 			if (myPlayer.IsActive())
 				myPlayer.Draw(gameWindow);
-		}
-		else
-		{
-			//draw game over screen
 		}
 		
 		
