@@ -35,6 +35,7 @@ private:
 	sf::Sprite m_starsf;
 	sf::Sprite m_starsf2;
 	sf::Sprite m_tutorial;
+	sf::Sprite m_gameoverScreen;
 	sf::Text m_gametime;
 	sf::Text m_timeText;
 	sf::Text m_enemyShips;

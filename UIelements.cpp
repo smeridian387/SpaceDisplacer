@@ -31,13 +31,18 @@ UIelements::UIelements()
 	m_noOfShips.setScale(1.5f, 1.5f);
 
 	m_gameOverTime.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
-	m_gameOverTime.setPosition(640.0f, 450.0f);
-	m_gameOverTime.setScale(1.5f, 1.5f);
+	m_gameOverTime.setPosition(540.0f, 250.0f);
+	m_gameOverTime.setScale(2.0f, 2.0f);
 
 	m_tutorial.setTexture(AssetManager::GetTexture("graphics/splashScreen.png"));
 	m_tutorial.setPosition(640.0f, 720.0f);
 	m_tutorial.setScale(1.0f, 1.0f);
 	m_tutorial.setOrigin(m_tutorial.getTextureRect().width / 2, m_tutorial.getTextureRect().height);
+
+	m_gameoverScreen.setTexture(AssetManager::GetTexture("graphics/gameoverScreen.png"));
+	m_gameoverScreen.setPosition(640.0f, 720.0f);
+	m_gameoverScreen.setScale(1.0f, 1.0f);
+	m_gameoverScreen.setOrigin(m_gameoverScreen.getTextureRect().width / 2, m_gameoverScreen.getTextureRect().height);
 
 	m_LeftPanel.setTexture(AssetManager::GetTexture("graphics/LeftPanel.png"));
 	m_LeftPanel.setPosition(0.0f, 0.0f);
@@ -56,21 +61,25 @@ UIelements::UIelements()
 	m_healthBar.setScale(0.125f, m_healthBarsize);
 	m_healthBar.setOrigin(m_healthBar.getTextureRect().width / 2, m_healthBar.getTextureRect().height);
 
-	m_starsn.setTexture(AssetManager::GetTexture("graphics/starsa.png"));
-	m_starsn.setPosition(200.0f, 0.0f);
+	m_starsn.setTexture(AssetManager::GetTexture("graphics/starsaV2.png"));
+	m_starsn.setPosition(640.0f, 0.0f);
 	m_starsn.setScale(3.3f,3.3f);
+	m_starsn.setOrigin(m_starsn.getTextureRect().width / 2, 0);
 
-	m_starsn2.setTexture(AssetManager::GetTexture("graphics/starsa.png"));
-	m_starsn2.setPosition(200.0f, -720.0f);
+	m_starsn2.setTexture(AssetManager::GetTexture("graphics/starsaV2.png"));
+	m_starsn2.setPosition(640.0f, -720.0f);
 	m_starsn2.setScale(3.3f, 3.3f);
+	m_starsn2.setOrigin(m_starsn2.getTextureRect().width / 2,0);
 
-	m_starsf.setTexture(AssetManager::GetTexture("graphics/stars2.png"));
-	m_starsf.setPosition(200.0f, 0.0f);
+	m_starsf.setTexture(AssetManager::GetTexture("graphics/stars2V2.png"));
+	m_starsf.setPosition(640.0f, 0.0f);
 	m_starsf.setScale(1.6f, 1.6f);
+	m_starsf.setOrigin(m_starsf.getTextureRect().width / 2,0);
 
-	m_starsf2.setTexture(AssetManager::GetTexture("graphics/stars2.png"));
-	m_starsf2.setPosition(200.0f, -720.0f);
+	m_starsf2.setTexture(AssetManager::GetTexture("graphics/stars2V2.png"));
+	m_starsf2.setPosition(640.0f, -720.0f);
 	m_starsf2.setScale(1.6f, 1.6f);
+	m_starsf2.setOrigin(m_starsf2.getTextureRect().width / 2, 0);
 }
 
 void UIelements::IsGameOver(bool _gameover)
@@ -104,8 +113,8 @@ void UIelements::Draw(sf::RenderTarget& _target)
 	_target.draw(m_starsf);
 	_target.draw(m_starsn2);
 	_target.draw(m_starsf2);
-	_target.draw(m_LeftPanel);
-	_target.draw(m_RightPanel);
+	//_target.draw(m_LeftPanel);
+	//_target.draw(m_RightPanel);
 	_target.draw(m_WarningRect);
 	_target.draw(m_healthBar);
 	_target.draw(m_gametime);
@@ -114,6 +123,7 @@ void UIelements::Draw(sf::RenderTarget& _target)
 	_target.draw(m_noOfShips);
 	if (m_gameover == true)
 	{
+		_target.draw(m_gameoverScreen);
 		_target.draw(m_gameOverTime);
 	}
 	if (m_splashScreenActive == true)
