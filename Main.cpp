@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <chrono>
+#include <time.h>
 
 //Project includes
 #include "Framework/AssetManager.h"
@@ -45,10 +46,6 @@ int main()
 		std::cout << -random << std::endl;
 	}
 
-	//spalshscreen and gameover
-	bool splashscreen = true;
-	bool gameover = false;
-
 	// Create test objects
 	Player myPlayer; //player object
 	SpaceDisplacer mySpaceDisplacer;// space displacer object
@@ -74,7 +71,13 @@ int main()
 	float milliseconds = 0;
 	int seconds = 0;
 	bool timer = true;
+	bool timer2 = false;
 	int secondsnow = 0;
+	int preCurrentTime;
+	int preCurrentTime2;
+	bool mainmenu = true;
+	bool splashscreen = true;
+	bool gameover = false;
 	// -----------------------------------------------
 	// Game Loop
 	// -----------------------------------------------
@@ -102,15 +105,48 @@ int main()
 		// Update Section
 		// -----------------------------------------------
 		//removes the splash screen when the player hits enter
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+		/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
 		{
 			splashscreen = false;
-		}
+		}*/
 		// if the players health is equal to or less than the game will end 
 		if (myPlayer.GetHullIntergity() <= 0)
 		{
 			gameover = true;
 		}
+		
+		time_t m_time;
+		if (timer == true)
+		{
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+			{
+				mainmenu = false;
+				timer = false;
+			}
+			preCurrentTime = time(&m_time);
+		}
+		if (time(&m_time) >= preCurrentTime + 3)
+		{
+			timer2 = true;
+		}
+		/*if (time(&m_time) == preCurrentTime + 4)
+		{
+			timer2 = true;
+		}*/
+		time_t m_time2;
+		if (timer2 == true)
+		{
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+			{
+				splashscreen = false;
+			}
+			preCurrentTime2 = time(&m_time2);
+			timer2 = false;
+		}
+			/*if (time(&m_time2) == preCurrentTime2 + 1)
+			{
+				timer2 = true;
+			}*/
 
 		// Get the time passed since the last frame and restart our game clock
 		sf::Time frameTime = gameClock.restart();
@@ -147,7 +183,10 @@ int main()
 		}
 		UI_E.Update(frameTime);
 		UI_E.IsGameOver(gameover);
+		UI_E.IsMainMenuActive(mainmenu);
 		UI_E.IsSplashScreenActive(splashscreen);
+		mySpaceDisplacer.IsMainMenuActive(mainmenu);
+		myPlayer.IsMainMenuActive(mainmenu);
 		if (gameover == true && sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
 		{
 			gameWindow.close();

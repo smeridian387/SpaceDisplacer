@@ -20,13 +20,16 @@ public:
 	int GetHullIntergity();
 	//virtual void Collide(GameObject& _collider);
 	virtual sf::Vector2f GetPlayerPos();
+	void IsMainMenuActive(bool _mainmenu);
 
 private:
 
 	sf::Vector2i m_move;
 	sf::Text m_text;
 	int m_hull;
-	sf::Sprite m_bankLeft;
-	sf::Sprite m_bankRight;
+	sf::Sprite m_UIship;
+	//Animation& m_ship;
 	AnimationSystem m_animationSystem;
+	AnimationSystem m_animationSystem2;
+	bool m_mainmenuActive;
 };

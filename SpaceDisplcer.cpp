@@ -26,6 +26,7 @@ SpaceDisplacer::SpaceDisplacer()
 	, m_warnRectIn(700.0f)
 	, m_LNPickUp(0)
 	, m_idleSD(m_animation.CreateAnimation("idle"))
+	, m_mainmenuActive()
 {
 	m_SDtempText.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
 	m_SDtempText.setPosition(110.0f, 670.0f);
@@ -51,13 +52,20 @@ SpaceDisplacer::SpaceDisplacer()
 	m_animation.Play("idle");
 }
 
+void SpaceDisplacer::IsMainMenuActive(bool _mainmenu)
+{
+	m_mainmenuActive = _mainmenu;
+}
+
 void SpaceDisplacer::Draw(sf::RenderTarget& _target)
 {
-	
-	if (m_SDcasing > 0)
+	if (m_mainmenuActive == false)
 	{
-		_target.draw(m_sprite);
-		_target.draw(m_warningRect);
+		if (m_SDcasing > 0)
+		{
+			_target.draw(m_sprite);
+			_target.draw(m_warningRect);
+		}
 	}
 	_target.draw(m_SDcasingText);
 	_target.draw(m_SDtempText);

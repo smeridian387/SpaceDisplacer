@@ -15,7 +15,7 @@ Torpedo::Torpedo()
 	, ini(true)
 	, m_standardVelocity()
 {
-	m_hit.setBuffer(AssetManager::GetSoundBuffer("audio/roblox_oof.wav"));
+	m_hit.setBuffer(AssetManager::GetSoundBuffer("audio/hit.wav"));
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/photons.png"));
 	m_sprite.setOrigin(m_sprite.getTextureRect().width / 2, m_sprite.getTextureRect().height / 2);
 	m_sprite.setScale(sf::Vector2f(0.2f, 0.2f));

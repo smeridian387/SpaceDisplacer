@@ -14,6 +14,7 @@ PickUp::PickUp()
 	, m_timeSinceGameStart()
 	, random()
 {
+	m_pickupsound.setBuffer(AssetManager::GetSoundBuffer("audio/pickup.wav"));
 	m_spareParts.setTexture(AssetManager::GetTexture("graphics/SparePartsCrate.png"));
 	m_spareParts.setOrigin(m_spareParts.getTextureRect().width / 2, m_spareParts.getTextureRect().height / 2);
 	m_spareParts.setScale(sf::Vector2f(0.5f, 0.5f));
@@ -89,6 +90,7 @@ void PickUp::Update(sf::Time _frameTime)
 				m_spareParts.setPosition(randomx, -randomy);
 				m_spawnSP = false;
 				m_timer = false;
+				m_pickupsound.play();
 			}
 		}
 	}
@@ -122,6 +124,7 @@ void PickUp::Update(sf::Time _frameTime)
 				m_liquidNitrogen.setPosition(randomx, -randomy);
 				m_spawnLN = false;
 				m_timer = false;
+				m_pickupsound.play();
 			}
 		}
 	}

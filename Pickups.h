@@ -19,6 +19,7 @@ public:
 
 private:
 
+	sf::Sound m_pickupsound;
 	sf::Sprite m_spareParts;
 	sf::Sprite m_liquidNitrogen;
 	Player* m_player;

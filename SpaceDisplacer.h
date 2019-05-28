@@ -19,8 +19,7 @@ public:
 	void LNWarningMove();
 	bool SDActive();
 	bool IsActive();
-
-
+	void IsMainMenuActive(bool _mainmenu);
 
 private:
 
@@ -50,5 +49,5 @@ private:
 	AnimationSystem m_animation;
 	Animation& m_idleSD;
 	int m_millisecondsSinceSpacePressed;
-
+	bool m_mainmenuActive;
 };

@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "Torpedo.h"
 #include "SpaceDisplacer.h"
+#include "Framework/AssetManager.h"
 
 class Persuit
 {
@@ -43,5 +44,6 @@ private:
 	SpaceDisplacer* m_SD;
 	std::vector< Enemy > persuit;
 	std::vector<Torpedo> Torpedos;
+	sf::Sound m_pew;
 
 };

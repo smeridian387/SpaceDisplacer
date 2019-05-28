@@ -12,6 +12,7 @@ UIelements::UIelements()
 	, m_secondsSinceGameStart()
 	, gameovertime()
 	, m_splashScreenActive()
+	, m_mainmenuActive()
 {
 
 	m_gametime.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
@@ -43,6 +44,11 @@ UIelements::UIelements()
 	m_gameoverScreen.setPosition(640.0f, 720.0f);
 	m_gameoverScreen.setScale(1.0f, 1.0f);
 	m_gameoverScreen.setOrigin(m_gameoverScreen.getTextureRect().width / 2, m_gameoverScreen.getTextureRect().height);
+
+	m_mainmenu.setTexture(AssetManager::GetTexture("graphics/mainMenu.png"));
+	m_mainmenu.setPosition(640.0f, 720.0f);
+	m_mainmenu.setScale(1.0f, 1.0f);
+	m_mainmenu.setOrigin(m_mainmenu.getTextureRect().width / 2, m_mainmenu.getTextureRect().height);
 
 	m_LeftPanel.setTexture(AssetManager::GetTexture("graphics/LeftPanel.png"));
 	m_LeftPanel.setPosition(0.0f, 0.0f);
@@ -80,6 +86,39 @@ UIelements::UIelements()
 	m_starsf2.setPosition(640.0f, -720.0f);
 	m_starsf2.setScale(1.6f, 1.6f);
 	m_starsf2.setOrigin(m_starsf2.getTextureRect().width / 2, 0);
+
+	m_UIship.setTexture(AssetManager::GetTexture("graphics/tempusBankLeft/tempus1.png"));
+	m_UIship.setOrigin(m_sprite.getTextureRect().width / 2, m_sprite.getTextureRect().height / 2);
+	m_UIship.setScale(sf::Vector2f(0.2f, 0.2f));
+	m_UIship.setPosition(1050.0f, 440.0f);
+
+	m_UIship2.setTexture(AssetManager::GetTexture("graphics/tempusBankLeft/tempus1.png"));
+	m_UIship2.setOrigin(m_sprite.getTextureRect().width / 2, m_sprite.getTextureRect().height / 2);
+	m_UIship2.setScale(sf::Vector2f(0.2f, 0.2f));
+	m_UIship2.setPosition(150.0f, 440.0f);
+
+	Animation& UI(m_animationSystem.CreateAnimation("UI"));
+	Animation& UI2(m_animationSystem2.CreateAnimation("UI2"));
+
+	for (int i = 1; i < 109; ++i)
+	{
+		UI.AddFrame((AssetManager::GetTexture("graphics/playerGIF/" + std::to_string(i) + ".png")));
+	}
+
+	for (int i = 1; i < 109; ++i)
+	{
+		UI2.AddFrame((AssetManager::GetTexture("graphics/playerGIF/" + std::to_string(i) + ".png")));
+	}
+
+	m_animationSystem.SetSprite(m_UIship);
+	m_animationSystem2.SetSprite(m_UIship2);
+	
+	m_animationSystem.Play("UI");
+	m_animationSystem2.Play("UI2");
+	UI.SetPlayBackSpeed(30.0f);
+	UI.SetLoop(true);
+	UI2.SetPlayBackSpeed(30.0f);
+	UI2.SetLoop(true);
 }
 
 void UIelements::IsGameOver(bool _gameover)
@@ -107,26 +146,40 @@ void UIelements::IsSplashScreenActive(bool _splash)
 	m_splashScreenActive = _splash;
 }
 
+void UIelements::IsMainMenuActive(bool _mainmenu)
+{
+	m_mainmenuActive = _mainmenu;
+}
+
 void UIelements::Draw(sf::RenderTarget& _target)
 {
 	_target.draw(m_starsn);
 	_target.draw(m_starsf);
 	_target.draw(m_starsn2);
 	_target.draw(m_starsf2);
-	//_target.draw(m_LeftPanel);
-	//_target.draw(m_RightPanel);
-	_target.draw(m_WarningRect);
-	_target.draw(m_healthBar);
-	_target.draw(m_gametime);
-	_target.draw(m_timeText);
-	_target.draw(m_enemyShips);
-	_target.draw(m_noOfShips);
+	if (m_mainmenuActive == true)
+	{
+		_target.draw(m_mainmenu);
+		_target.draw(m_UIship);
+		_target.draw(m_UIship2);
+	}
+	else
+	{
+		_target.draw(m_LeftPanel);
+		_target.draw(m_RightPanel);
+		_target.draw(m_WarningRect);
+		_target.draw(m_healthBar);
+		_target.draw(m_gametime);
+		_target.draw(m_timeText);
+		_target.draw(m_enemyShips);
+		_target.draw(m_noOfShips);
+	}
 	if (m_gameover == true)
 	{
 		_target.draw(m_gameoverScreen);
 		_target.draw(m_gameOverTime);
 	}
-	if (m_splashScreenActive == true)
+	if (m_splashScreenActive == true && m_mainmenuActive==false)
 	{
 		_target.draw(m_tutorial);
 	}
@@ -145,6 +198,8 @@ void UIelements::SetSpaceDisplacer(SpaceDisplacer* _SD)
 
 void UIelements::Update(sf::Time _frameTime)
 {
+	m_animationSystem.Update(_frameTime);
+	m_animationSystem2.Update(_frameTime);
 	bool m_SDactive = m_SD->SDActive();
 	if (m_SDactive == false)
 	{

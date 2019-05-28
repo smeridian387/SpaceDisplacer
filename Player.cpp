@@ -9,6 +9,7 @@
 Player::Player()
 	:MovingObject()
 	, m_hull(100)
+	, m_mainmenuActive()
 {
 	m_text.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
 	m_text.setPosition(1100.0f, 670.0f);
@@ -17,14 +18,10 @@ Player::Player()
 	m_sprite.setScale(sf::Vector2f(0.09f, 0.09f));
 	m_sprite.setPosition(640.0f, 410.0f);
 
-
 	Animation& playerBankLeft(m_animationSystem.CreateAnimation("Left"));
 	Animation& playerBankRight(m_animationSystem.CreateAnimation("Right"));
 	Animation& playerBankIdle(m_animationSystem.CreateAnimation("Idle"));
-
 	m_animationSystem.SetSprite(m_sprite);
-	//m_animationSystem.SetSprite(m_bankRight);
-	//load sprite for bankleft
 	for (int i = 1; i < 28; ++i)
 	{
 		if (i != 15)
@@ -92,16 +89,21 @@ void Player::Update(sf::Time _frameTime)
 		m_animationSystem.Play("Idle");
 	}
 	m_text.setString(std::to_string(m_hull)+ "%");
-	//m_animationSystem.Play("Left");
-	// Call the update function manually on 
-	// the parent class
-	// This will actually move the character
+	
 	MovingObject::Update(_frameTime);
+}
+
+void Player::IsMainMenuActive(bool _mainmenu)
+{
+	m_mainmenuActive = _mainmenu;
 }
 
 void Player::Draw(sf::RenderTarget& _target)
 {
-	_target.draw(m_sprite);
+	if (m_mainmenuActive == false)
+	{
+		_target.draw(m_sprite);
+	}
 	_target.draw(m_text);
 	
 }

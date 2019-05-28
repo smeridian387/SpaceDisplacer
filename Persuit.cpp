@@ -20,6 +20,7 @@ Persuit::Persuit()
 	, m_preCurrentTime()
 	, m_preCurrentTime1()
 {
+	m_pew.setBuffer(AssetManager::GetSoundBuffer("audio/pew.wav"));
 	persuit;
 	persuit.push_back(Enemy());
 	persuit.push_back(Enemy());
@@ -151,6 +152,7 @@ void Persuit::Update(sf::Time _frameTime)
 				{
 					if (Torpedos[i].GetIsActive() == false)
 					{
+						m_pew.play();
 						Torpedos[i].initialize(persuit[1].GetPosition());
 						break;
 					}

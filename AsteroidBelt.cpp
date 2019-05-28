@@ -21,7 +21,7 @@ AsteroidBelt::AsteroidBelt()
 	{
 		asteroidBelt.push_back(Asteroid());
 	}
-	m_hit.setBuffer(AssetManager::GetSoundBuffer("audio/roblox_oof.wav"));
+	m_hit.setBuffer(AssetManager::GetSoundBuffer("audio/hit.wav"));
 }
 
 void AsteroidBelt::SetGameTimer(int _gametime)
