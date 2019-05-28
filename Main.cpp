@@ -159,6 +159,7 @@ int main()
 		}
 		UI_E.Update(frameTime);
 		UI_E.IsGameOver(gameover);
+		UI_E.IsSplashScreenActive(splashscreen);
 		if (gameover == true && sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
 		{
 			gameWindow.close();

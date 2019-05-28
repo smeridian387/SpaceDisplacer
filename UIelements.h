@@ -21,6 +21,7 @@ public:
 	void Update(sf::Time _frameTime);
 	void SetPlayer(Player* _player);
 	void IsGameOver(bool _gameover);
+	void IsSplashScreenActive(bool _splash);
 	//void SetGameTimer(int _gametime);
 
 private:
@@ -33,6 +34,7 @@ private:
 	sf::Sprite m_starsn2;
 	sf::Sprite m_starsf;
 	sf::Sprite m_starsf2;
+	sf::Sprite m_tutorial;
 	sf::Text m_gametime;
 	sf::Text m_timeText;
 	sf::Text m_enemyShips;
@@ -45,5 +47,6 @@ private:
 	float gameovertime;
 	int m_secondsSinceGameStart;
 	bool m_gameover;
+	bool m_splashScreenActive;
 
 };

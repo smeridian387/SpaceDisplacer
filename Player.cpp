@@ -15,7 +15,7 @@ Player::Player()
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/tempusBankLeft/tempus1.png"));
 	m_sprite.setOrigin(m_sprite.getTextureRect().width / 2, m_sprite.getTextureRect().height / 2);
 	m_sprite.setScale(sf::Vector2f(0.09f, 0.09f));
-	m_sprite.setPosition(640.0f, 450.0f);
+	m_sprite.setPosition(640.0f, 410.0f);
 
 
 	Animation& playerBankLeft(m_animationSystem.CreateAnimation("Left"));

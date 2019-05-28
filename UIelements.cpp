@@ -11,6 +11,7 @@ UIelements::UIelements()
 	, currentTime()
 	, m_secondsSinceGameStart()
 	, gameovertime()
+	, m_splashScreenActive()
 {
 
 	m_gametime.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
@@ -32,6 +33,11 @@ UIelements::UIelements()
 	m_gameOverTime.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
 	m_gameOverTime.setPosition(640.0f, 450.0f);
 	m_gameOverTime.setScale(1.5f, 1.5f);
+
+	m_tutorial.setTexture(AssetManager::GetTexture("graphics/splashScreen.png"));
+	m_tutorial.setPosition(640.0f, 720.0f);
+	m_tutorial.setScale(1.0f, 1.0f);
+	m_tutorial.setOrigin(m_tutorial.getTextureRect().width / 2, m_tutorial.getTextureRect().height);
 
 	m_LeftPanel.setTexture(AssetManager::GetTexture("graphics/LeftPanel.png"));
 	m_LeftPanel.setPosition(0.0f, 0.0f);
@@ -87,6 +93,11 @@ void UIelements::SetGameOverTime(float _gameovertime)
 	gameovertime = _gameovertime;
 }
 
+void UIelements::IsSplashScreenActive(bool _splash)
+{
+	m_splashScreenActive = _splash;
+}
+
 void UIelements::Draw(sf::RenderTarget& _target)
 {
 	_target.draw(m_starsn);
@@ -104,6 +115,10 @@ void UIelements::Draw(sf::RenderTarget& _target)
 	if (m_gameover == true)
 	{
 		_target.draw(m_gameOverTime);
+	}
+	if (m_splashScreenActive == true)
+	{
+		_target.draw(m_tutorial);
 	}
 	
 }
