@@ -1,6 +1,5 @@
 #include "Torpedo.h"
 #include "Framework/AssetManager.h"
-#include <iostream>
 #include <cmath>
 
 //constants
@@ -16,9 +15,11 @@ Torpedo::Torpedo()
 	, m_standardVelocity()
 {
 	m_hit.setBuffer(AssetManager::GetSoundBuffer("audio/hit.wav"));
+
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/photons.png"));
 	m_sprite.setOrigin(m_sprite.getTextureRect().width / 2, m_sprite.getTextureRect().height / 2);
 	m_sprite.setScale(sf::Vector2f(0.2f, 0.2f));
+	m_sprite.setPosition(-10.0f, 10.0f);
 }
 
 void Torpedo::SetPlayer(Player* _player)
@@ -36,8 +37,10 @@ void Torpedo::initialize(sf::Vector2f _enemyposition)
 	m_isActive = true;
 	sf::Vector2f enemyPos(_enemyposition);
 	sf::Vector2f distance = m_player->GetPosition() - enemyPos;
+
 	float m_torpedoRotation = ((float)atan2(distance.y, distance.x)) * 180.0f / M_PI + 90.0f;
 	float magnitude = sqrt(distance.x*distance.x + distance.y*distance.y);
+
 	sf::Vector2f distanceUnitVector = distance / magnitude;
 	m_standardVelocity = (distanceUnitVector) * 600.0f;
 	m_velocity = (distanceUnitVector) * 600.0f;
@@ -53,6 +56,7 @@ void Torpedo::Draw(sf::RenderTarget& _target)
 void Torpedo::Update(sf::Time _frameTime)
 {
 	MovingObject::Update(_frameTime);
+	//setting bounds for game screen
 	if (GetPosition().x < 220)
 	{
 		m_isActive = false;
@@ -65,6 +69,10 @@ void Torpedo::Update(sf::Time _frameTime)
 	{
 		m_isActive = false;
 	}
+	//if the torpedo collides with the player 
+	//torpedo is teleported to the abyss to despawn
+	//reducies player health
+	//plays sound effect
 	if (m_sprite.getGlobalBounds().intersects(m_player->GetBounds()))
 	{
 		m_sprite.setPosition(500,-1000);

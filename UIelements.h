@@ -15,17 +15,16 @@ class UIelements : MovingObject
 public:
 
 	UIelements();
-	void SetSpaceDisplacer(SpaceDisplacer* _SD);
-	void SetMillisecondsSinceGameStart(float _time);
-	void SetGameTimer(int _timeSinceStart);
-	void SetGameOverTime(float _gameovertime);
-	void Draw(sf::RenderTarget& _target);
-	void Update(sf::Time _frameTime);
-	void SetPlayer(Player* _player);
-	void IsGameOver(bool _gameover);
-	void IsSplashScreenActive(bool _splash);
-	void IsMainMenuActive(bool _mainmenu);
-	//void SetGameTimer(int _gametime);
+	void SetSpaceDisplacer(SpaceDisplacer* _SD);//main passes in a pointer to the space displacer object
+	void SetMillisecondsSinceGameStart(float _time);//main passes the time since the game screen started in milliseconds
+	void SetGameTimer(int _timeSinceStart);//main passes the time since the game screen started in seconds
+	void SetGameOverTime(float _gameovertime);//main passes how long the player survived 
+	void Draw(sf::RenderTarget& _target);//main passes in the render target
+	void Update(sf::Time _frameTime);//main passes in the frameTime
+	void SetPlayer(Player* _player);//main passes in a pointer to the player object
+	void IsGameOver(bool _gameover);//main passes wheather or not the game is over
+	void IsSplashScreenActive(bool _splash);//main passes wheather or not the splash screen is active
+	void IsMainMenuActive(bool _mainmenu);//main passes wheather or not the mainmenu is active
 
 private:
 

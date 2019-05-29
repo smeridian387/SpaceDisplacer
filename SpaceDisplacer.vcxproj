@@ -145,7 +145,6 @@
     <ClInclude Include="Asteroid.h" />
     <ClInclude Include="AsteroidBelt.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="EnemyFire.h" />
     <ClInclude Include="Framework\Animation.h" />
     <ClInclude Include="Framework\AnimationSystem.h" />
     <ClInclude Include="Framework\AssetManager.h" />

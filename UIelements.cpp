@@ -5,7 +5,8 @@
 #include <sstream> // stringstream
 
 UIelements::UIelements()
-	: m_healthBarsize(3.16f)
+	: MovingObject()
+	, m_healthBarsize(3.16f)
 	, m_player(nullptr)
 	, m_SD(nullptr)
 	, currentTime()
@@ -201,29 +202,31 @@ void UIelements::Update(sf::Time _frameTime)
 	m_animationSystem.Update(_frameTime);
 	m_animationSystem2.Update(_frameTime);
 	bool m_SDactive = m_SD->SDActive();
-	if (m_SDactive == false)
+	if (m_SDactive == false)//move background if the space displacer is not active
 	{
 		m_starsn.move(0.0f, 0.02f);
 		m_starsn2.move(0.0f, 0.02f);
 		m_starsf.move(0.0f, 0.01f);
 		m_starsf2.move(0.0f, 0.01f);
 	}
+	//logic for background wrapping
 	if (m_starsn.getPosition().y > 750)
 	{
-		m_starsn.setPosition(200.0f, -720.0);
+		m_starsn.setPosition(640.0f, -720.0);
 	}
 	if (m_starsn2.getPosition().y > 750)
 	{
-		m_starsn2.setPosition(200.0f, -720.0);
+		m_starsn2.setPosition(640.0f, -720.0);
 	}
 	if (m_starsf.getPosition().y > 750)
 	{
-		m_starsf.setPosition(200.0f, -720.0);
+		m_starsf.setPosition(640.0f, -720.0);
 	}
 	if (m_starsf2.getPosition().y > 750)
 	{
-		m_starsf2.setPosition(200.0f, -720.0);
+		m_starsf2.setPosition(640.0f, -720.0);
 	}
+	//logic for player health bar
 	float currentHealth = m_player->GetHullIntergity();
 	if (currentHealth < 100)
 	{
@@ -235,6 +238,7 @@ void UIelements::Update(sf::Time _frameTime)
 	{
 		m_healthBar.setScale(0.125f, 3.16f);
 	}
+	//text logic
 	std::stringstream stream;
 	stream << std::fixed << std::setprecision(2) << currentTime;
 	std::string timeString = stream.str();
@@ -242,6 +246,7 @@ void UIelements::Update(sf::Time _frameTime)
 	m_timeText.setString("Time");
 	m_enemyShips.setString("Ships in \nPersuit");
 	m_gameOverTime.setString(timeString);
+	//tells the player how many enemies are currently firing at them
 	if (m_secondsSinceGameStart < 5)
 	{
 		m_noOfShips.setString("0");

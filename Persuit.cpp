@@ -3,16 +3,15 @@
 //#include "Enemy.h"
 #include "Persuit.h"
 #include <stdlib.h>
-#include <iostream>
 
 Persuit::Persuit()
-	: m_numberInPersuit()
-	, m_timeSinceGameStart()
+	: m_timeSinceGameStart()
 	, persuit()
 	, Torpedos()
 	, m_timer(true)
 	, m_timer2(true)
 	, m_active(true)
+	, m_freeze(false)
 	, m_player(nullptr)
 	, m_torpedo(nullptr)
 	, m_asteroid(nullptr)
@@ -26,7 +25,7 @@ Persuit::Persuit()
 	persuit.push_back(Enemy());
 	persuit.push_back(Enemy());
 	Torpedos;
-	for (int i = 0; i < 12; ++i)
+	for (int i = 0; i < 12; ++i)//for loop for increasing torpedo vector
 	{
 		Torpedos.push_back(Torpedo());
 	}
@@ -55,12 +54,6 @@ void Persuit::SetTorpedo(Torpedo* _Torpedo)
 void Persuit::SetSpaceDisplacer(SpaceDisplacer* _SD)
 {
 	m_SD = _SD;
-}
-
-sf::Vector2f Persuit::Getplayerpos()
-{
-	sf::Vector2f playerpos = m_player->GetPosition();
-		return playerpos;
 }
 
 sf::Vector2f Persuit::GetEnemyPos(int _whichenemy)
@@ -94,7 +87,7 @@ void Persuit::Draw(sf::RenderTarget& _target)
 	persuit[0].SetPosition(240.0f, 760.0f);
 	persuit[1].SetPosition(640.0f, 760.0f);
 	persuit[2].SetPosition(1040.0f, 760.0f);
-	for (int i = 0; i < Torpedos.size(); i++)
+	for (int i = 0; i < Torpedos.size(); i++)//logic for increasing the difficulty
 	{
 		Torpedos[i].Draw(_target);
 	}
@@ -134,7 +127,24 @@ void Persuit::Update(sf::Time _frameTime)
 			Torpedos[i].ResetVelocity();
 		}
 	}
-	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	//logic for enemy firing and bullet freezing
+	if (m_SD->SDActive() == true)
+	{
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+		{
+			m_freeze = true;
+		}
+		else
+		{
+			m_freeze = false;
+		}
+			
+	}
+	else
+	{
+		m_freeze = false;
+	}
+	if (m_freeze ==false)
 	{
 		time_t time1;
 		if (m_timer == true)
@@ -146,7 +156,7 @@ void Persuit::Update(sf::Time _frameTime)
 		}
 		if (time(&time1) == m_preCurrentTime + 1)
 		{
-			if (m_timeSinceGameStart > 5)
+			if (m_timeSinceGameStart > 5)//start firing from the first enemy after 5 seconds
 			{
 				for (int i = 0; i <= 3; ++i)
 				{
@@ -158,9 +168,9 @@ void Persuit::Update(sf::Time _frameTime)
 					}
 				}
 			}
-			if (m_timeSinceGameStart > 15)
+			if (m_timeSinceGameStart > 15)//start firing from the second enemy after 15 seconds
 			{
-				
+
 				if (Torpedos[4].GetIsActive() == false)
 				{
 					Torpedos[4].initialize(persuit[2].GetPosition());
@@ -178,7 +188,7 @@ void Persuit::Update(sf::Time _frameTime)
 					Torpedos[7].initialize(persuit[2].GetPosition());
 				}
 			}
-			if (m_timeSinceGameStart > 30)
+			if (m_timeSinceGameStart > 30)//start firing from the third enemy after 30 seconds
 			{
 				if (Torpedos[8].GetIsActive() == false)
 				{
@@ -202,7 +212,7 @@ void Persuit::Update(sf::Time _frameTime)
 		m_preCurrentTime = m_preCurrentTime1;
 	}
 	
-	time_t time1;
+	time_t time1;//seconf clock to fix the first if it breakes
 	if (m_timer2 == true)
 	{
 		m_preCurrentTime = time(&time1);

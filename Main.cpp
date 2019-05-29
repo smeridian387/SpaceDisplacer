@@ -14,7 +14,6 @@
 #include "Enemy.h"
 #include "Persuit.h"
 #include "UIelements.h"
-#include "EnemyFire.h"
 #include "Torpedo.h"
 #include "SpaceDisplacer.h"
 #include "Pickups.h"

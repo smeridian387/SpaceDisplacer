@@ -22,12 +22,13 @@ Player::Player()
 	Animation& playerBankRight(m_animationSystem.CreateAnimation("Right"));
 	Animation& playerBankIdle(m_animationSystem.CreateAnimation("Idle"));
 	m_animationSystem.SetSprite(m_sprite);
+	//loads pngs for bank left
 	for (int i = 1; i < 28; ++i)
 	{
 		if (i != 15)
 			playerBankLeft.AddFrame((AssetManager::GetTexture("graphics/tempusBankLeft/tempus" + std::to_string(i) + ".png")));
 	}
-	//load sprites for bankright
+	//load pngs for bankright
 	for (int i = 1; i < 28; ++i)
 	{
 		if (i != 15)
@@ -36,7 +37,6 @@ Player::Player()
 
 	playerBankIdle.AddFrame((AssetManager::GetTexture("graphics/tempusIdle.png")));
 
-	//m_animationSystem.SetSprite(m_sprite);
 	playerBankRight.SetPlayBackSpeed(80.0f);
 	playerBankLeft.SetPlayBackSpeed(80.0f);
 	m_animationSystem.Play("Idle");
@@ -56,7 +56,7 @@ void Player::Update(sf::Time _frameTime)
 {
 	m_animationSystem.Update(_frameTime);
 
-	if (m_hull > 100)
+	if (m_hull > 100)//health limiter
 	{
 		m_hull = 100;
 	}

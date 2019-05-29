@@ -2,12 +2,9 @@
 #include "Asteroid.h"
 #include "asteroidBelt.h"
 #include "Framework/AssetManager.h"
-#include <iostream>
 
 AsteroidBelt::AsteroidBelt()
-	: m_NoOfAsteroidsInPlay()
-	, m_difficulty(3)
-	, asteroidBelt()
+	: asteroidBelt()
 	, m_preCurrentTime()
 	, m_active(true)
 	, m_timer(true)
@@ -17,7 +14,7 @@ AsteroidBelt::AsteroidBelt()
 	, test()
 {
 	asteroidBelt;
-	for (int i = 0; i < 9; ++i)
+	for (int i = 0; i < 9; ++i)//for loop for increasing the asteroid vector
 	{
 		asteroidBelt.push_back(Asteroid());
 	}
@@ -65,6 +62,7 @@ void AsteroidBelt::Update(sf::Time _frameTime)
 		asteroidBelt[3].SetPlayer(m_player);
 		asteroidBelt[3].SetGameTimer(m_timeSinceGameStart);
 		asteroidBelt[3].Update(_frameTime);
+		//if statements increse the number of asteroids that spawn over time
 		if (m_timeSinceGameStart > 10)
 		{
 			asteroidBelt[4].SetSpaceDisplacer(m_SD);
@@ -102,7 +100,7 @@ void AsteroidBelt::Update(sf::Time _frameTime)
 		}
 		for (int i = 0; i < asteroidBelt.size(); i++)
 		{
-			if (asteroidBelt[i].GetBounds().intersects(m_player->GetBounds()))
+			if (asteroidBelt[i].GetBounds().intersects(m_player->GetBounds()))//if statement for asteroid/player collision
 			{
 				if (m_timer == true)
 				{
@@ -116,7 +114,7 @@ void AsteroidBelt::Update(sf::Time _frameTime)
 					m_timer = true;
 				}
 			}
-			if (m_timer2 == true)
+			if (m_timer2 == true)//second clock to reset the first if it breaks 
 			{
 				m_preCurrentTime = m_timeSinceGameStart;
 				m_timer2 = false;

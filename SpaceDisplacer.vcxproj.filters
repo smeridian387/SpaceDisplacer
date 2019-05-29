@@ -108,9 +108,6 @@
     <ClInclude Include="UIelements.h">
       <Filter>Gamecode</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyFire.h">
-      <Filter>Gamecode</Filter>
-    </ClInclude>
     <ClInclude Include="Torpedo.h">
       <Filter>Projectiles</Filter>
     </ClInclude>

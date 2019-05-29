@@ -21,21 +21,20 @@ public:
 	void Draw(sf::RenderTarget& _target);//main passes in the render target
 	void Update(sf::Time _frameTime);//main passes in the frameTime
 	void SetGameTimer(int _gametime);//main passes in the time since the game screen stated
-	bool IsActive();
+	bool IsActive();//getter for wheather or not the asteroid belt is active
 
 private:
 
 	SpaceDisplacer* m_SD;
 	sf::Sound m_hit;
 	Player* m_player;
-	int m_NoOfAsteroidsInPlay;
 	int m_timeSinceGameStart;
 	std::vector< Asteroid > asteroidBelt;
-	int m_difficulty;
 	bool m_active;
+	sf::FloatRect test;
+	//timer variables
 	bool m_timer;
 	bool m_timer2;
 	int m_preCurrentTime;
-	sf::FloatRect test;
 
 };

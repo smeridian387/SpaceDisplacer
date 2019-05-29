@@ -1,7 +1,6 @@
 #include "Framework/AssetManager.h"
 #include "MovingObject.h"
 #include "Pickups.h"
-#include <iostream>
 
 PickUp::PickUp()
 	: MovingObject()
@@ -62,31 +61,28 @@ void PickUp::Update(sf::Time _frameTime)
 	MovingObject::Update(_frameTime);
 	if (m_spawnSP == true)
 	{
-		if (m_spareParts.getPosition().y > 760)
+		if (m_spareParts.getPosition().y > 760)//if the pickup leaves the bottom of the screen wrap to the top and set self to false
 		{
 			int randomx = std::rand() % (1030 - 220) + 220;
 			int randomy = std::rand() % 360 + 40;
-			//int randomsize = std::rand() % 15 + 10;
 			m_spareParts.setPosition(randomx, -randomy);
 			m_spawnSP = false;
 		}
 		else
 		{
 			bool m_SDactive = m_SD->SDActive();
-			if (m_SDactive == false)
+			if (m_SDactive == false)//if the space displacer is activated set velocity and rotation to zero
 			{
-				sf::Vector2f move(0.0f, 250.0f); // multiply this by 30 or 60 ish
+				sf::Vector2f move(0.0f, 250.0f);//set SP velocity
 				m_spareParts.setPosition(m_spareParts.getPosition() + move * _frameTime.asSeconds());
 				float rotation = 120.0f;
 				m_spareParts.setRotation(m_spareParts.getRotation() + rotation * _frameTime.asSeconds());
 			}
-			if (m_spareParts.getGlobalBounds().intersects(m_player->GetBounds()))
+			if (m_spareParts.getGlobalBounds().intersects(m_player->GetBounds()))//if the SP collides with the player increase players health and remove itself
 			{
-				m_SD->SetSDcasing(30);
 				m_player->SetHullIntegrity(50);
 				int randomx = std::rand() % (1030 - 220) + 220;
 				int randomy = std::rand() % 360 + 40;
-				//int randomsize = std::rand() % 15 + 10;
 				m_spareParts.setPosition(randomx, -randomy);
 				m_spawnSP = false;
 				m_timer = false;
@@ -96,18 +92,17 @@ void PickUp::Update(sf::Time _frameTime)
 	}
 	if (m_spawnLN == true)
 	{
-		if (m_liquidNitrogen.getPosition().y > 750)
+		if (m_liquidNitrogen.getPosition().y > 750)//if the pickup leaves the bottom of the screen wrap to the top and set self to false
 		{
 			int randomx = std::rand() % (1030 - 220) + 220;
 			int randomy = std::rand() % 360 + 40;
-			//int randomsize = std::rand() % 15 + 10;
 			m_liquidNitrogen.setPosition(randomx, -randomy);
 			m_spawnLN = false;
 		}
 		else
 		{
 			bool m_SDactive = m_SD->SDActive();
-			if (m_SDactive == false)
+			if (m_SDactive == false)//if the space displacer is activated set velocity and rotation to zero
 			{
 				sf::Vector2f move(0.0f, 250.0f);
 				m_liquidNitrogen.setPosition(m_liquidNitrogen.getPosition() + move * _frameTime.asSeconds());
@@ -120,7 +115,6 @@ void PickUp::Update(sf::Time _frameTime)
 				m_SD->LNWarningMove();
 				int randomx = std::rand() % (1030 - 220) + 220;
 				int randomy = std::rand() % 360 + 40;
-				//int randomsize = std::rand() % 15 + 10;
 				m_liquidNitrogen.setPosition(randomx, -randomy);
 				m_spawnLN = false;
 				m_timer = false;
@@ -133,17 +127,16 @@ void PickUp::Update(sf::Time _frameTime)
 		m_preCurrentTime = m_timeSinceGameStart;
 		m_timer = false;
 	}
-	if (m_timeSinceGameStart == m_preCurrentTime + 5)
+	//spawning logic for both pickups
+	if (m_timeSinceGameStart == m_preCurrentTime + 5)//generates a random number every five seconds
 	{
-		int random = std::rand() % 100;
-			std::cout << random << std::endl;
-		if (random < 100)
+		int random = std::rand() % 100;//generates a random number for LN
+		if (random < 20)//if the random number is less than this spawn pickup
 		{
 			m_spawnLN = true;
 		}
-		int random2 = std::rand() % 100;
-		std::cout << random << std::endl;
-		if (random2 < 100)
+		int random2 = std::rand() % 100;//generates a random number for SP
+		if (random2 < 20)//if the random number is less than this spawn pickup
 		{
 			m_spawnSP = true;
 		}

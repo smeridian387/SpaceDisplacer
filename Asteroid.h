@@ -22,13 +22,14 @@ private:
 
 	SpaceDisplacer* m_SD;
 	Player* m_player;
+	sf::Vector2f m_approachSpeed;
+	float m_approachSpeedY;
+	int m_timeSinceGameStart;
+	//timer variables
 	bool m_timer;
 	bool m_timer2;
 	int m_preCurrentTime;
 	int m_preCurrentTime2;
-	sf::Vector2f m_approachSpeed;
-	float m_approachSpeedY;
-	int m_timeSinceGameStart;
 	
 
 };

@@ -12,14 +12,13 @@ public:
 
 	SpaceDisplacer();
 
-	void Draw(sf::RenderTarget& _target);
-	void Update(sf::Time _frameTime);
-	void SetSDTemp(int _newTemp);
-	void SetSDcasing(int _repair);
-	void LNWarningMove();
-	bool SDActive();
-	bool IsActive();
-	void IsMainMenuActive(bool _mainmenu);
+	void Draw(sf::RenderTarget& _target);//main passes in the render target
+	void Update(sf::Time _frameTime);//main passes in the frameTime
+	void SetSDTemp(int _newTemp);//setter for the space displacers temperature
+	void LNWarningMove();//setter for the warning bars position
+	bool SDActive();//getter for wheather or not the space disaplcer is active
+	bool IsActive();//getter for wheather or not the space disaplcer object is active
+	void IsMainMenuActive(bool _mainmenu);//main passing wheather or not the mainmenu is active
 
 private:
 
@@ -28,15 +27,7 @@ private:
 	int m_SDcasing;
 	bool m_SDactive;
 	bool m_SDfunctional;
-	bool m_timer;
-	bool m_timer2;
-	bool m_timer3;
-	bool m_timer4;
-	bool m_timer5;
 	bool m_overHeating;
-	int m_preCurrentTime;
-	int m_preCurrentTime2;
-	int m_preCurrentTime3;
 	int m_SDcolorchange;
 	float m_warnRectIn;
 	float m_LNPickUp;
@@ -50,4 +41,12 @@ private:
 	Animation& m_idleSD;
 	int m_millisecondsSinceSpacePressed;
 	bool m_mainmenuActive;
+	//timer variables
+	bool m_timer;
+	bool m_timer2;
+	bool m_timer3;
+	bool m_timer4;
+	int m_preCurrentTime;
+	int m_preCurrentTime2;
+	int m_preCurrentTime3;
 };

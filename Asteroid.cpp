@@ -1,7 +1,6 @@
 //project includes
 #include "Asteroid.h"
 #include "Framework/AssetManager.h"
-#include <iostream>
 
 
 Asteroid::Asteroid()
@@ -52,7 +51,7 @@ void Asteroid::Update(sf::Time _frameTime)
 	}
 	else
 	{
-		time_t time1;
+		time_t time1;//timer that increases the asteroid falling speed over time
 		if (m_timer == true)
 		{
 			m_preCurrentTime = m_timeSinceGameStart;
@@ -64,7 +63,7 @@ void Asteroid::Update(sf::Time _frameTime)
 			m_timer = true;
 		}
 		bool m_SDactive = m_SD->SDActive();
-		if (m_SDactive == false)
+		if (m_SDactive == false)//when the space displacer is active set asteroid velocity to zero and stop updating
 		{
 			m_velocity = sf::Vector2f(0.0f, m_approachSpeedY);
 			float rotation = 0.12f;
@@ -74,19 +73,6 @@ void Asteroid::Update(sf::Time _frameTime)
 		else
 		{
 			m_velocity = sf::Vector2f(0.0f, 0.0f);
-		}
-		if (m_timer2 == true)
-		{
-			m_preCurrentTime2 = m_timeSinceGameStart;
-			if (m_sprite.getGlobalBounds().intersects(m_player->GetBounds()))
-			{
-				m_player->SetHullIntegrity(-20);
-			}
-			m_timer2 = false;
-		}
-		if (m_timeSinceGameStart == m_preCurrentTime2 + 1)
-		{
-			m_timer2 = true;
 		}
 	}
 	

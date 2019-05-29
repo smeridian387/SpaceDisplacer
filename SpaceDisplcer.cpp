@@ -1,5 +1,4 @@
 #include "SpaceDisplacer.h"
-#include <iostream>
 #include <chrono>
 #include <ctime>
 #include <time.h>
@@ -16,7 +15,6 @@ SpaceDisplacer::SpaceDisplacer()
 	, m_timer2(true)
 	, m_timer3(true)
 	, m_timer4(false)
-	, m_timer5(true)
 	, m_overHeating()
 	, m_preCurrentTime()
 	, m_preCurrentTime2()
@@ -30,20 +28,26 @@ SpaceDisplacer::SpaceDisplacer()
 {
 	m_SDtempText.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
 	m_SDtempText.setPosition(110.0f, 670.0f);
+
 	m_SDcasingText.setFont(AssetManager::GetFont("fonts/ethnocentric.ttf"));
 	m_SDcasingText.setPosition(70.0f, 190.0f);
+
 	m_animation.SetSprite(m_sprite);
+
 	m_warningRect.setTexture(AssetManager::GetTexture("graphics/WarningRect.png"));
 	m_warningRect.setOrigin(m_warningRect.getTextureRect().width / 2, m_warningRect.getTextureRect().height / 2);
+
 	m_warningRect.setScale(sf::Vector2f(0.2f, 0.3f));
-	//m_warningRect.setPosition(45.0f, 700.0f);//bottom position
-	m_warningRect.setPosition(45.0f, 700.0f);//top position
+	m_warningRect.setPosition(45.0f, 700.0f);
+
 	m_lights.setTexture(AssetManager::GetTexture("graphics/light.png"));
 	m_lights.setPosition(640.0f,20.0f);
 	m_lights.setScale(sf::Vector2f(0.659f, 0.659f));
 	m_lights.setOrigin(m_lights.getTextureRect().width / 2, m_lights.getTextureRect().height / 2);
+
 	m_lightFilter.setTexture(AssetManager::GetTexture("graphics/lightfliter.png"));
-	for (int i = 0; i < 15; ++i)
+
+	for (int i = 0; i < 15; ++i)//for loop for loading space displacer animation
 	{
 		m_idleSD.AddFrame((AssetManager::GetTexture("graphics/idleSD/crystalballV001effect-loop00" + std::to_string(i) +".png")));
 	}
@@ -85,11 +89,6 @@ void SpaceDisplacer::SetSDTemp(int _newTemp)
 	m_temp = m_temp + _newTemp;
 }
 
-void SpaceDisplacer::SetSDcasing(int _repair)
-{
-	m_SDcasing = m_SDcasing + _repair;
-}
-
 void SpaceDisplacer::LNWarningMove()
 {
 	m_LNPickUp = 151.84;
@@ -99,13 +98,9 @@ void SpaceDisplacer::LNWarningMove()
 void SpaceDisplacer::Update(sf::Time _frameTime)
 {
 
-	if (m_temp < 0)
+	if (m_temp < 0)//temperature cap
 	{
 		m_temp = 0;
-	}
-	if (m_SDcasing > 100)
-	{
-		m_SDcasing = 100;
 	}
 	if (m_temp == 0)
 	{
@@ -116,7 +111,7 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 		m_warningRect.setPosition(45.0f, 415.0f);
 	}
 	m_animation.Update(_frameTime);//plays spacedisplacer animation
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)&&m_SDcasing >0)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)&&m_SDcasing >0)//activates the space displacer which increases temp over time
 	{
 		time_t time1;
 		if (m_timer == true)
@@ -145,13 +140,11 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 	}
 	else
 	{
-		//m_millisecondsSinceSpacePressed = 0;
 		m_timer = true;
 		m_idleSD.SetPlayBackSpeed(15.0f);
 		m_SDactive = false;
-		
 	}
-	if (m_temp > 0 && !sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	if (m_temp > 0 && !sf::Keyboard::isKeyPressed(sf::Keyboard::Space))//if the space disaplcer is not active cool down
 	{
 		time_t time1;
 		if (m_timer2 == true)
@@ -202,21 +195,6 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 	}
 	m_LNPickUp = 0;
 	
-
-
-	//over heating lights
-	
-	/*time_t time5;
-	if (m_timer5 == true)
-	{
-		m_preCurrentTime3 = time(&time5);
-	}
-	if (time(&time5) == m_preCurrentTime3 + 1)
-	{
-		m_timer5 = true;
-		m_timer3 = true;
-	}*/
-	
 	if (m_temp > 150)
 	{
 		m_overHeating = true;
@@ -243,35 +221,11 @@ void SpaceDisplacer::Update(sf::Time _frameTime)
 			m_timer3 = true;
 			m_timer4 = true;
 		}
-		//std::cout << << std::endl;
 	}
 	else
 	{
 		m_overHeating = false;
 	}
-	/*time_t time3;
-	if (m_timer3 == true)
-	{
-		m_overHeating = true;
-		m_preCurrentTime = time(&time3);
-		m_timer3 = false;
-	}
-	if (time(&time3) == m_preCurrentTime + 1)
-	{
-		m_overHeating = false;
-		m_timer4 = true;
-	}
-	time_t time2;
-	if (m_timer4 == true)
-	{
-		m_preCurrentTime2 = time(&time2);
-		m_timer4 = false;
-	}
-	if (time(&time2) == m_preCurrentTime2 + 1)
-	{
-		m_timer3 = true;
-		m_timer4 = true;
-	}*/
 }
 
 bool SpaceDisplacer::SDActive()
