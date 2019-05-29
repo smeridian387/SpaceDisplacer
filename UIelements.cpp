@@ -204,10 +204,12 @@ void UIelements::Update(sf::Time _frameTime)
 	bool m_SDactive = m_SD->SDActive();
 	if (m_SDactive == false)//move background if the space displacer is not active
 	{
-		m_starsn.move(0.0f, 0.02f);
-		m_starsn2.move(0.0f, 0.02f);
-		m_starsf.move(0.0f, 0.01f);
-		m_starsf2.move(0.0f, 0.01f);
+		sf::Vector2f move(0.0f, 20.0f);
+		sf::Vector2f move2(0.0f, 10.0f);
+		m_starsn.setPosition(m_starsn.getPosition() + move * _frameTime.asSeconds());
+		m_starsn2.setPosition(m_starsn2.getPosition() + move * _frameTime.asSeconds());
+		m_starsf.setPosition(m_starsf.getPosition() + move2 * _frameTime.asSeconds());
+		m_starsf2.setPosition(m_starsf2.getPosition() + move2 * _frameTime.asSeconds());
 	}
 	//logic for background wrapping
 	if (m_starsn.getPosition().y > 750)
