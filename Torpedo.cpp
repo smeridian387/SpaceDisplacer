@@ -57,17 +57,20 @@ void Torpedo::Update(sf::Time _frameTime)
 {
 	MovingObject::Update(_frameTime);
 	//setting bounds for game screen
-	if (GetPosition().x < 220)
+	if (GetPosition().x < 200)
 	{
 		m_isActive = false;
+		m_sprite.setPosition(500, -1000);
 	}
-	if (GetPosition().x > 1060)
+	if (GetPosition().x > 1080)
 	{
 		m_isActive = false;
+		m_sprite.setPosition(500, -1000);
 	}
-	if (GetPosition().y < 30)
+	if (GetPosition().y < 0)
 	{
 		m_isActive = false;
+		m_sprite.setPosition(500, -1000);
 	}
 	//if the torpedo collides with the player 
 	//torpedo is teleported to the abyss to despawn
